@@ -5,140 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Work Sample and Skills Development | Meryem</title>
   <style>
-    body {
-      margin: 0;
-      background-color: #f9f9f9;
-      font-family: Arial, sans-serif;
-      color: #333;
-      line-height: 1.6;
-    }
-       .banner {
-      width: 100%;
-      height: 220px;
-      background-image: url('Trends_(1).png'); /* Replace with your banner image link */
-      background-size: cover;
-      background-position: center;
-    }
+    body{margin:0;background:#f9f9f9;font-family:Arial,sans-serif;color:#333;line-height:1.6;}
+    .banner{width:100%;height:220px;background:url('Trends_(1).png') center/cover;}
+    .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+    h1,h2{text-align:center;color:#2c3e50;}
+    .intro{text-align:center;font-size:1.1rem;margin-bottom:2rem;}
+    a{color:#007acc;text-decoration:none;} a:hover{text-decoration:underline;}
+    .columns{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;}
+    .column{flex:1;min-width:300px;}
+    .section{margin-bottom:2rem;background:#fff;padding:1rem;border-radius:8px;box-shadow:0 0 5px rgba(0,0,0,.05);}
+    ul{list-style-type:disc;margin-left:1.5rem;}
+    .inactive{color:#999;font-style:italic;opacity:.7;}
+    .inactive img{max-width:100px;display:block;margin:0 auto 1rem;filter:grayscale(100%) opacity(60%);}
+    .footer{text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid #ddd;}
+    .note{font-style:italic;color:#73c2fb;font-size:1.4rem;font-weight:bold;margin-top:2rem;}
+    @media(max-width:768px){.columns{flex-direction:column;}}
 
-    .container {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-    .inactive {
-  color: #999;
-  font-style: italic;
-  opacity: 0.7;
-}
-.inactive img {
-  max-width: 100px;
-  display: block;
-  margin: 0 auto 1rem;
-  filter: grayscale(100%) opacity(60%);
-}
-
-    .banner {
-      width: 100%;
-      height: 220px;
-      background-image: url('Trends_(1).png');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    h1, h2 {
-      text-align: center;
-      color: #2c3e50;
-    }
-
-    .intro {
-      text-align: center;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    a {
-      color: #007acc;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .columns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    .column {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .section {
-      margin-bottom: 2rem;
-      background-color: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.05);
-    }
-
-    ul {
-      list-style-type: disc;
-      margin-left: 1.5rem;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid #ddd;
-    }
-
-    .note {
-  font-style: italic;
-  color: #73c2fb; /* Green for 'open to work' */
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-top: 2rem;
-}
-.note 2 {
-      font-style: italic;
-      color: #555;
-    }
-
-    @media (max-width: 768px) {
-      .columns {
-        flex-direction: column;
-      }
-    }
+    /* —––  COLLAPSIBLE  ––– */
+    details{margin-top:0.75rem;}
+    summary{cursor:pointer;font-weight:bold;}
+    details p,details ul{margin-left:1rem;}
   </style>
 </head>
 <body>
 
   <div class="banner"></div>
-<!-- add immediately after <div class="banner"></div> -->
+  <!-- add immediately after <div class="banner"></div> -->
 <div style="text-align:center; padding:0.75rem 0;">
   <a href="https://meryemciftcialy.github.io/work_sample/about_me.html" style="font-weight:bold;">👋 About Me</a>
 </div>
 
+
   <div class="container">
-    <h1>Kamara Rowe-Ciftci (Meryem)</h1>
-    <p class="intro">This page showcases my progress in data analytics and tools I've used. It's a growing record of learning, projects, and what’s next on my skills journey.</p>
+    <h1>Kamara Rowe‑Ciftci (Meryem)</h1>
+    <p class="intro">
+      This page showcases my progress in data analytics and tools I’ve used. It’s a growing record of learning,
+      projects, and what’s next on my skills journey.
+    </p>
 
     <div class="columns">
       <!-- LEFT COLUMN -->
       <div class="column">
 
+        <!-- GitHub -->
         <div class="section">
           <h2>💻 GitHub</h2>
           <p>Explore code repositories featuring:</p>
@@ -151,15 +60,36 @@
           <p><a href="https://github.com/MeryemCiftciAly/Portfolio-Hub" target="_blank">GitHub Profile</a></p>
         </div>
 
+        <!-- Dropbox -->
         <div class="section">
           <h2>📂 Dropbox</h2>
-          <p>Real-world simulations and project files:</p>
+          <p>Real‑world simulations and project files:</p>
           <ul>
-            <li>Excel-based dashboards</li>
+            <li>Excel‑based dashboards</li>
             <li>Presentation decks and business reports</li>
             <li>Supporting documents for case scenarios</li>
           </ul>
           <p><a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/APK3B2f-eehoZB6tLm5bz34?rlkey=7rc4uytibnjf07ix6zun3uyar&dl=0" target="_blank">Dropbox Folder</a></p>
+        </div>
+
+        <!-- NEW Projects Section -->
+        <div class="section">
+          <h2>📁 Projects</h2>
+
+          <details open>
+            <summary>Nominate a YouTube STEM Educator – Volunteer Campaign</summary>
+            <p>
+              Organising a volunteer effort to recognise an outstanding YouTube educator for high‑quality STEM teaching.
+            </p>
+            <ul>
+              <li>Used ChatGPT to create the campaign website</li>
+              <li>Used ChatGPT to scaffold a Firebase app for volunteer updates</li>
+              <li>Built an Airtable base to collect volunteer input</li>
+            </ul>
+            <p><a href="https://example.com/volunteer-campaign" target="_blank">Project Hub</a></p>
+          </details>
+
+          <!-- Add more <details> blocks here as new projects launch -->
         </div>
 
       </div>
@@ -167,83 +97,112 @@
       <!-- RIGHT COLUMN -->
       <div class="column">
 
+        <!-- Tableau -->
         <div class="section">
           <h2>📊 Tableau</h2>
-          <p>Interactive dashboards for visual analytics and storytelling</p>
+          <p>Interactive dashboards for visual analytics and storytelling.</p>
           <p><a href="https://public.tableau.com/app/profile/meryem.ciftci/vizzes" target="_blank">Tableau Public Portfolio</a></p>
-            </div>
+        </div>
 
+        <!-- Power BI -->
         <div class="section">
-          <h2>📈 Power BI</h2>
-          <p>Interactive dashboards for visual analytics and storytelling</p>
-          <p>View my growing projects and evolving skills in Power BI. Each dashboard explores different aspects of data analysis, transformation, and design. This portfolio will continue to grow as I refine my approach to modeling, DAX, and performance optimization.</p>
-          <p><a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank">Power BI Portfolio</a></p> </div>
-          
+          <h2>📈 Power BI</h2>
+          <p>Interactive dashboards for visual analytics and storytelling.</p>
+          <p>
+            View my growing projects and evolving skills in Power BI. Each dashboard explores different aspects of data
+            analysis, transformation, and design. This portfolio will continue to grow as I refine modelling, DAX, and
+            performance optimisation.
+          </p>
+          <p><a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank">Power BI Portfolio</a></p>
+        </div>
+
+        <!-- Salesforce -->
         <div class="section">
           <h2>🧰 Salesforce</h2>
           <p>Foundational understanding of CRM workflows and automation using Salesforce.</p>
           <p><a href="https://meryemciftcialy.github.io/work_sample/salesforce.html" target="_blank">Salesforce Learning Page</a></p>
         </div>
+
+        <!-- Excel -->
         <div class="section">
-  <h2>📊 Excel</h2>
-  <p>Over 5 years of practical Excel experience from administrative roles to advanced data analytics. Skilled in data cleaning, pivot tables, formulas, and dashboard creation.</p>
-  <p><a href="https://meryemciftcialy.github.io/work_sample/excel.html" target="_blank">Excel Learning Page</a></p>
-</div>
+          <h2>📊 Excel</h2>
+          <p>5+ years of practical Excel experience, from administrative roles to advanced analytics (cleaning, pivots, dashboards).</p>
+          <p><a href="https://meryemciftcialy.github.io/work_sample/excel.html" target="_blank">Excel Learning Page</a></p>
+        </div>
 
-<div class="section">
-  <h2>🗄️ SQL</h2>
-  <p>Strong foundation in SQL for querying, aggregating, and managing data with hands-on practice in real-world scenarios and data warehouse concepts.</p>
-  <p><a href="https://meryemciftcialy.github.io/work_sample/sql.html" target="_blank">SQL Learning Page</a></p>
-</div>
-        
-<div class="section">
-  <h2>My Python Journal</h2>
-  <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png" alt="Python Logo" style="max-width: 120px;">
-  <p>
-    This is my ongoing Python learning journal hosted on Notion, where I document my progress, practice exercises, and project work.<br>
-    <strong>Started:</strong> June 24, 2025<br>
-    <a href="https://tinyurl.com/2xju4jhv" target="_blank" rel="noopener noreferrer">
-      Explore my Python Journal here.
-    </a><br>
-    Topics covered include Python fundamentals, scripting, and core libraries like pandas and NumPy.<br>
-    This is a newly launched journey, updated regularly as I build skills and apply them to real-world projects.
-  </p>
-</div>
+        <!-- SQL -->
+        <div class="section">
+          <h2>🗄️ SQL</h2>
+          <p>Strong foundation in SQL for querying, aggregating, and managing data with real‑world practice and warehouse concepts.</p>
+          <p><a href="https://meryemciftcialy.github.io/work_sample/sql.html" target="_blank">SQL Learning Page</a></p>
+        </div>
 
-<div class="section inactive">
-  <h2>☁️ AWS </h2>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/512px-Amazon_Web_Services_Logo.svg.png" alt="AWS Logo">
-  <p>
-    Future learning in AWS cloud services with a focus on data engineering and analytics tools.<br>
-    Certification path and project applications to follow.
-  </p>
-</div>
+        <!-- Python Journal -->
+        <div class="section">
+          <h2>My Python Journal</h2>
+          <img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png"
+               alt="Python Logo" style="max-width:120px;">
+          <p>
+            Ongoing Python learning journal hosted on Notion.<br>
+            <strong>Started:</strong> 24 Jun 2025<br>
+            <a href="https://tinyurl.com/2xju4jhv" target="_blank">Explore my Python Journal</a><br>
+            Covers fundamentals, scripting, and libraries such as pandas and NumPy. Updated regularly.
+          </p>
+        </div>
 
+        <!-- AWS Placeholder -->
+        <div class="section inactive">
+          <h2>☁️ AWS</h2>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/512px-Amazon_Web_Services_Logo.svg.png"
+               alt="AWS Logo">
+          <p>Future learning in AWS data engineering and analytics. Certification path coming soon.</p>
+        </div>
 
       </div>
+    </div><!-- /columns -->
+
+    <!-- NEW How I Work with AI Section -->
+    <div class="section">
+      <h2>🤖 How I Work with AI – ChatGPT</h2>
+
+      <details open>
+        <summary>Volunteer Campaign (Website + Firebase + Airtable)</summary>
+        <ul>
+          <li>Prompt‑engineered website copy and layout</li>
+          <li>Generated Firebase data model & initial Firestore security rules</li>
+          <li>Drafted Airtable schema and automations to track volunteer progress</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>This Work‑Sample Site</summary>
+        <p>
+          Iterated live with ChatGPT on structure, collapse‑toggle components, and accessibility tweaks to keep the code
+          lightweight and maintainable.
+        </p>
+      </details>
+
+      <!-- Add more AI‑assisted items over time -->
     </div>
-    
-  
 
     <!-- FOOTER -->
     <div class="footer">
       <div class="section">
-        <h2>📬 Contact Me</h2>
+        <h2>📬 Contact Me</h2>
         <p>Feel free to reach out if you’d like a copy of my resume or just want to connect!</p>
-        <ul style="list-style-type: none;">
+        <ul style="list-style-type:none;">
           <li>Email: <a href="mailto:meryemkciftci@gmail.com">meryemkciftci@gmail.com</a></li>
           <li>LinkedIn: <a href="https://linkedin.com/in/meryack" target="_blank">linkedin.com/in/meryack</a></li>
-         <li>Additional Portfolio: <a href="https://meryemciftcialy.github.io/analyst-journal/" target="_blank">Additional Portfolio</a></li>
-        </ul>
+                  </ul>
       </div>
-<!-- inside your existing footer UL -->
-<li>About Me: <a href="about.html">Learn more</a></li>
+      
+      <!-- inside your existing footer UL -->
+<li>About Me: <a href="about.html">Who am I?</a></li>
 
       <p class="note">Currently open to work opportunities.</p>
-      <p class="note2">Last updated: May 2025. Check back for new additions!</p>
+      <p class="note2">Last updated: July 2025. Check back for updates!</p>
     </div>
 
-  </div>
-
+  </div><!-- /container -->
 </body>
 </html>
