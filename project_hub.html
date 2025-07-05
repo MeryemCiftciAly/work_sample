@@ -2,172 +2,162 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Hub</title>
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-      background-color: #f9f9f9;
-      color: #333;
-    }
+    /* ─────────── Global Styles ─────────── */
+    body{margin:0;background:#f9f9f9;font-family:Arial,sans-serif;color:#333;line-height:1.6;}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+    /* Banner */
+    .banner{width:100%;height:220px;background:url('Trends_(1).png') center/cover;}
 
-    #category-filters {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+    /* Centered Wrapper for Main Content */
+    .container{max-width:900px;margin:0 auto;padding:2rem 1.5rem;}
 
-    #category-filters button {
-      margin: 0.25rem;
-      padding: 0.5rem 1rem;
-      background-color: #eee;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background-color 0.2s ease-in-out;
-    }
+    /* Navigation Links under Banner */
+    .nav-links{text-align:center;padding:0.75rem 0;background:#fff;}
+    .nav-links a{font-weight:bold;color:#007acc;text-decoration:none;margin:0 0.75rem;}
+    .nav-links a:hover{text-decoration:underline;}
 
+    /* Headings */
+    h1{text-align:center;margin:0 0 1.5rem 0;}
+
+    /* Filter Buttons */
+    #category-filters{text-align:center;margin-bottom:2rem;}
+    #category-filters button{
+      margin:0.25rem;padding:0.5rem 1rem;font-size:0.95rem;
+      background:#eee;border:1px solid #ccc;border-radius:20px;cursor:pointer;
+      transition:background 0.2s ease-in-out;
+    }
     #category-filters button:hover,
-    #category-filters button.active {
-      background-color: #333;
-      color: #fff;
-    }
+    #category-filters button.active{background:#333;color:#fff;}
 
-    details.project {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    /* Project Accordion */
+    details.project{
+      background:#fff;border:1px solid #ddd;border-radius:8px;
+      padding:1rem;margin-bottom:1.25rem;
+      box-shadow:0 2px 4px rgba(0,0,0,0.05);
     }
+    summary{font-size:1.15rem;font-weight:bold;cursor:pointer;outline:none;}
+    .tags{font-size:0.85rem;color:#888;margin-left:0.5rem;}
 
-    summary {
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    /* Two‑column layout inside each project */
+    .project-body{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1rem;}
+    .project-info{flex:1 1 300px;min-width:260px;}
+    .project-image{flex:0 0 300px;text-align:center;}
+    .project-image img{max-width:100%;height:auto;border-radius:6px;border:1px solid #ddd;}
 
-    .tags {
-      font-size: 0.85rem;
-      color: #888;
-      margin-left: 0.5rem;
-    }
+    .project-info strong{display:block;margin-top:1rem;}
+    ul{padding-left:1.25rem;}
+    .project-links a{display:inline-block;margin-top:0.5rem;color:#0066cc;text-decoration:none;}
+    .project-links a:hover{text-decoration:underline;}
 
-    .project-section {
-      margin-top: 1rem;
-    }
-
-    .project-section strong {
-      display: block;
-      margin-top: 1rem;
-    }
-
-    ul {
-      padding-left: 1.25rem;
-    }
-
-    .project-links a {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: #0066cc;
-      text-decoration: none;
-    }
-
-    .project-links a:hover {
-      text-decoration: underline;
-    }
-
-    @media screen and (max-width: 600px) {
-      #category-filters button {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-      }
+    /* Mobile tweaks */
+    @media(max-width:600px){
+      #category-filters button{padding:0.4rem 0.8rem;font-size:0.85rem;}
+      .project-body{flex-direction:column;}
+      .project-image{max-width:100%;}
     }
   </style>
 </head>
 <body>
 
-  <h1>📁 Project Hub</h1>
+  <!-- Banner -->
+  <div class="banner"></div>
 
-  <!-- 🔹 Filter Buttons -->
-  <div id="category-filters">
-    <button data-filter="all" class="active">All</button>
-    <button data-filter="data-analysis">Data Analysis</button>
-    <button data-filter="web-projects">Web Projects</button>
-    <button data-filter="leadership">Leadership</button>
-    <button data-filter="community">Community Engagement</button>
-    <button data-filter="tools-testing">Tools Testing</button>
+  <!-- Navigation Links -->
+  <div class="nav-links">
+    <a href="https://meryemciftcialy.github.io/work_sample/about_me.html">👋 About Me</a>
+    <a href="https://meryemciftcialy.github.io/work_sample/">🔙 Back to Work Samples</a>
   </div>
 
-  <!-- 🔸 Project Entry Example -->
-  <details class="project" data-tags="web-projects community">
-    <summary>
-      Nomination Website for YouTube STEM Educator
-      <span class="tags">| July 2025 | Web Projects, Community Engagement</span>
-    </summary>
-    <div class="project-section">
-      <strong>🔍 Idea Behind the Project</strong>
-      <p>This project aimed to spotlight freely available STEM education on YouTube and celebrate self-learning. It highlights the power of community-driven knowledge sharing.</p>
+  <!-- Main Content Wrapper -->
+  <div class="container">
 
-      <strong>🛠️ Tools & Technologies Used</strong>
-      <ul>
-        <li><strong>ChatGPT:</strong> Partnered on site layout, content writing, and idea framing.</li>
-        <li><strong>Firebase:</strong> Hosted the nomination form and managed submissions.</li>
-        <li><strong>Airtable:</strong> Organized volunteer workflows and nominations.</li>
-        <li><strong>HTML/CSS:</strong> Built the main website layout and components.</li>
-      </ul>
+    <h1>📁 Project Hub</h1>
 
-      <strong>📋 Responsibilities & Actions</strong>
-      <ul>
-        <li>Researched relevant STEM awards.</li>
-        <li>Created the website and integrated Firebase form.</li>
-        <li>Designed Airtable project board for team management.</li>
-        <li>Managed timelines and nomination tasks across roles.</li>
-      </ul>
-
-      <strong>🎯 Intended Outcome</strong>
-      <p>The project seeks to bring attention to alternative education paths, high-impact educators and prove the power of structured, grassroots projects.</p>
-
-      <strong>🧠 Skills Highlighted</strong>
-      <p>Project Management, Firebase Integration, Workflow Design, Initiative, Research</p>
-
-      <strong>📎 Links & Assets</strong>
-      <div class="project-links">
-        <a href="https://your-website-link.com" target="_blank">🌐 View Website</a><br/>
-        <a href="https://github.com/your-repo" target="_blank">📁 GitHub Repository</a>
-      </div>
+    <!-- Category Filter Buttons -->
+    <div id="category-filters">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="data-analysis">Data Analysis</button>
+      <button data-filter="web-projects">Web Projects</button>
+      <button data-filter="leadership">Leadership</button>
+      <button data-filter="community">Community Engagement</button>
+      <button data-filter="tools-testing">Tools Testing</button>
     </div>
-  </details>
 
-  <!-- 🔸 Add more <details class="project" data-tags="..."> blocks below as needed -->
+    <!-- ─────────── Project Example ─────────── -->
+    <details class="project" data-tags="web-projects community">
+      <summary>
+        Nomination Website for YouTube STEM Educator
+        <span class="tags">| July 2025 | Web Projects, Community Engagement</span>
+      </summary>
 
+      <div class="project-body">
+        <!-- Left: Project Information -->
+        <div class="project-info">
+          <strong>🔍 Idea Behind the Project</strong>
+          <p>This project spotlights free STEM education on YouTube, celebrating the power of community‑driven, self‑directed learning.</p>
+
+          <strong>🛠️ Tools & Technologies Used</strong>
+          <ul>
+            <li><strong>ChatGPT:</strong> Site layout and content co‑creation.</li>
+            <li><strong>Firebase:</strong> Nomination form hosting and data storage.</li>
+            <li><strong>Airtable:</strong> Volunteer workflow management.</li>
+            <li><strong>HTML/CSS:</strong> Custom front‑end.</li>
+          </ul>
+
+          <strong>📋 Responsibilities & Actions</strong>
+          <ul>
+            <li>Researched STEM award criteria.</li>
+            <li>Built and integrated Firebase forms.</li>
+            <li>Designed Airtable project board.</li>
+            <li>Drove timelines and team tasks.</li>
+          </ul>
+
+          <strong>🎯 Intended Outcome</strong>
+          <p>The project aims to spotlight alternative education paths and high‑impact educators, demonstrating the power of structured, self‑disciplined learning.</p>
+
+          <strong>🧠 Skills Highlighted</strong>
+          <p>Project Management, Firebase Integration, Workflow Design, Research</p>
+
+          <strong>📎 Links & Assets</strong>
+          <div class="project-links">
+            <a href="https://meryemdaata.github.io/nominate-baraa/" target="_blank">🌐 View Website</a><br/>
+                    </div>
+        </div>
+
+        <!-- Right: Screenshot Placeholder -->
+        <div class="project-image">
+          <img src="https://via.placeholder.com/632x733?text=Project+Screenshot" alt="Project screenshot placeholder">
+        </div>
+      </div>
+    </details>
+
+    <!-- Duplicate the <details class="project"> block for more projects -->
+
+  </div> <!-- /.container -->
+
+  <!-- Live Filter Script -->
   <script>
-    const buttons = document.querySelectorAll('#category-filters button');
+    const buttons  = document.querySelectorAll('#category-filters button');
     const projects = document.querySelectorAll('.project');
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const filter = button.getAttribute('data-filter');
+    buttons.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const filter = btn.dataset.filter;
 
-        buttons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+        buttons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
 
-        projects.forEach(project => {
-          const tags = project.getAttribute('data-tags');
-          if (filter === 'all' || tags.includes(filter)) {
-            project.style.display = 'block';
-          } else {
-            project.style.display = 'none';
-          }
+        projects.forEach(p=>{
+          const tags = p.dataset.tags;
+          p.style.display = (filter==='all' || tags.includes(filter)) ? 'block' : 'none';
         });
       });
     });
   </script>
 
 </body>
+</html>
