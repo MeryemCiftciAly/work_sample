@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    #category-filters {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    #category-filters button {
+      margin: 0.25rem;
+      padding: 0.5rem 1rem;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    #category-filters button:hover,
+    #category-filters button.active {
+      background-color: #333;
+      color: #fff;
+    }
+
+    details.project {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    summary {
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .tags {
+      font-size: 0.85rem;
+      color: #888;
+      margin-left: 0.5rem;
+    }
+
+    .project-section {
+      margin-top: 1rem;
+    }
+
+    .project-section strong {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    .project-links a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 600px) {
+      #category-filters button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📁 Project Hub</h1>
+
+  <!-- 🔹 Filter Buttons -->
+  <div id="category-filters">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="data-analysis">Data Analysis</button>
+    <button data-filter="web-projects">Web Projects</button>
+    <button data-filter="leadership">Leadership</button>
+    <button data-filter="community">Community Engagement</button>
+    <button data-filter="tools-testing">Tools Testing</button>
+  </div>
+
+  <!-- 🔸 Project Entry Example -->
+  <details class="project" data-tags="web-projects community">
+    <summary>
+      Nomination Website for YouTube STEM Educator
+      <span class="tags">| July 2025 | Web Projects, Community Engagement</span>
+    </summary>
+    <div class="project-section">
+      <strong>🔍 Idea Behind the Project</strong>
+      <p>This project aimed to spotlight freely available STEM education on YouTube and celebrate self-learning. It highlights the power of community-driven knowledge sharing.</p>
+
+      <strong>🛠️ Tools & Technologies Used</strong>
+      <ul>
+        <li><strong>ChatGPT:</strong> Partnered on site layout, content writing, and idea framing.</li>
+        <li><strong>Firebase:</strong> Hosted the nomination form and managed submissions.</li>
+        <li><strong>Airtable:</strong> Organized volunteer workflows and nominations.</li>
+        <li><strong>HTML/CSS:</strong> Built the main website layout and components.</li>
+      </ul>
+
+      <strong>📋 Responsibilities & Actions</strong>
+      <ul>
+        <li>Researched relevant STEM awards.</li>
+        <li>Created the website and integrated Firebase form.</li>
+        <li>Designed Airtable project board for team management.</li>
+        <li>Managed timelines and nomination tasks across roles.</li>
+      </ul>
+
+      <strong>🎯 Intended Outcome</strong>
+      <p>The project seeks to bring attention to alternative education paths, high-impact educators and prove the power of structured, grassroots projects.</p>
+
+      <strong>🧠 Skills Highlighted</strong>
+      <p>Project Management, Firebase Integration, Workflow Design, Initiative, Research</p>
+
+      <strong>📎 Links & Assets</strong>
+      <div class="project-links">
+        <a href="https://your-website-link.com" target="_blank">🌐 View Website</a><br/>
+        <a href="https://github.com/your-repo" target="_blank">📁 GitHub Repository</a>
+      </div>
+    </div>
+  </details>
+
+  <!-- 🔸 Add more <details class="project" data-tags="..."> blocks below as needed -->
+
+  <script>
+    const buttons = document.querySelectorAll('#category-filters button');
+    const projects = document.querySelectorAll('.project');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        projects.forEach(project => {
+          const tags = project.getAttribute('data-tags');
+          if (filter === 'all' || tags.includes(filter)) {
+            project.style.display = 'block';
+          } else {
+            project.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
