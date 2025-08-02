@@ -43,6 +43,44 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   animation: pulse 2s infinite;
 }
+.projects {
+  font-family: Arial, sans-serif;
+}
+
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-button {
+  width: 100%;
+  text-align: left;
+  padding: 1em;
+  font-weight: bold;
+  background-color: #f7f7f7;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+.accordion-button:hover {
+  background-color: #e6e6e6;
+}
+
+.accordion-content {
+  display: none;
+  padding: 1em;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+.accordion-item.open .accordion-content {
+  display: block;
+}
 
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
@@ -130,26 +168,39 @@
         </div>
 
         <!-- NEW Projects Section -->
-        <div class="section">
-          <h2>📁 Projects</h2>
+ <!-- Projects Section -->
+<div class="section projects">
+  <h2>📁 Projects</h2>
 
-          <details open>
-            <summary>Nominate a YouTube STEM Educator – Volunteer Campaign</summary>
-            <p>
-              Organising a volunteer effort to recognise an outstanding YouTube educator for high‑quality STEM teaching.
-            </p>
-            <ul>
-              <li>Used ChatGPT to create the campaign website</li>
-              <li>Used ChatGPT to scaffold a Firebase app for volunteer updates</li>
-              <li>Built an Airtable base to collect volunteer input</li>
-            </ul>
-            <p><a href="https://meryemciftcialy.github.io/work_sample/project_hub.html" target="_blank">Project Hub</a></p>
-          </details>
+  <!-- NYC Waste Collection Analysis -->
+  <div class="accordion-item">
+    <button class="accordion-button">New York City Waste Collection Analysis</button>
+    <div class="accordion-content">
+      <p>
+        Analyzed waste collection data from 1990 to 2024 to explore borough-level contributions, waste types, and recycling patterns in New York City. The goal was to uncover data-driven insights into the city's waste management trends.
+      </p>
+      <p><strong>Skills Used:</strong> Data analysis, querying, data visualization, presentation design</p>
+      <p><strong>Tools:</strong> SQL, Excel (Power Pivot, XLOOKUP, INDEX), Google Sheets, Google Slides, Conditional Formatting</p>
+      <p><a href="#" target="_blank">View Project</a></p> <!-- Replace with actual project link -->
+    </div>
+  </div>
 
-          <!-- Add more <details> blocks here as new projects launch -->
-        </div>
+  <!-- Volunteer Campaign -->
+  <div class="accordion-item">
+    <button class="accordion-button">Nominate a YouTube STEM Educator – Volunteer Campaign</button>
+    <div class="accordion-content">
+      <p>
+        Designed and led a volunteer campaign to nominate a YouTube STEM educator. Coordinated volunteer roles, managed communications, and built the campaign’s digital infrastructure using Airtable and AI-assisted tools. Created custom Airtable forms to collect and organize volunteer responses and guided site layout/content using prompt engineering.
+      </p>
+      <p><strong>Skills Used:</strong> Project management, collaboration, prompt engineering, campaign coordination</p>
+      <p><strong>Tools:</strong> HTML, Airtable, ChatGPT (AI prompting), Firebase, Google Docs</p>
+      <p><a href="https://meryemciftcialy.github.io/work_sample/project_hub.html" target="_blank">View Project Hub</a></p>
+    </div>
+  </div>
 
-      </div>
+  <!-- Add more .accordion-item blocks here for future projects -->
+
+</div>
 
       <!-- RIGHT COLUMN -->
       <div class="column">
@@ -236,25 +287,38 @@
     </div><!-- /columns -->
 
     <!-- NEW How I Work with AI Section -->
-    <div class="section">
-      <h2>🤖 How I Work with AI – ChatGPT</h2>
+    <!-- AI-Assisted Website Projects Section -->
+<div class="section">
+  <h2>AI-Assisted Website Projects</h2>
 
-      <details open>
-        <summary>Volunteer Campaign (Website + Firebase + Airtable)</summary>
-        <ul>
-          <li>Prompt‑engineered website copy and layout</li>
-          <li>Generated Firebase data model & initial Firestore security rules</li>
-          <li>Drafted Airtable schema and automations to track volunteer progress</li>
-        </ul>
-      </details>
+  <p>
+    Using my understanding of HTML structure and layout principles, I collaborated with AI tools to design and develop the following websites. These projects were created to establish my online presence and demonstrate how I apply AI and prompt engineering in real-world scenarios.
+  </p>
 
-      <details>
-        <summary>This Work‑Sample Site</summary>
-        <p>
-          Iterated live with ChatGPT on structure, collapse‑toggle components, and accessibility tweaks to keep the code
-          lightweight and maintainable.
-        </p>
-      </details>
+  <details open>
+    <summary>This Work Sample Website</summary>
+    <p>
+      This site was developed with the help of AI to organize and present my portfolio in a clear, structured format. It serves as a hub for showcasing my data analytics skills, project work, and career transition.
+    </p>
+  </details>
+
+  <details>
+    <summary>Nomination Campaign Website</summary>
+    <p>
+      I used AI to guide the structure, tone, and visual layout of this site to support a local nomination campaign.<br>
+      <a href="https://datacampaign.github.io/nominatebaraa/campaign-home" target="">View Campaign Website</a>
+    </p>
+  </details>
+
+  <details>
+    <summary>Freelancing Services Website</summary>
+    <p>
+      This project was designed using AI to support my shift from operational roles to data analytics. The site offers services to small businesses while reflecting my skills in analytics, communication, and problem solving.<br>
+    <a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/ target="_blank">View Freelancing Website</a>
+    </p>
+  </details>
+</div>
+
 
       <!-- Add more AI‑assisted items over time -->
     </div>
@@ -283,6 +347,15 @@
   const today = new Date();
   const options = { day: '2-digit', month: 'short', year: 'numeric' };
   dateSpan.textContent = today.toLocaleDateString('en-GB', options).replace(/ /g, ' ');
+  const accordions = document.querySelectorAll('.accordion-button');
+  accordions.forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+</script>
+
 </script>
 </body>
 </html>
