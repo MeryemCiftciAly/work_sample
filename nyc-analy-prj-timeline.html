@@ -47,7 +47,7 @@
             }
         }
         .timeline-bubble {
-            background-color: #effff;
+            background-color: #f3f4f6;
             border-radius: 12px;
             padding: 24px;
             width: 45%;
@@ -130,11 +130,9 @@
             align-items: center;
             z-index: 1000;
         }
-        /* --- FIX STARTS HERE --- */
         .modal-overlay.active {
             display: flex;
         }
-        /* --- FIX ENDS HERE --- */
         .modal-content {
             background-color: white;
             padding: 32px;
@@ -173,6 +171,31 @@
         .modal-button.bg-blue-500:hover {
             background-color: #2563eb;
         }
+        
+     
+.icon-circle {
+background-color: #24647d; / Updated branding color /
+color: white;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 24px;
+margin-bottom: 12px;
+border: 4px solid #fff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+/ ... other styles ... /
+.modal-button.bg-blue-500 {
+color: white;
+background-color: #3b82f6; / Keeping the original blue for consistency, you can change this if needed /
+}
+.modal-button.bg-blue-500:hover {
+background-color: #1d4a5e; / Darker shade of the branding color for hover /
+}
+/ ... other styles ... */
     </style>
 </head>
 <body class="bg-gray-100 font-sans antialiased p-4 sm:p-8">
@@ -184,85 +207,87 @@
 
         <div class="timeline-container">
 
-            <div class="timeline-container">
+            <div class="timeline-item" onclick="openDataSourceModal()">
+                <div class="timeline-bubble">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <div class="node-title text-center">Data Downloaded & Cleaned</div>
+                    <div class="node-description text-center">
+                        Retrieved and meticulously cleaned data, handling duplicates, nulls, and enriching as needed. Click for source info.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item" onclick="openNavigationModal('https://github.com/MeryemCiftciAly/my_sql_journey/tree/main/nyc-sanitation-analysis')">
+                <div class="timeline-bubble">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="node-title text-center">Exploratory SQL Queries</div>
+                    <div class="node-description text-center">
+                        Pulled key insights using complex SQL queries. Click to view on GitHub.
+                    </div>
+                    <div class="link-section">
+                        <a href="https://github.com/MeryemCiftciAly/my_sql_journey/tree/main/nyc-sanitation-analysis" class="pointer-events-none">
+                            View SQL Queries <span class="hand-icon">&#128073;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-    <div class="timeline-item" onclick="openDataSourceModal('https://drive.google.com/file/d/1szFahei-jacafQ0y1jRn7v7ZHhbhcKD2/view?usp=sharing')">
-        <div class="timeline-bubble">
-            <div class="icon-circle mx-auto">
-                <i class="fas fa-download"></i>
+            <div class="timeline-item" onclick="openNavigationModal('https://www.kaggle.com/code/meryemciftci/sql-nyc-garbage-collection-analysis')">
+                <div class="timeline-bubble">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="node-title text-center">Kaggle Analysis</div>
+                    <div class="node-description text-center">
+                        Found patterns and additional insights exploring the datset. See query results. Click to view on Kaggle.
+                    </div>
+                    <div class="link-section">
+                        <a href="https://www.kaggle.com/code/meryemciftci/sql-nyc-garbage-collection-analysis" class="pointer-events-none">
+                            View Kaggle Project <span class="hand-icon">&#128073;</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="node-title text-center">Data Downloaded & Cleaned</div>
-            <div class="node-description text-center">
-                Retrieved and meticulously cleaned data, handling duplicates, nulls, and enriching as needed. Click for source info.
-            </div>
-        </div>
-    </div>
-    
-    <div class="timeline-item" onclick="openNavigationModal('https://github.com/MeryemCiftciAly/my_sql_journey/tree/main/nyc-sanitation-analysis')">
-        <div class="timeline-bubble">
-            <div class="icon-circle mx-auto">
-                <i class="fas fa-search"></i> </div>
-            <div class="node-title text-center">Exploratory SQL Queries</div>
-            <div class="node-description text-center">
-                Pulled key insights using complex SQL queries. Click to view on GitHub.
-            </div>
-            <div class="link-section">
-                <a href="https://github.com/MeryemCiftciAly/my_sql_journey/tree/main/nyc-sanitation-analysis" class="pointer-events-none">
-                    View SQL Queries <span class="hand-icon">&#128073;</span>
-                </a>
-            </div>
-        </div>
-    </div>
 
-    <div class="timeline-item" onclick="openNavigationModal('https://www.kaggle.com/code/meryemciftci/sql-nyc-garbage-collection-analysis')">
-        <div class="timeline-bubble">
-            <div class="icon-circle mx-auto">
-                <i class="fas fa-brain"></i> </div>
-            <div class="node-title text-center">Kaggle Analysis</div>
-            <div class="node-description text-center">
-                Found patterns and additional insights exploring the datset. See query results. Click to view on Kaggle.
+            <div class="timeline-item" onclick="openNavigationModal('https://drive.google.com/drive/folders/1b7UyW3vyQOxxizZx4d8mkwip7B-uM8y1?usp=sharing')">
+                <div class="timeline-bubble">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="node-title text-center">Excel Analysis</div>
+                    <div class="node-description text-center">
+                        Performed in-depth analysis using pivot tables and created insightful charts from SQL output. Click to view Excel.
+                    </div>
+                    <div class="link-section">
+                        <a href="https://drive.google.com/drive/folders/1b7UyW3vyQOxxizZx4d8mkwip7B-uM8y1?usp=sharing" class="pointer-events-none">
+                            View Excel File <span class="hand-icon">&#128073;</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="link-section">
-                <a href="https://www.kaggle.com/code/meryemciftci/sql-nyc-garbage-collection-analysis" class="pointer-events-none">
-                    View Kaggle Project <span class="hand-icon">&#128073;</span>
-                </a>
-            </div>
-        </div>
-    </div>
 
-    <div class="timeline-item" onclick="openNavigationModal('https://drive.google.com/drive/folders/1b7UyW3vyQOxxizZx4d8mkwip7B-uM8y1?usp=sharing')">
-        <div class="timeline-bubble">
-            <div class="icon-circle mx-auto">
-                <i class="fas fa-file-excel"></i> </div>
-            <div class="node-title text-center">Excel Analysis</div>
-            <div class="node-description text-center">
-                Performed in-depth analysis using pivot tables and created insightful charts from SQL output. Click to view Excel.
+            <div class="timeline-item" onclick="openNavigationModal('https://docs.google.com/presentation/d/e/2PACX-1vT5G1QJX5Nch2chxsb1YMFgpnV335Itrl2sWh1Fk8NTf82372BpQOo__e73Q1MIwAYlPFR04-HfplzN/pub?start=false&loop=false&delayms=10000')">
+                       <div class="timeline-bubble">
+                    <div class="icon-circle mx-auto">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <div class="node-title text-center">Storytelling in PowerPoint</div>
+                    <div class="node-description text-center">
+                        Created a compelling presentation to share key findings and insights. Click to view presentation.
+                    </div>
+                    <div class="link-section">
+                        <a href="https://docs.google.com/presentation/d/e/2PACX-1vT5G1QJX5Nch2chxsb1YMFgpnV335Itrl2sWh1Fk8NTf82372BpQOo__e73Q1MIwAYlPFR04-HfplzN/pub?start=false&loop=false&delayms=10000" class="pointer-events-none">
+                            View Presentation <span class="hand-icon">&#128073;</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="link-section">
-                <a href="https://drive.google.com/drive/folders/1b7UyW3vyQOxxizZx4d8mkwip7B-uM8y1?usp=sharing" class="pointer-events-none">
-                    View Excel File <span class="hand-icon">&#128073;</span>
-                </a>
-            </div>
-        </div>
-    </div>
 
-    <div class="timeline-item" onclick="openNavigationModal('https://docs.google.com/presentation/d/e/2PACX-1vT5G1QJX5Nch2chxsb1YMFgpnV335Itrl2sWh1Fk8NTf82372BpQOo__e73Q1MIwAYlPFR04-HfplzN/pub?start=false&loop=false&delayms=10000')">
-               <div class="timeline-bubble">
-            <div class="icon-circle mx-auto">
-                <i class="fas fa-file-powerpoint"></i> </div>
-            <div class="node-title text-center">Storytelling in PowerPoint</div>
-            <div class="node-description text-center">
-                Created a compelling presentation to share key findings and insights. Click to view presentation.
-            </div>
-            <div class="link-section">
-                <a href="https://docs.google.com/presentation/d/e/2PACX-1vT5G1QJX5Nch2chxsb1YMFgpnV335Itrl2sWh1Fk8NTf82372BpQOo__e73Q1MIwAYlPFR04-HfplzN/pub?start=false&loop=false&delayms=10000" class="pointer-events-none">
-                    View Presentation <span class="hand-icon">&#128073;</span>
-                </a>
-            </div>
         </div>
-    </div>
-
-</div>
 
         <div class="mt-16 p-4 text-left text-gray-600 text-sm">
             <p>Prepared by Kamara Rowe-Ciftci (Meryem)</p>
@@ -331,11 +356,10 @@
             currentActionUrl = '';
         }
 
-        // Corrected Function to open the Data Source Modal
         function openDataSourceModal() {
             const sourceUrl = "https://www.nyc.gov/site/dsny/about/initiatives/waste-data.page";
-            const rawDataLink = "https://drive.google.com/drive/folders/1yHsY-PgUeRcssCLt6dZRBUZ8n4A4LX7w?usp=sharing";
-            const cleanedDataLink = "https://drive.google.com/drive/folders/1yHsY-PgUeRcssCLt6dZRBUZ8n4A4LX7w?usp=sharing";
+            const rawDataLink = "https://drive.google.com/file/d/1szFahei-jacafQ0y1jRn7v7ZHhbhcKD2/view?usp=sharing";
+            const cleanedDataLink = "https://docs.google.com/spreadsheets/d/1WH5_gAUbNbPOkpKZinxGCxoNtMd5j4KrNEzkwVqtyjQ/edit?usp=sharing";
 
             const content = `
                 <p class="mb-4">This project utilizes publicly available waste data from the NYC Department of Sanitation.</p>
@@ -350,7 +374,6 @@
             openModal("Data Source Information", content, null, null, false, true, sourceUrl);
         }
       
-        // Corrected Function to open the Navigation Warning Modal
         function openNavigationModal(targetUrl) {
             const content = `
                 <p>You are about to navigate away from this project page to an external resource.</p>
