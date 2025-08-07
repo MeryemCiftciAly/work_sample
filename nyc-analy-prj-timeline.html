@@ -295,7 +295,7 @@
                     </div>
                 </div>
             </div>
-
+          
             <!-- Node 2: Exploratory SQL Queries (Right) - Triggers Navigation Modal -->
             <div class="timeline-item" onclick="openNavigationModal('https://github.com/MeryemCiftciAly/my_sql_journey/tree/main/nyc-sanitation-analysis')">
                 <div class="timeline-bubble">
@@ -444,6 +444,7 @@
         // Function to open the Data Source Modal
         function openDataSourceModal() {
             const sourceUrl = "https://www.nyc.gov/site/dsny/about/initiatives/waste-data.page"; // Example URL
+            const rawDataLink = "YOUR_RAW_DATA_FILE_URL"; // Replace with your raw data link
             const cleanedDataLink = "https://docs.google.com/spreadsheets/d/1WH5_gAUbNbPOkpKZinxGCxoNtMd5j4KrNEzkwVqtyjQ/edit?usp=sharing"; // Replace with your cleaned data link
 
             const content = `
@@ -458,7 +459,7 @@
             `;
             openModal("Data Source Information", content, null, null, false, true, sourceUrl);
         }
-
+     
         // Function to open the Navigation Warning Modal
         function openNavigationModal(targetUrl) {
             const content = `
