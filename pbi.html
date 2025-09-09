@@ -41,6 +41,8 @@
             margin: 0;
             font-size: 2.8em;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            /* Change 1: Set name font color to white */
+            color: white;
         }
         .banner-content p {
             font-size: 1.2em;
@@ -203,6 +205,45 @@
             background-color: #1a5276;
             text-decoration: none;
         }
+        /* New section for Call to Action */
+        .cta-section {
+            background-color: #d0e7fb;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-top: 3rem;
+            display: flex; /* Make it a flex container */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center horizontally */
+        }
+
+        .cta-section h2 {
+            color: #1a5276;
+            margin-top: 0;
+        }
+
+        .cta-section p {
+            font-size: 1.1em;
+            color: #34495e;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background-color: #2874a6;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+        .cta-button:hover {
+            background-color: #1a5276;
+        }
+
         .footer {
             text-align: center;
             margin-top: 4rem;
@@ -317,7 +358,7 @@
 <body>
     <div class="banner">
         <div class="banner-content">
-            <h1>Meryem Ciftci</h1>
+            <h1><span class="name">Kamara Meryem A. Rowe-Ciftci</span></h1>
             <p>Power BI Portfolio | Interactive dashboards for visual analytics and storytelling</p>
         </div>
     </div>
@@ -412,6 +453,13 @@
             <a href="https://meryemciftcialy.github.io/work_sample/" class="back-button">← Back to Work Samples</a>
         </div>
 
+        <div class="cta-section">
+            <h2>Let's Connect!</h2>
+            <p>I am passionate about using data to solve problems. If you're looking for a skilled data analyst for a project or a full-time role, I'd love to connect and discuss how I can help.
+            </p>
+            <a href="mailto:meryemkciftci@gmail.com" class="cta-button">Email Me</a>
+        </div>
+        
         <div class="footer">
             <div class="section">
                 <h2>📬 Contact Me</h2>
