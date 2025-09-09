@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Portfolio | Meryem</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .banner {
+            width: 100%;
+            height: 220px;
+            background-image: url('Trends_(1).png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        .banner-content {
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+        .banner-content h1 {
+            margin: 0;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .banner-content p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-top: -60px;
+            z-index: 2;
+            position: relative;
+        }
+        .logo img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            margin-top: -30px;
+            position: relative;
+            z-index: 1;
+        }
+        h1, h2, h3 {
+            color: #1b4f72;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+        .intro-text {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 1.1em;
+            color: #555;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        a {
+            color: #2874a6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #1a5276;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        .dashboard-item, .dashboard-placeholder {
+            background-color: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .dashboard-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        .dashboard-content {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-content h3 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            font-size: 1.3em;
+            color: #1b4f72;
+            text-align: left;
+        }
+        .dashboard-content p {
+            font-size: 0.95em;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        .dashboard-links {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        .dashboard-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 5px;
+            background-color: #e9f5ff;
+            color: #2874a6;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .dashboard-links a:hover {
+            background-color: #d0e7fb;
+            text-decoration: none;
+        }
+        .dashboard-links a svg {
+            margin-right: 5px;
+        }
+        .dashboard-placeholder {
+            background-color: #e9ecef;
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #6c757d;
+            font-size: 1.1em;
+            min-height: 250px;
+            border-style: dashed;
+        }
+        .dashboard-placeholder h3 {
+            margin: 0;
+            color: #6c757d;
+        }
+        .back-button-container {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .back-button {
+            background-color: #2874a6;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .back-button:hover {
+            background-color: #1a5276;
+            text-decoration: none;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem 0;
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-top: 1px solid #4a6279;
+        }
+        .footer h2 {
+            color: #ecf0f1;
+            margin-bottom: 1.5rem;
+        }
+        .footer p {
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+            font-size: 0.95em;
+        }
+        .footer ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto 2rem auto;
+            max-width: 300px;
+        }
+        .footer ul li {
+            margin-bottom: 0.7rem;
+        }
+        .footer ul li a {
+            color: #7cb3f2;
+        }
+        .footer ul li a:hover {
+            color: #a2d2ff;
+        }
+        .footer .note {
+            font-size: 0.85em;
+            color: #bdc3c7;
+            margin-top: 1rem;
+        }
+        .footer .note2 {
+            font-size: 0.8em;
+            color: #95a5a6;
+        }
+        .contact-message {
+            background-color: #e9f5ff; /* A soft, light blue to draw attention */
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #d0e7fb;
+            margin-bottom: 2rem;
+            font-size: 1.1em;
+        }
+        .contact-message p {
+            margin: 0 0 10px 0;
+            color: #1b4f72; /* A strong color for the text */
+        }
+        .contact-message p:last-child {
+            margin-bottom: 0;
+        }
+        @media (max-width: 992px) {
+            .dashboard-grid {
+                gap: 20px;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+            .banner-content h1 {
+                font-size: 2.2em;
+            }
+            .banner-content p {
+                font-size: 1em;
+            }
+        }
+        @media (max-width: 768px) {
+            .banner {
+                height: 180px;
+            }
+            .logo img {
+                max-width: 120px;
+                margin-top: -50px;
+            }
+            .container {
+                padding: 1rem;
+                margin-top: -20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .intro-text {
+                font-size: 1em;
+                margin-bottom: 2rem;
+            }
+            .dashboard-content h3 {
+                font-size: 1.2em;
+            }
+            .dashboard-content p {
+                font-size: 0.9em;
+            }
+            .dashboard-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .dashboard-links a {
+                margin-bottom: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+            .footer {
+                padding: 2rem 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .banner-content h1 {
+                font-size: 1.8em;
+            }
+            .logo img {
+                max-width: 100px;
+                margin-top: -40px;
+            }
+            .dashboard-item img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="banner-content">
+            <h1>Kamara Meryem A. Rowe-Ciftci</h1>
+            <p>Tableau Portfolio | Interactive dashboards for visual analytics and storytelling</p>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/Tableau.png" alt="Tableau Logo">
+    </div>
+
+    <div class="container">
+        <p class="intro-text">
+            As a passionate data analyst, I specialize in transforming complex data into clear, actionable insights using Tableau. My goal is to create compelling, interactive dashboards that tell a story and empower users to make better business decisions. This portfolio showcases my ability to clean, model, and visualize data across various industries.
+        </p>
+
+        <h2>📈 Dashboards</h2>
+        
+        <div class="dashboard-grid">
+            <div class="dashboard-item">
+                <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/tableau_hr_dashboard.png" alt="Tableau HR Dashboard">
+                <div class="dashboard-content">
+                    <h3>HR Attrition and Performance Dashboard</h3>
+                    <p>This dashboard analyzes employee data to identify key factors influencing attrition and performance. By visualizing turnover rates, employee satisfaction, and performance metrics, it helps HR managers understand workforce trends and make proactive decisions to improve employee retention and overall productivity.</p>
+                    <div class="dashboard-links">
+                        <a href="https://public.tableau.com/app/profile/meryem.ciftci/viz/HR_AttritionDashboard/HRDashboard" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                            View Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-item">
+                <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/tableau_carsales_dashboard.png" alt="Tableau Car Sales Dashboard">
+                <div class="dashboard-content">
+                    <h3>Car Sales Performance Dashboard</h3>
+                    <p>This interactive dashboard provides an overview of car sales performance, allowing stakeholders to track revenue, sales volume, and regional trends. By filtering data by car model, dealership, and time period, the dashboard helps identify top-selling vehicles and optimize sales strategies.</p>
+                    <div class="dashboard-links">
+                        <a href="https://public.tableau.com/app/profile/meryem.ciftci/viz/CarSalesPerformance_17391498845780/CarSalesPerformance" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                            View Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-item">
+                <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/tableau_expense_claims_dashboard.png" alt="Tableau Expense Claims Dashboard">
+                <div class="dashboard-content">
+                    <h3>Expense Claims Spending Analysis</h3>
+                    <p>This dashboard tracks and visualizes employee expense claims to help a company monitor spending patterns. It enables financial analysts to identify high-spending departments, categorize expenses, and flag potential anomalies, leading to better budget management and compliance.</p>
+                    <div class="dashboard-links">
+                        <a href="https://public.tableau.com/app/profile/meryem.ciftci/viz/ExpenseClaimsSpendingAnalysis/ExpenseClaimsDashboard" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                            View Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-placeholder">
+                <h3>New Project Coming Soon!</h3>
+                <p>Check back later for updates to my portfolio.</p>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="https://meryemciftcialy.github.io/work_sample/" class="back-button">← Back to Work Samples</a>
+        </div>
+
+        <div class="footer">
+            <div class="section">
+                <h2>📬 Contact Me</h2>
+                <p>
+                    <strong>I'm open to work!</strong> If you're looking for a dedicated data professional, please reach out.
+                </p>
+                <div class="contact-message">
+                    <p><strong>I am available for both full-time positions and freelance projects.</strong></p>
+                    <p>
+                        <strong>To set up an interview or discuss a full-time role,</strong> please connect with me on LinkedIn or send me an email.
+                    </p>
+                    <p>
+                        <strong>To hire me as a freelancer for your data visualization project,</strong> let's discuss how I can help you meet your business goals or personal project needs.
+                    </p>
+                </div>
+                <ul>
+                    <li>Email: <a href="mailto:meryemkciftci@gmail.com">meryemkciftci@gmail.com</a></li>
+                    <li>LinkedIn: <a href="https://linkedin.com/in/meryack" target="_blank">linkedin.com/in/meryack</a></li>
+                    
+                </ul>
+            </div>
+            <p class="note">Currently open to work opportunities.</p>
+            <p class="note2">Last updated: June 2025. Check back for new additions!</p>
+        </div>
+    </div>
+</body>
+</html>
