@@ -1,282 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Work Sample and Skills Development | Meryem</title>
-  <style>
-    body{margin:0;background:#f9f9f9;font-family:Arial,sans-serif;color:#333;line-height:1.6;}
-    .banner{width:100%;height:220px;background:url('Trends_(1).png') center/cover;}
-    .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
-    h1,h2{text-align:center;color:#2c3e50;}
-    .intro{text-align:center;font-size:1.1rem;margin-bottom:2rem;}
-    a{color:#007acc;text-decoration:none;} a:hover{text-decoration:underline;}
-    .columns{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;}
-    .column{flex:1;min-width:300px;}
-    .section{margin-bottom:2rem;background:#fff;padding:1rem;border-radius:8px;box-shadow:0 0 5px rgba(0,0,0,.05);}
-    ul{list-style-type:disc;margin-left:1.5rem;}
-    .inactive{color:#999;font-style:italic;opacity:.7;}
-    .inactive img{max-width:100px;display:block;margin:0 auto 1rem;filter:grayscale(100%) opacity(60%);}
-    .footer{text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid #ddd;}
-    .note{font-style:italic;color:#73c2fb;font-size:1rem;font-weight:bold;margin-top:1rem;}
-    @media(max-width:768px){.columns{flex-direction:column;}}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work Sample and Skills | Meryem</title>
+  <style>
+    /* General styles */
+    body {
+        margin: 0;
+        background: #f0f2f5; /* Lighter background for a modern feel */
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+    }
+    .banner {
+        width: 100%;
+        height: 220px;
+        background: url('Trends_(1).png') center/cover;
+    }
+    .container {
+        max-width: 1000px;
+        margin: -60px auto 0; /* Move up to overlap the banner */
+        padding: 2rem 1.5rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        position: relative;
+    }
+    .profile-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .profile-header h1 {
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+    .intro {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+    }
+    a {
+        color: #2874a6;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+        color: #1a5276;
+    }
+    
+    /* Section styling */
+    .section-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    .section {
+        background: #fdfdfd;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column;
+    }
+    .section h2 {
+        text-align: center;
+        color: #1b4f72;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+    .section ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .section ul li {
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+    }
+    .section ul li svg {
+        margin-right: 10px;
+        color: #2874a6;
+    }
+    .full-width-section {
+        background: #fdfdfd;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        border: 1px solid #e0e0e0;
+        margin-top: 2rem;
+    }
+    .full-width-section h2 {
+        text-align: center;
+        color: #1b4f72;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
 
-    /* —––  COLLAPSIBLE  ––– */
-    details{margin-top:0.75rem;}
-    summary{cursor:pointer;font-weight:bold;}
-    details p,details ul{margin-left:1rem;}
-
+    /* Badge styling */
     .badge-container {
-  text-align: center;
-  margin-top: -1.5rem;
-  margin-bottom: 1.5rem;
-}
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    .open-badge {
+        display: inline-block;
+        background-color: #4caf50;
+        color: white;
+        padding: 0.5rem 1.25rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 30px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+    }
+    .badge-container.closed {
+        display: none;
+    }
 
-.open-badge {
-  display: inline-block;
-  background-color: #4caf50;
-  color: white;
-  padding: 0.5rem 1.25rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 30px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  animation: pulse 2s infinite;
-}
+    /* Call to action button */
+    .cta-button {
+        display: inline-block;
+        background-color: #2c3e50;
+        color: #fff;
+        padding: 12px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        margin-top: 1rem;
+    }
+    .cta-button:hover {
+        background-color: #34495e;
+        text-decoration: none;
+    }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-}
-.badge-container {
-  text-align: center;
-  margin-top: -1.5rem;
-  margin-bottom: 1.5rem;
-}
+    /* Collapsible details */
+    details {
+        margin-top: 0.75rem;
+    }
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: #1b4f72;
+    }
+    details p, details ul {
+        margin-left: 1rem;
+        font-size: 0.95rem;
+        color: #555;
+    }
+    details p.tools {
+        margin-top: 0.5rem;
+    }
+    details p.tools strong {
+        color: #34495e;
+    }
 
-.open-badge {
-  display: inline-block;
-  background-color: #4caf50;
-  color: white;
-  padding: 0.5rem 1.25rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 30px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  animation: pulse 2s infinite;
-}
+    /* Skills List Styling */
+    .skills-list {
+      list-style-type: none;
+      padding-left: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .skills-list li {
+      margin-bottom: 0;
+    }
+    .skills-list li h3 {
+      font-size: 1.2rem;
+      color: #1b4f72;
+      margin-bottom: 0.5rem;
+    }
+    .skills-list ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-}
+    /* Footer styling */
+    .footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #ddd;
+    }
+    .footer ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .footer ul li a {
+        color: #2874a6;
+        font-weight: bold;
+    }
+    .note {
+        font-style: italic;
+        color: #73c2fb;
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+    .note2 {
+        font-size: 0.85rem;
+        color: #777;
+    }
 
-/* Hide the badge if you want to disable it */
-.badge-container.closed {
-  display: none;
-}
-
-  </style>
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .container {
+            margin: -40px auto 0;
+        }
+        .profile-header h1 {
+            font-size: 2em;
+        }
+        .section-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: 480px) {
+        .open-badge {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+        }
+    }
+  </style>
 </head>
 <body>
 
- <div class="banner"></div>
+  <div class="banner"></div>
 
-  <!-- Start container here and keep everything else inside -->
-  <div class="container">
-
+  <div class="container">
     <div class="badge-container open-now">
-      <span class="open-badge">📣 Open For Work Opportunities: Today (<span id="today-date"></span>)</span>
+        <span class="open-badge">📣 Open For Work Opportunities: Today (<span id="today-date"></span>)</span>
     </div>
 
-    <h1>
-      Kamara Rowe‑Ciftci (Meryem)
-      <a href="https://meryemciftcialy.github.io/work_sample/about_me.html" style="font-weight: bold; margin-left: 10px;">👋 About Me</a>
-    </h1>
-    <p class="intro">
-      This page showcases my progress in data analytics and tools I’ve used. It’s a growing record of learning,
-      projects, and what’s next on my skills journey.
-    </p>
-
-    <div class="columns">
-      <!-- LEFT COLUMN -->
-      <div class="column">
-
-        <!-- GitHub -->
-        <div class="section">
-          <h2>💻 GitHub</h2>
-          <p>Explore code repositories featuring:</p>
-        
-              <p><a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank">SQL Hub</a></p>
-                 <p><a href="https://github.com/MeryemCiftciAly/my-python-journal" target="_blank">Python Hub</a></p>
-                  <p><a href="https://glaze-language-b5c.notion.site/My-Python-Tracker-21cf1c8a8c5d800b9f93cd7cc4d605c1" target="_blank">View My Python Tracker</a></p>
-        </div>
-
-        <!-- Dropbox -->
-        <div class="section">
-          <h2>📂 Dropbox</h2>
-          <p>Real‑world simulations and project files:</p>
-          <ul>
-            <li>Excel‑based dashboards</li>
-            <li>Presentation decks and business reports</li>
-            <li>Supporting documents for case scenarios</li>
-          </ul>
-          <p><a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/APK3B2f-eehoZB6tLm5bz34?rlkey=7rc4uytibnjf07ix6zun3uyar&dl=0" target="_blank">Dropbox Folder</a></p>
-        </div>
-
-        <!-- NEW Projects Section -->
-        <div class="section">
-          <h2>Projects</h2>
-
-          <details close>
-            <summary>New York City Waste Collection Analysis</summary>
-            <p>
-              Analyzed waste collection data from 1990 to 2024 to explore borough-level contributions, waste types, and recycling patterns in New York City. The goal was to uncover data-driven insights into the city's waste management trends.
-            </p>
-           <p><strong>Skills Used:</strong> Data analysis, querying, data visualization, presentation design</p>
-      <p><strong>Tools:</strong> SQL, Excel (Power Pivot, XLOOKUP, INDEX), Google Sheets, Google Slides, Conditional Formatting</p>
-      <p><a href="https://meryemciftcialy.github.io/work_sample/nyc-analy-prj-timeline.html" target="_blank">View Project</a></p> <!-- Replace with actual project link -->
-            
-          </details>
-<details close>
-            <summary>Nominate a YouTube STEM Educator – Volunteer Campaign</summary>
-            <p>
-              Designed and led a volunteer campaign to nominate a YouTube STEM educator. Coordinated volunteer roles, managed communications, and built the campaign’s digital infrastructure using Airtable and using AI prompt-based methods to structure content and layout using HTML, CSS and Java Script.
-            </p>
-         <p><strong>Skills Used:</strong> Project management, collaboration, prompt engineering, campaign coordination</p>
-      <p><strong>Tools:</strong> HTML, Airtable, ChatGPT (AI prompting), Firebase</p>
-      <p><a href="https://datacampaign.github.io/nominatebaraa/campaign-home" target="_blank">View Project</a></p>
-      
-            
-          </details>
-          <!-- Add more <details> blocks here as new projects launch -->
-        </div>
-
-      </div>
-
-      <!-- RIGHT COLUMN -->
-      <div class="column">
-
-        <!-- Tableau -->
-        <div class="section">
-          <h2>📊 Tableau</h2>
-          <p>Interactive dashboards for visual analytics and storytelling.</p>
-          <p><a href="https://meryemciftcialy.github.io/work_sample/tableau.html" target="_blank">Tableau Public Portfolio</a></p>
-        </div>
-
-        <!-- Power BI -->
-        <div class="section">
-          <h2>📈 Power BI</h2>
-          <p>Interactive dashboards for visual analytics and storytelling.</p>
-          <p>
-            View my growing projects and evolving skills in Power BI. Each dashboard explores different aspects of data
-            analysis, transformation, and design. This portfolio will continue to grow as I refine modelling, DAX, and
-            performance optimisation.
-          </p>
-          <p><a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank">Power BI Portfolio</a></p>
-        </div>
-
-        <!-- Salesforce -->
-        <div class="section">
-          <h2>🧰 Salesforce</h2>
-          <p>Foundational understanding of CRM workflows and automation using Salesforce.</p>
-          <p>
-  🔗 <a href="https://www.salesforce.com/trailblazer/xfi4yh65brrumzrqm5" target="_blank">View Salesforce Profile</a>
-</p>
-<p>
-  <strong>Skills Earned/Learned:</strong><br>
-  Salesforce Platform Navigation · CRM Fundamentals · Data Modeling Concepts · Data Import and Export Techniques · Organizing and Managing Salesforce Data · Basic Developer Concepts
-</p>
-
-        </div>
-
-
-      <!-- Python Journal -->
-<!-- Kaggle -->
-<div class="section">
-  <h2>Kaggle</h2>
-  <p>
-    Practical hands-on work with Python and SQL in an interactive environment. Unlike GitHub, Kaggle notebooks showcase both code and output, making it easier to follow the logic and results of each analysis in real time.
-  </p>
-  <p>
-    🔗 <a href="https://www.kaggle.com/meryemciftci" target="_blank">View Kaggle Profile</a>
-  </p>
-  <p>
-    <strong>Skills Demonstrated:</strong><br>
-    Data Cleaning · Exploratory Data Analysis (EDA) · SQL Queries · Python Scripting · Data Visualization · Notebook-based Reporting
-  </p>
-</div>
-
-        <!-- AWS Placeholder -->
-        <div class="section inactive">
-          <h2>☁️ AWS</h2>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/512px-Amazon_Web_Services_Logo.svg.png"
-               alt="AWS Logo">
-          <p>Future learning in AWS data engineering and analytics. Certification path coming soon.</p>
-        </div>
-
-      </div>
-    </div><!-- /columns -->
-
-    <!-- NEW How I Work with AI Section -->
-    <div class="section">
-      <h2>Projects with AI </h2>
-          <p>
-    Using my understanding of HTML structure and layout principles, I collaborated with AI tools to design and develop the following websites. These projects were created to establish my online presence and demonstrate how I apply AI and prompt engineering in real-world scenarios. While not deep technical prompt engineering, this process involved iteratively crafting prompts to guide AI tools toward useful, context-specific outcomes.
-  </p>
-
-      <details close>
-        <summary>Volunteer Campaign (Website + Firebase + Airtable)</summary>
-       <p>
-      I used AI to guide the structure, tone, and visual layout of this site to support a global educator nomination campaign.<br>
-      <a href="https://datacampaign.github.io/nominatebaraa/" target="_blank">View Campaign Website</a>
-    </p>
-      </details>
-
-      <details>
-        <summary>This Current Work‑Sample Site</summary>
-        <p>
-          This site was developed with the help of AI to organize and present my portfolio in a clear, structured format. It serves as a hub for showcasing my data analytics skills, project work, and career transition.
+    <div class="profile-header">
+        <h1>Kamara Rowe‑Ciftci (Meryem)</h1>
+        <p class="intro">
+            This page showcases my progress in data analytics and the tools I've used. It’s a growing record of learning, projects, and what’s next on my skills journey.
         </p>
-      </details>
-      
-      <details>
-        <summary>Freelance Services Website</summary>
-        <p>
-      This project was designed using AI to support my shift from operational roles to data analytics. The site offers services to small businesses while reflecting my skills in analytics, communication, and problem solving.<br>
-      <a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/" target="_blank">View Freelancing Website</a>
-    </p>
-      </details>
+    </div>
+    
+    <div class="section-container">
+        <div class="section">
+            <h2>📊 Portfolios & Dashboards</h2>
+            <p>Interactive dashboards for visual analytics and storytelling.</p>
+            <ul>
+                <li>
+                    <a href="https://meryemciftcialy.github.io/work_sample/tableau.html" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                            <path d="M1 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-4zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z"/>
+                        </svg>
+                        Tableau Public Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/>
+                        </svg>
+                        Power BI Portfolio
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-      <!-- Add more AI‑assisted items over time -->
+        <div class="section">
+            <h2>💻 Projects & Code</h2>
+            <p>Explore my projects and code repositories:</p>
+            <ul>
+                <li>
+                    <a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16">
+                            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3h1.5A1.5 1.5 0 0 0 8 1.5a1.5 1.5 0 0 0-1.5 1.5H5v-.5A1.5 1.5 0 0 1 6.5 1z"/>
+                            <path d="M4 2.5A2.5 2.5 0 0 1 6.5 0h3A2.5 2.5 0 0 1 12 2.5V3h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2z"/>
+                        </svg>
+                        Freelancing Website
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2.21.17.4.24.55.15C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        SQL & Python Hubs
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/APK3B2f-eehoZB6tLm5bz34?rlkey=7rc4uytibnjf07ix6zun3uyar&dl=0" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dropbox" viewBox="0 0 16 16">
+                            <path d="M8.01 4.555 4.047 7.864 8.01 11.173l3.963-3.31zm-3.963 3.31L.084 4.555 4.047 1.246 8.01 4.555zm3.963 3.31-3.963 3.309L8.01 15.144l3.963-3.31zm4.04-3.31L8.01 1.246 11.976 4.555 15.92 1.246zM4.046 1.246 0 4.555 4.046 7.864 8.01 4.555zm8.003 0-3.963 3.31 3.963 3.31L15.92 4.555z"/>
+                        </svg>
+                        Dropbox Project Files
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.kaggle.com/meryemciftci" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.65-.544-1.127-1.232l5.05-6.604-5.05-6.604c-.523-.688.47-.646 1.127-1.232l5.482 4.796a1.5 1.5 0 0 1 0 2.496z"/>
+                        </svg>
+                        Kaggle Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>🧠 AI & Prompt Engineering</h2>
+            <p>
+                I use **AI as a development tool** to efficiently build and design websites to showcase my projects. I leverage my knowledge of HTML, CSS, and basic JavaScript to guide the AI and customize the final output. Below are websites I created with the help of AI.
+            </p>
+            <details close>
+                <summary>Nominate a YouTube STEM Educator Campaign</summary>
+                <p>
+                    I leveraged AI tools to design this campaign page, using my knowledge of HTML, CSS, and basic JavaScript to structure the content and layout.
+                </p>
+                <p class="tools"><strong>Tools:</strong> HTML, CSS, JavaScript, Airtable, ChatGPT (AI Prompting), Firebase</p>
+                <p><a href="https://datacampaign.github.io/nominatebaraa/campaign-home" target="_blank">View Project</a></p>
+            </details>
+            <details close>
+                <summary>Freelance Services Website</summary>
+                <p>
+                    I used AI to design this site, which showcases my skills in data analytics, communication, and problem-solving to attract freelance clients.
+                </p>
+                <p class="tools"><strong>Tools:</strong> HTML, CSS, JavaScript, ChatGPT (AI Prompting)</p>
+                <p><a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/" target="_blank">View Freelancing Website</a></p>
+            </details>
+            <details>
+                <summary>This Current Work-Sample Site</summary>
+                <p>
+                    This site was developed with the help of AI to organize and present my portfolio in a clear, structured format. It serves as a hub for showcasing my data analytics skills, project work, and career transition.
+                </p>
+            </details>
+        </div>
+    </div>
+    
+    <div class="cta-section">
+        <a href="https://meryemciftcialy.github.io/work_sample/about_me.html" class="cta-button">👋 About Me & My Career Transition</a>
     </div>
 
-    <!-- FOOTER -->
+    <div class="full-width-section">
+        <h2><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+            <path d="M12.637 4.175a.5.5 0 0 0-.25-.436l-2.73-1.574a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433-.5-.866-.5-.866-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l2.73 1.574a.5.5 0 0 0 .5-.866l-.758-.438 1.5-2.598.75.433.5.866.5.866 1.5-2.598.75.433a.5.5 0 0 0 .5-.866l-2.73-1.574a.5.5 0 0 0-.25-.436z"/>
+            <path d="M2.5 14h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1z"/>
+            </svg> Skills & Certifications</h2>
+        <ul class="skills-list">
+            <li>
+                <h3>Google Data Analytics Certification</h3>
+                <p>
+                    Completed January 2025 through Merit America / Coursera.
+                    <a href="https://coursera.org/verify/7IBWOVFHX2B5" target="_blank">View Validation</a>
+                </p>
+            </li>
+            <li>
+                <h3>SQL</h3>
+                <ul>
+                    <li><a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank">View My SQL Hub</a></li>
+                    <li><strong>Data Cleaning & Transformation:</strong> Handling nulls, duplicates, and data type conversions.</li>
+                    <li><strong>Querying & Analysis:</strong> Using `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `ORDER BY`.</li>
+                    <li><strong>Advanced Joins & Subqueries:</strong> Combining data from multiple tables for complex analysis.</li>
+                    <li><strong>Window Functions & Aggregations:</strong> Calculating running totals, ranks, and moving averages.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Python</h3>
+                <ul>
+                    <li><a href="https://github.com/MeryemCiftciAly/my-python-journal" target="_blank">View My Python Hub</a></li>
+                    <li><strong>Data Manipulation:</strong> Using pandas for data framing, cleaning, and preparation.</li>
+                    <li><strong>Data Visualization:</strong> Creating charts and graphs with matplotlib and seaborn.</li>
+                    <li><strong>Scripting & Automation:</strong> Writing scripts to automate data tasks.</li>
+                    <li><strong>Exploratory Data Analysis (EDA):</strong> Discovering patterns and anomalies.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Excel</h3>
+                <ul>
+                    <li><strong>Data Cleaning:</strong> Text functions, conditional formatting, and data validation.</li>
+                    <li><strong>Advanced Formulas:</strong> `XLOOKUP`, `INDEX/MATCH`, PivotTables, and Power Query.</li>
+                    <li><strong>Dashboard Creation:</strong> Building interactive dashboards for data visualization.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Salesforce</h3>
+                <ul>
+                    <li><strong>CRM Fundamentals:</strong> Navigating the Salesforce platform.</li>
+                    <li><strong>Data Management:</strong> Importing, exporting, and organizing data.</li>
+                    <li><strong>Technical Administration:</strong> Configuring front-end and back-end Salesforce functionalities.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Administrative & Operational Experience</h3>
+                <p>
+                    Over 5 years of experience in administrative operations and compliance, demonstrating proficiency in project coordination, attention to detail, and use of productivity tools like **Microsoft Office (Word, PowerPoint)**.
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section-container" style="margin-top: 2rem;">
+        <div class="section">
+            <h2>⭐ Project Spotlight</h2>
+            <p>
+                **Featured Project:** New York City Waste Collection Analysis
+            </p>
+            <p>
+                I analyzed waste collection data from 1990 to 2024 to explore borough-level contributions, waste types, and recycling patterns in New York City, uncovering data-driven insights into the city's waste management trends.
+            </p>
+            <p class="tools"><strong>Skills Used:</strong> Data analysis, querying, data visualization, presentation design</p>
+            <p class="tools"><strong>Tools:</strong> SQL, Excel (Power Pivot, XLOOKUP, INDEX), Google Sheets, Google Slides, Conditional Formatting</p>
+            <p><a href="https://meryemciftcialy.github.io/work_sample/nyc-analy-prj-timeline.html" target="_blank">View Project</a></p>
+            <p style="text-align: center; margin-top: 1.5rem;">
+                <a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/" target="_blank">
+                    **View all my recent projects on my Freelancing Website**
+                </a>
+            </p>
+        </div>
+
+        <div class="section inactive">
+            <h2>☁️ Future Skills (Coming Soon)</h2>
+            <p>Future learning in AWS data engineering and analytics. Certification path coming soon.</p>
+            <p></p>
+            <p><strong>Learning Path:</strong> AWS Certified Data Analyst, Data Engineering Fundamentals, Cloud Concepts</p>
+        </div>
+    </div>
+    
     <div class="footer">
-      <div class="section">
-        <h2>📬 Contact Me</h2>
+        <h2>📬 Contact Me</h2>
         <p>Feel free to reach out if you’d like a copy of my resume or just want to connect!</p>
-        <ul style="list-style-type:none;">
-          <li>Email: <a href="mailto:meryemkciftci@gmail.com">meryemkciftci@gmail.com</a></li>
-          <li>LinkedIn: <a href="https://linkedin.com/in/meryack" target="_blank">linkedin.com/in/meryack</a></li>
-                  </ul>
-      </div>
-      
-      <!-- inside your existing footer UL -->
-<li>About Me: <a href="about.html">Who am I?</a></li>
-
-      <p class="note">Currently open to work opportunities.</p>
-      <p class="note2">Last updated: July 2025. Check back for updates!</p>
+        <ul>
+            <li><a href="mailto:meryemkciftci@gmail.com">Email</a></li>
+            <li><a href="https://linkedin.com/in/meryack" target="_blank">LinkedIn</a></li>
+            <li><a href="https://meryemciftcialy.github.io/work_sample/about_me.html">About Me</a></li>
+        </ul>
+        <p class="note">Currently open to work opportunities.</p>
+        <p class="note2">Last updated: September 2025. Check back for new additions!</p>
     </div>
 
-  </div><!-- /container -->
-    <script>
-  const dateSpan = document.getElementById("today-date");
-  const today = new Date();
-  const options = { day: '2-digit', month: 'short', year: 'numeric' };
-  dateSpan.textContent = today.toLocaleDateString('en-GB', options).replace(/ /g, ' ');
-</script>
+  </div><script>
+    const dateSpan = document.getElementById("today-date");
+    const today = new Date();
+    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+    dateSpan.textContent = today.toLocaleDateString('en-GB', options).replace(/ /g, ' ');
+  </script>
 </body>
 </html>
