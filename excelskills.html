@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Excel Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind configuration for custom colors (Excel green and blue)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Light background color for the header
+                        'excel-blue': '#f0f2f5', 
+                        // Dark green for text and primary accents
+                        'excel-green': '#107C41',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS for the essential iframe dimensions and link styles -->
+    <style>
+        /* Sets the critical height and ensures responsiveness */
+        #excel-viewer {
+            width: 100%;
+            height: 700px; /* Recommended height for spreadsheet viewing */
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Styling for the active link */
+        .project-link.active {
+            /* Note: We use a Tailwind utility class for hover effect on the button itself */
+            background-color: #107C41; /* excel-green */
+            color: white;
+            box-shadow: 0 4px 6px rgba(16, 124, 65, 0.4); /* Subtle green shadow */
+            border-color: #107C41;
+        }
+        
+        /* Footer styling */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+        .footer h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937; /* Dark gray */
+            margin-bottom: 1rem;
+        }
+        .footer p {
+            margin-bottom: 0.5rem;
+            color: #4b5563; /* Medium gray */
+        }
+        .footer ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 1rem;
+        }
+        .footer ul li a {
+            color: #2874a6;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .footer ul li a:hover {
+            color: #1e40af; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <!-- Header Section - Changed text-white to text-excel-green for contrast -->
+    <header class="bg-excel-blue text-excel-green text-center p-8 shadow-xl">
+        <h1 class="text-4xl font-bold mb-2">Interactive Excel Skills Showcase </h1>
+        <p class="text-xl opacity-90">Welcome! Click any category below to load an interactive Excel project demonstrating my proficiency in key data analysis and automation techniques.</p>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 mt-6 bg-white rounded-xl shadow-2xl">
+        
+        <!-- Table of Contents (TOC) Navigation -->
+        <nav id="toc" class="mb-8 p-4 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Table of Contents (Skill Areas)</h2>
+            <ul class="flex flex-wrap justify-center gap-2 sm:gap-4">
+                <!-- IMPORTANT: REPLACE THESE PLACEHOLDER URLs WITH YOUR ACTUAL EXCEL EMBED URLS -->
+                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
+                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Data Cleaning & Transformation</a></li>
+                
+                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
+                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Dynamic Reporting with Pivot Tables</a></li>
+                
+                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
+                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Advanced Lookups (XLOOKUP/INDEX-MATCH)</a></li>
+                
+                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
+                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Automation using VBA/Macros</a></li>
+                
+                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
+                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Complex/Array Formulas</a></li>
+            </ul>
+        </nav>
+
+        <!-- New: Under Development Message -->
+        <div class="p-4 sm:p-6 mb-8 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg shadow-md transition duration-500" role="alert">
+            <p class="text-xl font-semibold text-yellow-800 flex items-center">
+                <!-- Warning/Construction Icon -->
+                <svg class="w-6 h-6 mr-3 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                Section Just Launched Today!
+            </p>
+            <p class="mt-2 text-gray-700">
+                This interactive portfolio is brand new and currently under construction. Actual working Excel sheet embeds demonstrating these skills will be uploaded soon. Please check back later for the live, interactive projects!
+            </p>
+        </div>
+
+        <hr class="border-gray-300 my-8">
+
+        <!-- Project View Area (where the spreadsheet embeds) -->
+        <section id="project-display">
+            <h2 class="text-3xl font-bold text-gray-700 mb-6">Project View</h2>
+            
+            <!-- Initial Message -->
+            <p id="initial-message" class="text-center p-12 text-lg text-gray-500 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 transition duration-500">
+                Please select a category from the Table of Contents above to load and interact with the Excel project.
+            </p>
+            
+            <!-- Single IFRAME Container -->
+            <div class="excel-embed-container rounded-xl overflow-hidden shadow-xl">
+                <!-- The single IFRAME element that will have its source dynamically updated -->
+                <iframe id="excel-viewer" src="" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <h2>📬 Contact Me</h2>
+        <p>Feel free to reach out if you’d like a copy of my resume or just want to connect!</p>
+        <ul>
+            <li><a href="mailto:meryemkciftci@gmail.com">Email</a></li>
+            <li><a href="https://linkedin.com/in/meryack" target="_blank">LinkedIn</a></li>
+            <li><a href="https://meryemciftcialy.github.io/work_sample/about_me.html">About Me</a></li>
+        </ul>
+        <p class="note text-sm text-excel-green font-semibold">Currently open to work opportunities.</p>
+        <p class="note2 text-xs text-gray-400">Last updated: September 2025. Check back for new additions!</p>
+    </div>
+
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Select all the project links and the elements to be controlled
+            const projectLinks = document.querySelectorAll('.project-link');
+            const excelViewer = document.getElementById('excel-viewer');
+            const initialMessage = document.getElementById('initial-message');
+
+            // Initially hide the iframe until a project is selected
+            excelViewer.style.display = 'none';
+
+            projectLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevents the browser from navigating away
+
+                    // Remove 'active' class from all links
+                    projectLinks.forEach(l => l.classList.remove('active'));
+                    // Add 'active' class to the clicked link
+                    this.classList.add('active');
+
+                    // 1. Get the URL from the data attribute
+                    const newUrl = this.getAttribute('data-embed-url');
+                    
+                    // 2. Update the IFRAME's source
+                    excelViewer.src = newUrl;
+                    
+                    // 3. Hide the initial message and show the viewer
+                    initialMessage.style.display = 'none';
+                    excelViewer.style.display = 'block'; 
+
+                    // 4. Scroll down to the project view section for better UX on mobile
+                    document.getElementById('project-display').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
