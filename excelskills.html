@@ -14,8 +14,11 @@
                     colors: {
                         // Light background color for the header
                         'excel-blue': '#f0f2f5', 
-                        // Dark green for text and primary accents
+                        // Dark green for text and primary accents (Intermediate level)
                         'excel-green': '#107C41',
+                        // Custom colors for skill levels
+                        'basic-yellow': '#FBBF24', // Yellow 500
+                        'adv-orange': '#F97316',   // Orange 600
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -37,13 +40,33 @@
 
         /* Styling for the active link */
         .project-link.active {
-            /* Note: We use a Tailwind utility class for hover effect on the button itself */
             background-color: #107C41; /* excel-green */
             color: white;
-            box-shadow: 0 4px 6px rgba(16, 124, 65, 0.4); /* Subtle green shadow */
+            box-shadow: 0 4px 6px rgba(16, 124, 65, 0.4); 
             border-color: #107C41;
         }
         
+        /* Specific styling for the project buttons under the new structure */
+        .project-button {
+            display: block;
+            padding: 8px 12px;
+            margin-top: 4px;
+            font-size: 0.9rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s, transform 0.1s;
+            cursor: pointer;
+            text-align: left;
+        }
+        .project-button:hover {
+            background-color: #f3f4f6;
+            transform: translateY(-1px);
+        }
+        .project-button.active {
+            background-color: #107C41;
+            color: white;
+            font-weight: 600;
+        }
+
         /* Footer styling */
         .footer {
             text-align: center;
@@ -54,12 +77,12 @@
         .footer h2 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #1f2937; /* Dark gray */
+            color: #1f2937;
             margin-bottom: 1rem;
         }
         .footer p {
             margin-bottom: 0.5rem;
-            color: #4b5563; /* Medium gray */
+            color: #4b5563;
         }
         .footer ul {
             list-style-type: none;
@@ -75,47 +98,32 @@
             transition: color 0.3s;
         }
         .footer ul li a:hover {
-            color: #1e40af; /* Darker blue on hover */
+            color: #1e40af;
         }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
 
-    <!-- Header Section - Changed text-white to text-excel-green for contrast -->
-    <header class="bg-excel-blue text-excel-green text-center p-8 shadow-xl">
-        <h1 class="text-4xl font-bold mb-2">Interactive Excel Skills Showcase </h1>
-        <p class="text-xl opacity-90">Welcome! Click any category below to load an interactive Excel project demonstrating my proficiency in key data analysis and automation techniques.</p>
+    <!-- Header Section - Contrast fixed and made relative for the absolute home link -->
+    <header class="bg-excel-blue text-excel-green text-center p-8 shadow-xl relative">
+        <!-- New: Home Link - Made more visible -->
+        <a href="https://meryemciftcialy.github.io/work_sample/" target="_self" 
+           class="absolute top-4 left-4 sm:top-6 sm:left-6 
+                  px-4 py-2 bg-excel-green text-white rounded-lg 
+                  text-base font-semibold shadow-lg hover:opacity-90 
+                  transition duration-150 flex items-center z-10">
+            <span class="text-xl mr-2">&#x2190;</span> Back to Main Site
+        </a>
+        <h1 class="text-4xl font-bold mb-2"> Interactive Excel Skills Showcase </h1>
+        <p class="text-xl opacity-90">Welcome! Select a project below to see an interactive example and the mixed skill set used.</p>
     </header>
 
     <!-- Main Content Area -->
     <main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 mt-6 bg-white rounded-xl shadow-2xl">
         
-        <!-- Table of Contents (TOC) Navigation -->
-        <nav id="toc" class="mb-8 p-4 border-b border-gray-200">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Table of Contents (Skill Areas)</h2>
-            <ul class="flex flex-wrap justify-center gap-2 sm:gap-4">
-                <!-- IMPORTANT: REPLACE THESE PLACEHOLDER URLs WITH YOUR ACTUAL EXCEL EMBED URLS -->
-                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
-                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Data Cleaning & Transformation</a></li>
-                
-                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
-                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Dynamic Reporting with Pivot Tables</a></li>
-                
-                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
-                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Advanced Lookups (XLOOKUP/INDEX-MATCH)</a></li>
-                
-                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
-                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Automation using VBA/Macros</a></li>
-                
-                <li><a href="#" class="project-link block px-4 py-2 border-2 border-excel-green text-excel-green rounded-lg font-medium hover:bg-excel-green hover:text-white transition duration-300" 
-                    data-embed-url="https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True">Complex/Array Formulas</a></li>
-            </ul>
-        </nav>
-
-        <!-- New: Under Development Message -->
+        <!-- Under Development Message -->
         <div class="p-4 sm:p-6 mb-8 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg shadow-md transition duration-500" role="alert">
             <p class="text-xl font-semibold text-yellow-800 flex items-center">
-                <!-- Warning/Construction Icon -->
                 <svg class="w-6 h-6 mr-3 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                 Section Just Launched Today!
             </p>
@@ -126,26 +134,42 @@
 
         <hr class="border-gray-300 my-8">
 
-        <!-- Project View Area (where the spreadsheet embeds) -->
+        <!-- Hybrid Table of Contents (TOC) Navigation by Skill Level -->
+        <section id="toc" class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Interactive Project Portfolio by Skill Level</h2>
+            
+            <div id="project-navigation-grid" class="grid md:grid-cols-3 gap-6">
+                <!-- Navigation links will be dynamically injected here by the script -->
+            </div>
+        </section>
+
+        <hr class="border-gray-300 my-8">
+
+        <!-- Project View Area (where the spreadsheet embeds and skills are listed) -->
         <section id="project-display">
-            <h2 class="text-3xl font-bold text-gray-700 mb-6">Project View</h2>
             
-            <!-- Initial Message -->
-            <p id="initial-message" class="text-center p-12 text-lg text-gray-500 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 transition duration-500">
-                Please select a category from the Table of Contents above to load and interact with the Excel project.
-            </p>
-            
+            <!-- Skills Breakdown Section -->
+            <div id="skills-breakdown" class="p-4 bg-gray-100 rounded-lg shadow-inner mb-6 transition duration-300 ease-in-out hidden">
+                <h3 class="text-xl font-bold text-gray-700 mb-3 border-b pb-2">Skills Demonstrated in Project: <span id="project-title-display" class="text-excel-green"></span></h3>
+                <h4 class="text-lg font-semibold text-gray-600 mb-2">Mixed Formulas and Techniques Used:</h4>
+                <div id="skills-list" class="flex flex-wrap gap-2">
+                    <!-- Skills will be dynamically injected here -->
+                </div>
+            </div>
+
             <!-- Single IFRAME Container -->
             <div class="excel-embed-container rounded-xl overflow-hidden shadow-xl">
+                <!-- Initial Message -->
+                <p id="initial-message" class="text-center p-12 text-lg text-gray-500 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 transition duration-500 block">
+                    Please select a project from the navigation above to load and interact with the Excel project.
+                </p>
                 <!-- The single IFRAME element that will have its source dynamically updated -->
-                <iframe id="excel-viewer" src="" allowfullscreen></iframe>
+                <iframe id="excel-viewer" src="" allowfullscreen class="hidden"></iframe>
             </div>
         </section>
     </main>
 
     <!-- Footer Section -->
-<p><a href="https://meryemciftcialy.github.io/work_sample/">← Back to Home Page</a></p>
-    
     <div class="footer">
         <h2>📬 Contact Me</h2>
         <p>Feel free to reach out if you’d like a copy of my resume or just want to connect!</p>
@@ -159,40 +183,130 @@
     </div>
 
 
-    <!-- JavaScript for Interactivity -->
+    <!-- JavaScript for Interactivity and Dynamic Content Generation -->
     <script>
+        const projectData = {
+            'Basic': {
+                color: 'basic-yellow',
+                projects: [
+                    { name: "Project 1: Sales Data Entry Form", url: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&embed=1", skills: ["Data Validation (Lists)", "Basic Formulas (+, -, *, /)", "Conditional Formatting", "Absolute References ($)"] },
+                    { name: "Project 2: Monthly Budget Tracker", url: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&embed=2", skills: ["SUM/AVERAGE/MIN/MAX", "Basic Charts (Line/Bar)", "Freeze Panes", "Number Formatting"] },
+                ]
+            },
+            'Intermediate': {
+                color: 'excel-green',
+                projects: [
+                    { name: "Project 3: Inventory Management", url: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&embed=3", skills: ["XLOOKUP (Single Lookup)", "Pivot Tables & Charts", "Slicers", "IF/IFS/AND/OR Functions"] },
+                    { name: "Project 4: HR Payroll Calculator", url: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&embed=4", skills: ["VLOOKUP (Legacy Method)", "SUMIFS/COUNTIFS", "Data Aggregation", "Named Ranges"] },
+                ]
+            },
+            'Advanced': {
+                color: 'adv-orange',
+                projects: [
+                    { name: "Project 5: Financial Model Template", url: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&embed=5", skills: ["INDEX/MATCH/MATCH (Triple)", "Dynamic Array Formulas (FILTER)", "Scenario Manager (Concept)", "OFFSET/INDIRECT Functions"] },
+                    { name: "Project 6: Automated Report Prep", url: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&embed=6", skills: ["VBA/Macros (Basic Recording & Editing)", "Power Query (Basic Get & Transform)", "Text Manipulation (LEFT, RIGHT, FIND)", "Complex Nesting"] },
+                ]
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Select all the project links and the elements to be controlled
-            const projectLinks = document.querySelectorAll('.project-link');
             const excelViewer = document.getElementById('excel-viewer');
             const initialMessage = document.getElementById('initial-message');
+            const navGrid = document.getElementById('project-navigation-grid');
+            const skillsBreakdown = document.getElementById('skills-breakdown');
+            const skillsList = document.getElementById('skills-list');
+            const projectTitleDisplay = document.getElementById('project-title-display');
 
-            // Initially hide the iframe until a project is selected
-            excelViewer.style.display = 'none';
+            /**
+             * Dynamically generates the navigation structure based on projectData.
+             */
+            function generateNavigation() {
+                navGrid.innerHTML = ''; // Clear existing content
 
-            projectLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevents the browser from navigating away
-
-                    // Remove 'active' class from all links
-                    projectLinks.forEach(l => l.classList.remove('active'));
-                    // Add 'active' class to the clicked link
-                    this.classList.add('active');
-
-                    // 1. Get the URL from the data attribute
-                    const newUrl = this.getAttribute('data-embed-url');
+                Object.keys(projectData).forEach(level => {
+                    const levelData = projectData[level];
+                    const levelColor = levelData.color;
                     
-                    // 2. Update the IFRAME's source
-                    excelViewer.src = newUrl;
+                    // Create the level container
+                    const levelDiv = document.createElement('div');
+                    levelDiv.className = `p-4 rounded-xl shadow-lg border border-gray-200 bg-${levelColor.replace('-500', '-100/50').replace('-600', '-100/50')}`;
                     
-                    // 3. Hide the initial message and show the viewer
-                    initialMessage.style.display = 'none';
-                    excelViewer.style.display = 'block'; 
+                    // Level Header with colored circle
+                    levelDiv.innerHTML = `
+                        <h3 class="text-xl font-bold mb-4 flex items-center text-gray-800">
+                            <span class="w-4 h-4 rounded-full bg-${levelColor} mr-3 shadow"></span>
+                            ${level} Skills
+                        </h3>
+                        <div id="projects-${level.toLowerCase()}" class="space-y-1">
+                            <!-- Project buttons go here -->
+                        </div>
+                    `;
+                    navGrid.appendChild(levelDiv);
 
-                    // 4. Scroll down to the project view section for better UX on mobile
-                    document.getElementById('project-display').scrollIntoView({ behavior: 'smooth' });
+                    // Add project links inside the container
+                    const projectsContainer = levelDiv.querySelector(`#projects-${level.toLowerCase()}`);
+                    levelData.projects.forEach(project => {
+                        const button = document.createElement('button');
+                        button.textContent = project.name;
+                        button.className = 'project-button text-gray-700 hover:bg-gray-200';
+                        button.dataset.url = project.url;
+                        button.dataset.name = project.name;
+                        button.dataset.skills = JSON.stringify(project.skills); // Store skills as JSON string
+
+                        // Add click listener
+                        button.addEventListener('click', handleProjectClick);
+                        projectsContainer.appendChild(button);
+                    });
                 });
-            });
+            }
+
+            /**
+             * Handles the click event on a project button.
+             */
+            function handleProjectClick(event) {
+                event.preventDefault();
+
+                // 1. Get data from the button
+                const button = event.currentTarget;
+                const newUrl = button.dataset.url;
+                const projectName = button.dataset.name;
+                const skills = JSON.parse(button.dataset.skills);
+
+                // 2. Update IFRAME source and visibility
+                excelViewer.src = newUrl;
+                initialMessage.classList.add('hidden');
+                excelViewer.classList.remove('hidden');
+
+                // 3. Highlight the active link
+                document.querySelectorAll('.project-button').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.remove('text-white');
+                    btn.classList.add('text-gray-700');
+                });
+                button.classList.add('active');
+                button.classList.remove('text-gray-700');
+                button.classList.add('text-white');
+                
+                // 4. Update Skills Breakdown Section
+                projectTitleDisplay.textContent = projectName;
+                skillsList.innerHTML = ''; // Clear previous skills
+
+                skills.forEach(skill => {
+                    const skillTag = document.createElement('span');
+                    skillTag.textContent = skill;
+                    // Tag styling
+                    skillTag.className = 'px-3 py-1 bg-excel-green text-white text-sm font-medium rounded-full shadow-sm';
+                    skillsList.appendChild(skillTag);
+                });
+
+                skillsBreakdown.classList.remove('hidden'); // Show the skills section
+
+                // 5. Optional: Scroll down to the project view section for better UX on mobile
+                document.getElementById('project-display').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Initialize the navigation structure
+            generateNavigation();
         });
     </script>
 </body>
