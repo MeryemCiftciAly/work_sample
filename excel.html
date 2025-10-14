@@ -1,209 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Excel Learning Journey | Meryem</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f8f9fa;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Excel Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind configuration for custom colors (Excel green and blue)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Light background color for the header
+                        'excel-blue': '#f0f2f5', 
+                        // Dark green for text and primary accents (Intermediate level)
+                        'excel-green': '#107C41',
+                        // Custom colors for skill levels
+                        'basic-yellow': '#FBBF24', // Yellow 500
+                        'adv-orange': '#F97316',   // Orange 600
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS for the essential iframe dimensions and link styles -->
+    <style>
+        /* Sets the critical height and ensures responsiveness */
+        #excel-viewer {
+            width: 100%;
+            height: 700px; /* Recommended height for spreadsheet viewing */
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease-in-out;
+        }
 
-    .banner {
-      width: 100%;
-      height: 220px;
-      background-image: url('Trends_(1).png'); /* Replace with your Excel-themed image */
-      background-size: cover;
-      background-position: center;
-    }
+        /* Styling for the active project button */
+        .project-button.active {
+            background-color: #107C41; 
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Specific styling for the project buttons under the new structure */
+        .project-button {
+            display: block;
+            padding: 8px 12px;
+            margin-top: 4px;
+            font-size: 0.9rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s, transform 0.1s;
+            cursor: pointer;
+            text-align: left;
+        }
+        .project-button:hover {
+            background-color: #f3f4f6;
+            transform: translateY(-1px);
+        }
+        
+        /* Tab styling */
+        .tab-button {
+            padding: 10px 18px;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+            cursor: pointer;
+            color: #4b5563; /* Gray 600 */
+        }
+        .tab-button:hover {
+            border-color: #e5e7eb; /* Gray 200 */
+            color: #111827; /* Gray 900 */
+        }
+        .tab-button.active-tab {
+            border-color: #107C41; /* excel-green */
+            color: #107C41; /* excel-green */
+            font-weight: 600;
+        }
 
-    .logo {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-
-    .logo img {
-      max-width: 180px;
-      height: auto;
-    }
-
-    .container {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    h1, h2 {
-      color: #1b4f72;
-    }
-
-    ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    a {
-      color: #2874a6;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    details {
-      margin-bottom: 15px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .note {
-      font-style: italic;
-      color: #73c2fb;
-      text-align: center;
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-top: 2rem;
-    }
-
-    .note2 {
-      font-style: italic;
-      color: #555;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid #ddd;
-    }
-  </style>
+        /* Footer styling */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+        .footer h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .footer p {
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+        .footer ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 1rem;
+        }
+        .footer ul li a {
+            color: #2874a6;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .footer ul li a:hover {
+            color: #1e40af;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 font-sans">
 
-  <div class="banner"></div>
+    <!-- Header Section - Contrast fixed and made relative for the absolute home link -->
+    <header class="bg-excel-blue text-excel-green text-center p-8 shadow-xl relative">
+        <!-- Home Link -->
+        <a href="https://meryemciftcialy.github.io/work_sample/" target="_self" 
+           class="absolute top-4 left-4 sm:top-6 sm:left-6 
+                  px-4 py-2 bg-excel-green text-white rounded-lg 
+                  text-base font-semibold shadow-lg hover:opacity-90 
+                  transition duration-150 flex items-center z-10">
+            <span class="text-xl mr-2">&#x2190;</span> Back to Main Site
+        </a>
+        <h1 class="text-4xl font-bold mb-2"> Interactive Excel Skills Showcase </h1>
+        <p class="text-xl opacity-90">Welcome! Select a project below to see an interactive example and the mixed skill set used.</p>
+    </header>
 
-  <div class="logo">
-  <img src="https://github.com/MeryemCiftciAly/assets/blob/main/excellogo.png?raw=true" alt="Excel Logo">
+    <!-- Main Content Area -->
+    <main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 mt-6 bg-white rounded-xl shadow-2xl">
+        
+        <!-- Under Development Message -->
+        <div class="p-4 sm:p-6 mb-8 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg shadow-md transition duration-500" role="alert">
+            <p class="text-xl font-semibold text-yellow-800 flex items-center">
+                <svg class="w-6 h-6 mr-3 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                Section Just Launched Today!
+            </p>
+            <p class="mt-2 text-gray-700">
+                This interactive portfolio is brand new and currently under construction. Actual working Excel sheet embeds demonstrating these skills will be uploaded soon. Please check back later for the live, interactive projects!
+            </p>
+        </div>
 
-  </div>
+        <hr class="border-gray-300 my-8">
 
-  <div class="container">
-    <h1>Excel Learning Journey | Kamara Rowe-Ciftci</h1>
-    <p>This page tracks my learning and projects in Microsoft Excel. My goal is to use Excel confidently for data analytics and business reporting as part of my analyst toolkit.</p>
+        <!-- Hybrid Table of Contents (TOC) Navigation by Skill Level -->
+        <section id="toc" class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Interactive Project Portfolio by Skill Level</h2>
+            
+            <div id="project-navigation-grid" class="grid md:grid-cols-3 gap-6">
+                <!-- Navigation links will be dynamically injected here by the script -->
+            </div>
+        </section>
 
-    <section>
-      <h2>📄 Previous Knowledge</h2>
-      <p>I’ve used Excel in professional roles for data cleaning, financial summaries, product tracking, and operations. I’m building on this to become proficient in formulas, functions, dashboards, and automation techniques.</p>
-    </section>
+        <hr class="border-gray-300 my-8">
 
-    <section>
-      <h2>📖 Currently Learning</h2>
-      <ul>
-        <li>Data validation, conditional formatting, and lookup functions</li>
-        <li>PivotTables, PivotCharts, and Excel dashboards</li>
-        <li>Using named ranges and structured references</li>
-      </ul>
-    </section>
+        <!-- Project View Area (where the spreadsheet embeds and skills are listed) -->
+        <section id="project-display">
+            
+            <!-- Skills Breakdown Section -->
+            <div id="skills-breakdown" class="p-4 bg-gray-100 rounded-lg shadow-inner mb-6 transition duration-300 ease-in-out hidden">
+                <h3 class="text-xl font-bold text-gray-700 mb-3 border-b pb-2">Skills Demonstrated in Project: <span id="project-title-display" class="text-excel-green"></span></h3>
+                <h4 class="text-lg font-semibold text-gray-600 mb-2">Mixed Formulas and Techniques Used:</h4>
+                <div id="skills-list" class="flex flex-wrap gap-2">
+                    <!-- Skills will be dynamically injected here -->
+                </div>
+            </div>
 
-    <section>
-      <h2>📊 Learning Next</h2>
-      <ul>
-        <li>Macros and VBA for automation</li>
-             <li>Power Pivot and DAX formulas</li>
-      </ul>
-    </section>
+            <!-- New: File Selector Tabs -->
+            <div id="file-tabs-container" class="mb-6 hidden">
+                <h4 class="text-lg font-semibold text-gray-700 mb-2">Select File Version:</h4>
+                <nav id="file-tabs" class="-mb-px flex space-x-2 sm:space-x-8" aria-label="Tabs">
+                    <!-- Tab Buttons will be dynamically generated and loaded here -->
+                </nav>
+            </div>
 
-   <section>
-  <h2>🔬 Skills Earned/Learned</h2>
+            <!-- Single IFRAME Container -->
+            <div class="excel-embed-container rounded-xl overflow-hidden shadow-xl">
+                <!-- Initial Message -->
+                <p id="initial-message" class="text-center p-12 text-lg text-gray-500 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 transition duration-500 block">
+                    Please select a project from the navigation above to load and interact with the Excel project.
+                </p>
+                <!-- The single IFRAME element that will have its source dynamically updated -->
+                <iframe id="excel-viewer" src="" allowfullscreen class="hidden"></iframe>
+            </div>
+        </section>
+    </main>
 
-  <details>
-    <summary>Data Entry & Formatting</summary>
-    <ul>
-      <li>Efficient spreadsheet design and formatting for clarity and readability</li>
-      <li>Use of conditional formatting, cell locking, and data validation</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary>Formulas & Functions</summary>
-    <ul>
-      <li>Lookup formulas (VLOOKUP, XLOOKUP, INDEX-MATCH)</li>
-      <li>Logical and text functions (IF, AND, OR, LEN, LEFT, MID, RIGHT)</li>
-      <li>Math/statistical functions (SUMIF, COUNTIF, AVERAGEIF)</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary>Data Cleaning & Preparation</summary>
-    <ul>
-      <li>Removing duplicates, handling blanks, fixing inconsistent formatting</li>
-      <li>Splitting columns, merging cells, and parsing data using text functions</li>
-      <li>Structuring raw data into tidy, analysis-ready formats</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary>Data Analysis & Visualization</summary>
-    <ul>
-      <li>Creating pivot tables and pivot charts for multi-dimensional analysis</li>
-      <li>Building dashboards with slicers, timelines, and dynamic charts</li>
-      <li>Summarizing data for business reporting and stakeholder insight</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary>Data Extraction & Transformation</summary>
-    <ul>
-      <li>Extracting CSV data from websites or databases</li>
-      <li>Converting raw CSVs into structured Excel workbooks</li>
-      <li>Cleaning, transforming, and enriching data using Excel formulas and <strong>Power Query</strong></li>
-      <li>Preparing Excel data for use in Power BI or SQL workflows</li>
-    </ul>
-  </details>
-
-    <section>
-      <h2>📁 Where to Find My Excel Projects</h2>
-      <p>You can view my Excel work and downloadable project files on Dropbox:</p>
-      <p><a href="https://rebrand.ly/1xhn4ui" target="_blank">📂 My Excel Projects on Dropbox</a></p>
-    </section>
-
-    <section>
-      <h2>📜 Certifications</h2>
-      <p>No certifications yet — this section will be updated as soon as I earn one.</p>
-    </section>
-
-    <div style="text-align: center; margin: 2rem 0;">
-      <a href="https://meryemciftcialy.github.io/work_sample/" style="background-color: #2874a6; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">← Back to Work Samples</a>
-    </div>
-
+    <!-- Footer Section -->
     <div class="footer">
-      <div class="section">
         <h2>📬 Contact Me</h2>
         <p>Feel free to reach out if you’d like a copy of my resume or just want to connect!</p>
-        <ul style="list-style-type: none;">
-          <li>Email: <a href="mailto:meryemkciftci@gmail.com">meryemkciftci@gmail.com</a></li>
-          <li>LinkedIn: <a href="https://linkedin.com/in/meryack" target="_blank">linkedin.com/in/meryack</a></li>
-          <li>Additional Portfolio: <a href="https://meryemciftcialy.github.io/analyst-journal/" target="_blank">Additional Portfolio</a></li>
+        <ul>
+            <li><a href="mailto:meryemkciftci@gmail.com">Email</a></li>
+            <li><a href="https://linkedin.com/in/meryack" target="_blank">LinkedIn</a></li>
+            <li><a href="https://meryemciftcialy.github.io/work_sample/about_me.html">About Me</a></li>
         </ul>
-      </div>
-      <p class="note">Currently open to work opportunities.</p>
-      <p class="note2">Last updated: June 2025. Check back for new additions!</p>
+        <p class="note text-sm text-excel-green font-semibold">Currently open to work opportunities.</p>
+        <p class="note2 text-xs text-gray-400">Last updated: September 2025. Check back for new additions!</p>
     </div>
-  </div>
+
+
+    <!-- JavaScript for Interactivity and Dynamic Content Generation -->
+    <script>
+        const projectData = {
+            'Basic': {
+                color: 'basic-yellow',
+                projects: [
+                    { 
+                        name: "Project 1: Data Formalization", 
+                        urls: {
+                            project: "https://1drv.ms/x/c/3cd1fbe75ad01d30/EXgjSSEatc9BhnOeusRkJ0gBGLN20898oSg68dXK5Ac5oA?e=f8FD00", // Default view
+                            clean: "https://1drv.ms/x/c/3cd1fbe75ad01d30/EdlYGTnqUktIq-SPnPJp3cABXNlLC24rqeBBYaa29sufJw?e=cUZp5s",
+                            raw: "https://1drv.ms/x/c/3cd1fbe75ad01d30/ETSpWhqRoc9JoZfB563hJvYBVakixPP4D3IqvPlCZd334A?e=h3rXkl"
+                        },
+                        skills: ["Data Validation (Lists)", "Basic Formulas (+, -, *, /)", "Conditional Formatting", "Absolute References ($)"] 
+                    },
+                    { 
+                        name: "Project 2: Monthly Budget Tracker", 
+                        urls: {
+                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P2",
+                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P2",
+                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P2"
+                        },
+                        skills: ["SUM/AVERAGE/MIN/MAX", "Basic Charts (Line/Bar)", "Freeze Panes", "Number Formatting"] 
+                    },
+                ]
+            },
+            'Intermediate': {
+                color: 'excel-green',
+                projects: [
+                    { 
+                        name: "Project 3: Inventory Management", 
+                        urls: {
+                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P3",
+                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P3",
+                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P3"
+                        },
+                        skills: ["XLOOKUP (Single Lookup)", "Pivot Tables & Charts", "Slicers", "IF/IFS/AND/OR Functions"] 
+                    },
+                    { 
+                        name: "Project 4: HR Payroll Calculator", 
+                        urls: {
+                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P4",
+                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P4",
+                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P4"
+                        },
+                        skills: ["VLOOKUP (Legacy Method)", "SUMIFS/COUNTIFS", "Data Aggregation", "Named Ranges"] 
+                    },
+                ]
+            },
+            'Advanced': {
+                color: 'adv-orange',
+                projects: [
+                    { 
+                        name: "Project 5: Financial Model Template", 
+                        urls: {
+                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P5",
+                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P5",
+                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P5"
+                        },
+                        skills: ["INDEX/MATCH/MATCH (Triple)", "Dynamic Array Formulas (FILTER)", "Scenario Manager (Concept)", "OFFSET/INDIRECT Functions"] 
+                    },
+                    { 
+                        name: "Project 6: Automated Report Prep", 
+                        urls: {
+                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P6",
+                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P6",
+                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P6"
+                        },
+                        skills: ["VBA/Macros (Basic Recording & Editing)", "Power Query (Basic Get & Transform)", "Text Manipulation (LEFT, RIGHT, FIND)", "Complex Nesting"] 
+                    },
+                ]
+            }
+        };
+
+        // Data for the tab buttons, mapping a display name to the key in the 'urls' object
+        const tabMappings = [
+            { key: 'project', label: 'Project Workbook (Final)' },
+            { key: 'clean', label: 'Clean Data File' },
+            { key: 'raw', label: 'Raw Data File' },
+        ];
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const excelViewer = document.getElementById('excel-viewer');
+            const initialMessage = document.getElementById('initial-message');
+            const navGrid = document.getElementById('project-navigation-grid');
+            const skillsBreakdown = document.getElementById('skills-breakdown');
+            const skillsList = document.getElementById('skills-list');
+            const projectTitleDisplay = document.getElementById('project-title-display');
+            const fileTabsContainer = document.getElementById('file-tabs-container');
+            const fileTabs = document.getElementById('file-tabs');
+            
+            // Variable to hold the URLs for the currently selected project
+            let currentProjectUrls = {};
+            
+            /**
+             * Handles the click event on a file selector tab.
+             */
+            function handleTabClick(event) {
+                event.preventDefault();
+                const button = event.currentTarget;
+                const fileType = button.dataset.fileType; // e.g., 'raw', 'clean', 'project'
+                
+                // Set the iframe source to the selected URL
+                if (currentProjectUrls[fileType]) {
+                    excelViewer.src = currentProjectUrls[fileType];
+                }
+
+                // Update active tab styling
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active-tab');
+                });
+                button.classList.add('active-tab');
+            }
+            
+            /**
+             * Dynamically creates and attaches the file selector tabs.
+             */
+            function renderFileTabs(urls) {
+                fileTabs.innerHTML = '';
+                currentProjectUrls = urls; // Store the new URLs globally
+
+                tabMappings.forEach(mapping => {
+                    const button = document.createElement('button');
+                    button.textContent = mapping.label;
+                    button.className = 'tab-button text-sm';
+                    button.dataset.fileType = mapping.key;
+                    
+                    button.addEventListener('click', handleTabClick);
+                    fileTabs.appendChild(button);
+                });
+            }
+
+            /**
+             * Handles the click event on a project button.
+             */
+            function handleProjectClick(event) {
+                event.preventDefault();
+
+                // 1. Get data from the button (now stored in dataset)
+                const button = event.currentTarget;
+                const projectName = button.dataset.name;
+                const skills = JSON.parse(button.dataset.skills);
+                // The URLs were stored as a stringified JSON object
+                const urls = JSON.parse(button.dataset.urls); 
+
+                // 2. Update IFRAME source to default (Project Workbook) and visibility
+                excelViewer.src = urls.project;
+                initialMessage.classList.add('hidden');
+                excelViewer.classList.remove('hidden');
+
+                // 3. Highlight the active project button
+                document.querySelectorAll('.project-button').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.remove('text-white');
+                    btn.classList.add('text-gray-700');
+                });
+                button.classList.add('active');
+                button.classList.remove('text-gray-700');
+                button.classList.add('text-white');
+                
+                // 4. Update Skills Breakdown Section
+                projectTitleDisplay.textContent = projectName;
+                skillsList.innerHTML = ''; // Clear previous skills
+
+                skills.forEach(skill => {
+                    const skillTag = document.createElement('span');
+                    skillTag.textContent = skill;
+                    // Tag styling
+                    skillTag.className = 'px-3 py-1 bg-excel-green text-white text-sm font-medium rounded-full shadow-sm';
+                    skillsList.appendChild(skillTag);
+                });
+
+                skillsBreakdown.classList.remove('hidden'); // Show the skills section
+
+                // 5. Render Tabs and set default active tab
+                renderFileTabs(urls);
+                fileTabsContainer.classList.remove('hidden'); 
+                
+                // Manually set the Project Workbook tab as active initially
+                const defaultTab = fileTabs.querySelector('[data-file-type="project"]');
+                if (defaultTab) {
+                    defaultTab.classList.add('active-tab');
+                }
+
+                // 6. Optional: Scroll down to the project view section for better UX on mobile
+                document.getElementById('project-display').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            /**
+             * Dynamically generates the navigation structure based on projectData.
+             */
+            function generateNavigation() {
+                navGrid.innerHTML = ''; // Clear existing content
+
+                Object.keys(projectData).forEach(level => {
+                    const levelData = projectData[level];
+                    const levelColor = levelData.color;
+                    
+                    // Create the level container
+                    const levelDiv = document.createElement('div');
+                    levelDiv.className = `p-4 rounded-xl shadow-lg border border-gray-200 bg-${levelColor.replace('-500', '-100/50').replace('-600', '-100/50')}`;
+                    
+                    // Level Header with colored circle
+                    levelDiv.innerHTML = `
+                        <h3 class="text-xl font-bold mb-4 flex items-center text-gray-800">
+                            <span class="w-4 h-4 rounded-full bg-${levelColor} mr-3 shadow"></span>
+                            ${level} Skills
+                        </h3>
+                        <div id="projects-${level.toLowerCase()}" class="space-y-1">
+                            <!-- Project buttons go here -->
+                        </div>
+                    `;
+                    navGrid.appendChild(levelDiv);
+
+                    // Add project links inside the container
+                    const projectsContainer = levelDiv.querySelector(`#projects-${level.toLowerCase()}`);
+                    levelData.projects.forEach(project => {
+                        const button = document.createElement('button');
+                        button.textContent = project.name;
+                        button.className = 'project-button text-gray-700 hover:bg-gray-200';
+                        // Store complex data (URLs and skills) as JSON strings in data attributes
+                        button.dataset.urls = JSON.stringify(project.urls); 
+                        button.dataset.name = project.name;
+                        button.dataset.skills = JSON.stringify(project.skills); 
+
+                        // Add click listener
+                        button.addEventListener('click', handleProjectClick);
+                        projectsContainer.appendChild(button);
+                    });
+                });
+            }
+
+            // Initialize the navigation structure
+            generateNavigation();
+        });
+    </script>
 </body>
 </html>
