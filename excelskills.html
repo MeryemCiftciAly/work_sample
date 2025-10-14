@@ -61,6 +61,16 @@
             transform: translateY(-1px);
         }
         
+        /* Disabled/Placeholder project button style */
+        .project-button.disabled-placeholder {
+            opacity: 0.5;
+            cursor: default;
+        }
+        .project-button.disabled-placeholder:hover {
+            background-color: transparent;
+            transform: none;
+        }
+        
         /* Tab styling */
         .tab-button {
             padding: 10px 18px;
@@ -134,14 +144,18 @@
     <!-- Main Content Area -->
     <main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 mt-6 bg-white rounded-xl shadow-2xl">
         
-        <!-- Under Development Message -->
+        <!-- Under Development Message (UPDATED) -->
         <div class="p-4 sm:p-6 mb-8 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg shadow-md transition duration-500" role="alert">
             <p class="text-xl font-semibold text-yellow-800 flex items-center">
                 <svg class="w-6 h-6 mr-3 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                Important: File Loading Issue
+                Notice: Project Status
             </p>
             <p class="mt-2 text-gray-700">
-                You are currently running into a common issue: OneDrive/SharePoint sometimes prevents files from loading in external iframes due to security policies (like `X-Frame-Options`). To fix this, please ensure you are using the **exact "Embed" URL** provided by OneDrive (usually found under File > Share > Embed). If the issue persists, the files are still being prepared for a dedicated hosting solution!
+                This portfolio is an **ongoing section** to showcase diverse Excel skills. Please note:
+                <ul class="list-disc list-inside mt-2 ml-4 space-y-1">
+                    <li>For projects listed as **"Not yet added"**, the files are currently in development.</li>
+                    <li>If you experience loading issues on **Project 1** or **Project 3** (or other live projects), it is likely due to OneDrive/SharePoint security policies (`X-Frame-Options`). Ensure you are using the exact **"Embed" URL** for those live files.</li>
+                </ul>
             </p>
         </div>
 
@@ -223,99 +237,62 @@
                             clean: "https://1drv.ms/x/c/3cd1fbe75ad01d30/IQTZWBk56lJLSKvkj5zyad3AAScAcPQh7B0P9GdKcCQNnxc", 
                             raw: "https://1drv.ms/x/c/3cd1fbe75ad01d30/IQQ0qVoakaHPSaGXweet4Sb2AXNc6zPSk1yeHqpuKj1VhEQ" 
                         },
-                        // UPDATED: Skills simplified to only include name for clear display as tags
                         skills: [
-                            {
-                                category: "Data Cleaning & Transformation",
-                                techniques: [
-                                    { name: "SUBSTITUTE()" },
-                                    { name: "TRIM()" },
-                                    { name: "LEN()" },
-                                    { name: "PROPER() / UPPER() / LOWER()" }
-                                ]
-                            },
-                            {
-                                category: "Data Analysis & Aggregation",
-                                techniques: [
-                                    { name: "SUMIF()" },
-                                    { name: "COUNTIF()" },
-                                    { name: "IF()" }
-                                ]
-                            },
-                            {
-                                category: "Data Exploration & Visualization",
-                                techniques: [
-                                    { name: "Pivot Tables" },
-                                    { name: "Pivot Filters & Sorting" },
-                                    { name: "Table Formatting & Structured References" }
-                                ]
-                            },
-                             {
-                                category: "Data Validation & Consistency Checks",
-                                techniques: [
-                                    { name: "Conditional Formatting" },
-                                    { name: "Text Data Type Verification" },
-                                    { name: "Removing Extra Spaces" }
-                                ]
-                            }
-                        ] 
-                    },
-                    { 
-                        name: "Project 2: Monthly Budget Tracker", 
-                        urls: {
-                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P2", // PASTE PROJECT 2 FINAL URL HERE
-                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P2", // PASTE PROJECT 2 CLEAN URL HERE
-                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P2" // PASTE PROJECT 2 RAW URL HERE
-                        },
-                        // Default skills for placeholder projects (simple array)
-                        skills: ["SUM/AVERAGE/MIN/MAX", "Basic Charts (Line/Bar)", "Freeze Panes", "Number Formatting"] 
-                    },
+                            { category: "Data Cleaning & Transformation", techniques: [{ name: "SUBSTITUTE()" }, { name: "TRIM()" }, { name: "LEN()" }, { name: "PROPER() / UPPER() / LOWER()" }] },
+                            { category: "Data Analysis & Aggregation", techniques: [{ name: "SUMIF()" }, { name: "COUNTIF()" }, { name: "IF()" }] },
+                            { category: "Data Exploration & Visualization", techniques: [{ name: "Pivot Tables" }, { name: "Pivot Filters & Sorting" }, { name: "Table Formatting & Structured References" }] },
+                            { category: "Data Validation & Consistency Checks", techniques: [{ name: "Conditional Formatting" }, { name: "Text Data Type Verification" }, { name: "Removing Extra Spaces" }] }
+                        ],
+                        isPlaceholder: false
+                    }
+                    // Project 2 (Monthly Budget Tracker) has been removed as requested.
                 ]
             },
             'Intermediate': {
                 color: 'excel-green',
                 projects: [
                     { 
-                        name: "Project 3: Inventory Management", 
+                        name: "Project 3: Customer Information Lookup", 
                         urls: {
-                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P3", // PASTE PROJECT 3 FINAL URL HERE
-                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P3", // PASTE PROJECT 3 CLEAN URL HERE
-                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P3" // PASTE PROJECT 3 RAW URL HERE
+                            project: "https://1drv.ms/x/c/3cd1fbe75ad01d30/IQRusDRSvZp4SK1IAVJHLYeiAc4IB7EN4cxLmi1qxOmWWds", 
+                            // Placeholder URLs for clean/raw files (using the structure of the Advanced placeholder for consistency)
+                            clean: "https://onedrive.live.com/embed?resid=Placeholder-P3-Clean", 
+                            raw: "https://onedrive.live.com/embed?resid=Placeholder-P3-Raw" 
                         },
-                        skills: ["XLOOKUP (Single Lookup)", "Pivot Tables & Charts", "Slicers", "IF/IFS/AND/OR Functions"] 
-                    },
-                    { 
-                        name: "Project 4: HR Payroll Calculator", 
-                        urls: {
-                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P4", // PASTE PROJECT 4 FINAL URL HERE
-                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P4", // PASTE PROJECT 4 CLEAN URL HERE
-                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P4" // PASTE PROJECT 4 RAW URL HERE
-                        },
-                        skills: ["VLOOKUP (Legacy Method)", "SUMIFS/COUNTIFS", "Data Aggregation", "Named Ranges"] 
-                    },
+                        skills: [
+                            { category: "Data Lookup & Retrieval", techniques: [{ name: "VLOOKUP()" }] },
+                            { category: "Logical Branching & Conditional Checks", techniques: [{ name: "IF()" }, { name: "OR()" }] },
+                            { category: "Data Validation & Type Handling", techniques: [{ name: "ISNUMBER()" }] },
+                            { category: "Data Cleaning & Formalization", techniques: [{ name: "UPPER()" }] }
+                        ],
+                        isPlaceholder: false
+                    }
+                    // Project 4 (HR Payroll Calculator) has been removed as requested.
                 ]
             },
             'Advanced': {
                 color: 'adv-orange',
                 projects: [
                     { 
-                        name: "Project 5: Financial Model Template", 
-                        urls: {
-                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P5", // PASTE PROJECT 5 FINAL URL HERE
-                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P5", // PASTE PROJECT 5 CLEAN URL HERE
-                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P5" // PASTE PROJECT 5 RAW URL HERE
+                        name: "Project 5: Not yet added", 
+                        urls: { 
+                            project: "", // Empty URL triggers placeholder message in JS
+                            clean: "", 
+                            raw: "" 
                         },
-                        skills: ["INDEX/MATCH/MATCH (Triple)", "Dynamic Array Formulas (FILTER)", "Scenario Manager (Concept)", "OFFSET/INDIRECT Functions"] 
-                    },
-                    { 
-                        name: "Project 6: Automated Report Prep", 
-                        urls: {
-                            project: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=ProjectWorkbook_P6", // PASTE PROJECT 6 FINAL URL HERE
-                            clean: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=CleanData_P6", // PASTE PROJECT 6 CLEAN URL HERE
-                            raw: "https://onedrive.live.com/embed?resid=...&wdAllowInteractivity=True&file=RawData_P6" // PASTE PROJECT 6 RAW URL HERE
-                        },
-                        skills: ["VBA/Macros (Basic Recording & Editing)", "Power Query (Basic Get & Transform)", "Text Manipulation (LEFT, RIGHT, FIND)", "Complex Nesting"] 
-                    },
+                        skills: [
+                            { 
+                                category: "Advanced Techniques", 
+                                techniques: [
+                                    { name: "INDEX/MATCH/MATCH" }, 
+                                    { name: "Dynamic Arrays (FILTER, SORT)" }, 
+                                    { name: "VBA/Macros" }
+                                ]
+                            }
+                        ],
+                        isPlaceholder: true
+                    }
+                    // Project 6 (Automated Report Prep) has been removed as requested.
                 ]
             }
         };
@@ -376,6 +353,18 @@
                     
                     button.addEventListener('click', handleTabClick);
                     fileTabs.appendChild(button);
+                    
+                    // Disable tabs if the URL is a placeholder/empty
+                    const fileUrl = urls[mapping.key];
+                    if (!fileUrl || fileUrl.includes('Placeholder')) {
+                         button.disabled = true;
+                         button.classList.add('opacity-50', 'cursor-not-allowed');
+                         button.title = "File not yet prepared for viewing";
+                    } else {
+                        button.disabled = false;
+                        button.classList.remove('opacity-50', 'cursor-not-allowed');
+                        button.title = "";
+                    }
                 });
             }
 
@@ -389,23 +378,61 @@
                 const button = event.currentTarget;
                 const projectName = button.dataset.name;
                 const skills = JSON.parse(button.dataset.skills);
-                // The URLs were stored as a stringified JSON object
                 const urls = JSON.parse(button.dataset.urls); 
+                const isPlaceholder = button.dataset.isPlaceholder === 'true';
 
-                // 2. Update IFRAME source to default (Project Workbook) and visibility
-                excelViewer.src = urls.project;
-                initialMessage.classList.add('hidden');
-                excelViewer.classList.remove('hidden');
-
+                // 2. Handle Placeholder Projects
+                if (isPlaceholder || !urls.project || urls.project.includes('Placeholder')) {
+                    excelViewer.src = "";
+                    initialMessage.innerHTML = `
+                        <p class="text-center p-12 text-2xl font-semibold text-adv-orange">
+                            ${projectName}
+                        </p>
+                        <p class="text-center p-4 text-lg text-gray-700">
+                            This project is currently in development.
+                        </p>
+                        <div class="max-w-md mx-auto p-4 bg-yellow-50 rounded-lg shadow-inner mt-4">
+                            <h5 class="font-semibold text-gray-800 mb-2">Planned Content:</h5>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                                ${skills[0].techniques.map(t => `<li>${t.name}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    initialMessage.classList.remove('hidden');
+                    excelViewer.classList.add('hidden');
+                    fileTabsContainer.classList.add('hidden');
+                    skillsBreakdown.classList.add('hidden');
+                    
+                } else {
+                    // 2. Live Project Logic
+                    excelViewer.src = urls.project;
+                    initialMessage.classList.add('hidden');
+                    excelViewer.classList.remove('hidden');
+                    fileTabsContainer.classList.remove('hidden');
+                    skillsBreakdown.classList.remove('hidden'); 
+                    
+                    // 5. Render Tabs and set default active tab
+                    renderFileTabs(urls);
+                    
+                    // Manually set the Project Workbook tab as active initially
+                    const defaultTab = fileTabs.querySelector('[data-file-type="project"]');
+                    if (defaultTab) {
+                        defaultTab.classList.add('active-tab');
+                    }
+                }
+                
                 // 3. Highlight the active project button
                 document.querySelectorAll('.project-button').forEach(btn => {
                     btn.classList.remove('active');
                     btn.classList.remove('text-white');
                     btn.classList.add('text-gray-700');
                 });
-                button.classList.add('active');
-                button.classList.remove('text-gray-700');
-                button.classList.add('text-white');
+                // Only mark as active if it's not the disabled placeholder (which should be handled in CSS)
+                if (!isPlaceholder) {
+                    button.classList.add('active');
+                    button.classList.remove('text-gray-700');
+                    button.classList.add('text-white');
+                }
                 
                 // 4. Update Skills Breakdown Section (MODIFIED FOR SIMPLE TABLE-LIKE GRID)
                 projectTitleDisplay.textContent = projectName;
@@ -415,13 +442,11 @@
                 if (skills && skills.length > 0 && typeof skills[0] === 'object' && skills[0].category) {
                     // Structured Skills Rendering (Using a lightweight, table-like grid)
                     
-                    // Add explicit introduction text
                     const introText = document.createElement('p');
                     introText.className = 'text-base font-medium text-gray-700 mb-4 border-b border-gray-300 pb-2';
                     introText.textContent = 'This workbook utilizes the following key formulas and techniques:';
                     skillsList.appendChild(introText);
 
-                    // Create a grid container for the categories to give it a clean, multi-column layout
                     const gridContainer = document.createElement('div');
                     // Responsive grid layout for a non-overpowering table look
                     gridContainer.className = 'grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm'; 
@@ -455,33 +480,17 @@
                     });
 
                 } else {
-                    // Legacy/Placeholder Skills Rendering (Simple Tags - used for Projects 2-6 until updated)
+                    // Legacy/Placeholder Skills Rendering (Simple Tags - used for non-structured data)
                     const techniquesContainer = document.createElement('div');
                     techniquesContainer.className = 'flex flex-wrap gap-2 mb-4';
                     
-                    skills.forEach(skill => {
-                        const skillTag = document.createElement('span');
-                        skillTag.textContent = skill;
-                        // Tag styling
-                        skillTag.className = 'px-3 py-1 bg-excel-green text-white text-sm font-medium rounded-full shadow-sm';
-                        techniquesContainer.appendChild(skillTag);
-                    });
-                    skillsList.appendChild(techniquesContainer);
+                    // Simple text display for unstructured skills
+                    const placeholderText = document.createElement('p');
+                    placeholderText.className = 'text-gray-600 italic';
+                    placeholderText.textContent = skills.join(' '); 
+                    skillsList.appendChild(placeholderText);
                 }
-
-
-                skillsBreakdown.classList.remove('hidden'); // Show the skills section
-
-                // 5. Render Tabs and set default active tab
-                renderFileTabs(urls);
-                fileTabsContainer.classList.remove('hidden'); 
                 
-                // Manually set the Project Workbook tab as active initially
-                const defaultTab = fileTabs.querySelector('[data-file-type="project"]');
-                if (defaultTab) {
-                    defaultTab.classList.add('active-tab');
-                }
-
                 // 6. Optional: Scroll down to the project view section for better UX on mobile
                 document.getElementById('project-display').scrollIntoView({ behavior: 'smooth' });
             }
@@ -518,10 +527,19 @@
                         const button = document.createElement('button');
                         button.textContent = project.name;
                         button.className = 'project-button text-gray-700 hover:bg-gray-200';
-                        // Store complex data (URLs and skills) as JSON strings in data attributes
+                        
+                        // Check for placeholder status
+                        const isPlaceholder = project.isPlaceholder || !project.urls.project;
+                        if (isPlaceholder) {
+                            button.classList.add('disabled-placeholder', 'text-gray-500');
+                            button.title = "Content not yet added";
+                        }
+                        
+                        // Store complex data (URLs, skills, and status) as JSON strings/attributes
                         button.dataset.urls = JSON.stringify(project.urls); 
                         button.dataset.name = project.name;
                         button.dataset.skills = JSON.stringify(project.skills); 
+                        button.dataset.isPlaceholder = isPlaceholder;
 
                         // Add click listener
                         button.addEventListener('click', handleProjectClick);
