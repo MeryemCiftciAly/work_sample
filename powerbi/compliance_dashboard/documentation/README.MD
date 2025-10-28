@@ -1,5 +1,16 @@
 # Program Performance & Strategic Insights Dashboard
 
+### 👋 Welcome and Introduction
+
+Hello! I am Meryem. Thank you for visiting my Power BI project. This dashboard was developed as a key part of my growing data analytics skills growth. I encourage you to explore the live dashboard and review the custom-built data model.
+
+---
+
+## 🔗 Live Dashboard Access
+
+Access the published Power BI report directly:
+
+* **View Live Dashboard:** [https://app.powerbi.com/view?r=eyJrIjoiMDA0OTI5MDItZGYzYi00YTljLTgxODgtNTlhY2FjZDJiNTA5IiwidCI6IjAwMjgyOGQ1LTBiYTMtNDJmZi1hMWFkLWFlMzUwMWU5YTliMiIsImMiOjJ9]
 ---
 
 ## 📝 Project Overview
