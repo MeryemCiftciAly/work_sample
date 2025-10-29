@@ -8,11 +8,135 @@
     /* General styles */
     body {
         margin: 0;
+        /* Added padding-top to account for the fixed neon header */
+        padding-top: 50px; 
         background: #f0f2f5; /* Lighter background for a modern feel */
         font-family: Arial, sans-serif;
         color: #333;
         line-height: 1.6;
     }
+    
+    /* --- NEW NEON HEADER STYLES --- */
+    .neon-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #39FF14; /* Neon Green */
+        color: #000;
+        font-weight: bold;
+        z-index: 1000;
+        padding: 0 1.5rem;
+        height: 50px;
+        display: flex;
+        /* Adjusted justify-content to spread items differently */
+        justify-content: space-between; 
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+    .neon-header .left-side {
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        /* Allocate a specific width for the left side to control spacing */
+        flex: 0 0 auto; 
+    }
+    .neon-header .left-side:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .neon-header .right-side {
+        display: flex;
+        align-items: center;
+        /* Increased gap for better visual separation of the three elements */
+        gap: 20px; 
+        font-size: 0.9em;
+        /* Push this section slightly more to the center-right */
+        margin-left: auto; /* Pushes it as far right as possible by default */
+        padding-right: 10%; /* Add right padding to move it left from the very end */
+    }
+    .date-info {
+        font-weight: bold;
+    }
+    .time-display {
+        background-color: #000;
+        color: #39FF14;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-weight: normal;
+    }
+
+    /* --- NEW MODAL STYLES --- */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1001; /* Above the header */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+        /* Center content using flex */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal-content {
+        background-color: #fff;
+        margin: auto; 
+        padding: 20px;
+        border: 2px solid #39FF14;
+        width: 90%; 
+        max-width: 400px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(57, 255, 20, 0.5);
+        position: relative;
+    }
+    .modal-content h3 {
+        color: #1b4f72;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+    }
+    .modal-content a.project-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #2c3e50;
+        color: #fff;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .modal-content a.project-link:hover {
+        background-color: #34495e;
+        text-decoration: none;
+    }
+    .modal-close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+    .modal-close:hover,
+    .modal-close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    /* --- END NEW STYLES --- */
+
+
     .banner {
         width: 100%;
         height: 220px;
@@ -101,31 +225,6 @@
         margin-top: 0;
         margin-bottom: 1rem;
         font-size: 1.5rem;
-    }
-
-    /* Badge styling */
-    .badge-container {
-        text-align: center;
-        margin-bottom: 1.5rem;
-    }
-    .open-badge {
-        display: inline-block;
-        background-color: #4caf50;
-        color: white;
-        padding: 0.5rem 1.25rem;
-        font-size: 1.2rem;
-        font-weight: bold;
-        border-radius: 30px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-        70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-    }
-    .badge-container.closed {
-        display: none;
     }
 
     /* Call to action button */
@@ -221,6 +320,15 @@
     }
 
     /* Responsive adjustments */
+    @media (max-width: 900px) {
+        /* Hide the long date string on slightly smaller desktops/tablets */
+        .neon-header .right-side .date-info {
+            display: none;
+        }
+        .neon-header .right-side {
+            padding-right: 5%;
+        }
+    }
     @media (max-width: 768px) {
         .container {
             margin: -40px auto 0;
@@ -231,25 +339,47 @@
         .section-container {
             grid-template-columns: 1fr;
         }
+        .neon-header .right-side {
+             gap: 10px;
+             padding-right: 5%;
+        }
     }
     @media (max-width: 480px) {
-        .open-badge {
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
+        /* Hide OPEN FOR WORK on very small screens to prioritize time */
+        .neon-header .right-side span:first-child {
+            display: none;
         }
     }
   </style>
 </head>
 <body>
 
+    
+
+<div class="neon-header">
+        <div class="left-side" onclick="openModal()">
+            
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display:inline-block; vertical-align: middle; margin-right: 5px;">
+                <path d="M12.637 4.175a.5.5 0 0 0-.25-.436l-2.73-1.574a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433-.5-.866-.5-.866-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l2.73 1.574a.5.5 0 0 0 .5-.866l-.758-.438 1.5-2.598.75.433.5.866.5.866 1.5-2.598.75.433a.5.5 0 0 0 .5-.866l-2.73-1.574a.5.5 0 0 0-.25-.436z"/>
+                <path d="M2.5 14h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1z"/>
+            </svg>
+            VIEW LATEST PROJECT
+        </div>
+        <div class="right-side">
+            <span>OPEN FOR WORK OPPORTUNITIES</span>
+            <span class="date-info">Today is October 29, 2025 - Time is:</span>
+            <span id="current-time" class="time-display">--:--:--</span>
+        </div>
+    </div>
+    
+
   <div class="banner"></div>
 
   <div class="container">
-    <div class="badge-container open-now">
-        <span class="open-badge">📣 Open For Work Opportunities: Today (<span id="today-date"></span>)</span>
-    </div>
+    
 
-    <div class="profile-header">
+<div class="profile-header">
         <h1>Kamara Rowe‑Ciftci (Meryem)</h1>
         <p class="intro">
             This page showcases my progress in data analytics and the tools I've used. It’s a growing record of learning, projects, and what’s next on my skills journey.
@@ -258,7 +388,7 @@
     
     <div class="section-container">
         <div class="section">
-            <h2>📊 Portfolios & Dashboards</h2>
+            <h2>📊 Portfolios & Dashboards </h2>
             <p>Interactive dashboards for visual analytics and storytelling.</p>
             <ul>
                 <li>
@@ -319,7 +449,7 @@
                 </li>
             </ul>
         </div>
-        
+
         <div class="section">
             <h2>🧠 AI & Prompt Engineering</h2>
             <p>
@@ -430,14 +560,13 @@
         <div class="section">
             <h2>⭐ Project Spotlight</h2>
             <p>
-                **Featured Project:** New York City Waste Collection Analysis
+                **Featured Project:** Program Performance Dashboard (Power BI)
             </p>
             <p>
-                I analyzed waste collection data from 1990 to 2024 to explore borough-level contributions, waste types, and recycling patterns in New York City, uncovering data-driven insights into the city's waste management trends.
+                A dynamic **Power BI dashboard** tracking key performance indicators (KPIs) like program success rate, incident severity, and identify high-risk individuals. This project showcases data modeling and advanced DAX calculations.
             </p>
-            <p class="tools"><strong>Skills Used:</strong> Data analysis, querying, data visualization, presentation design</p>
-            <p class="tools"><strong>Tools:</strong> SQL, Excel (Power Pivot, XLOOKUP, INDEX), Google Sheets, Google Slides, Conditional Formatting</p>
-            <p><a href="https://meryemciftcialy.github.io/work_sample/nyc-analy-prj-timeline.html" target="_blank">View Project</a></p>
+            <p class="tools"><strong>Skills Used:</strong> Power BI Development, Data Modeling (Star Schema), DAX, Report Generation</p>
+            <p><a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank">View Power BI Portfolio</a></p>
             <p style="text-align: center; margin-top: 1.5rem;">
                 <a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/" target="_blank">
                     **View all my recent projects on my Freelancing Website**
@@ -465,11 +594,82 @@
         <p class="note2">Last updated: September 2025. Check back for new additions!</p>
     </div>
 
-  </div><script>
-    const dateSpan = document.getElementById("today-date");
-    const today = new Date();
-    const options = { day: '2-digit', month: 'short', year: 'numeric' };
-    dateSpan.textContent = today.toLocaleDateString('en-GB', options).replace(/ /g, ' ');
+  </div>
+  
+    
+
+<div id="project-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3>Project Spotlight: Global Sales Performance (Power BI)</h3>
+            <p style="font-size: 0.95rem; color: #333;">
+                 A dynamic **Power BI dashboard** tracking key performance indicators (KPIs) like program success rate, incident severity, and identify high-risk individuals. This project showcases data modeling and advanced DAX calculations.
+            </p>
+            <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
+                **Tools Used:** Power BI Desktop, Data Modeling (Star Schema), DAX.
+            </p>
+            <a 
+                href="https://meryemciftcialy.github.io/work_sample/pbi.html" 
+                target="_blank" 
+                class="project-link"
+            >
+                View Power BI Portfolio
+            </a>
+        </div>
+    </div>
+    
+
+<script>
+    const modal = document.getElementById('project-modal');
+    const timeDisplay = document.getElementById('current-time');
+
+    /**
+     * Updates the real-time clock (HH:MM:SS) and ensures the date prefix is fixed.
+     */
+    function updateTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        if (timeDisplay) {
+            // Only update the time part
+            timeDisplay.textContent = timeString;
+        }
+    }
+
+    /**
+     * Shows the Project Modal pop-up.
+     */
+    function openModal() {
+        if (modal) {
+            modal.style.display = 'flex'; // Use flex to center the content
+        }
+    }
+
+    /**
+     * Hides the Project Modal pop-up.
+     */
+    function closeModal() {
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Set up initial time and interval on window load
+    window.onload = function() {
+        updateTime();
+        // Update the time every second
+        setInterval(updateTime, 1000);
+
+        // Optional: Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    };
   </script>
 </body>
 </html>
