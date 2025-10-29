@@ -29,7 +29,8 @@
         padding: 0 1.5rem;
         height: 50px;
         display: flex;
-        justify-content: space-between;
+        /* Adjusted justify-content to spread items differently */
+        justify-content: space-between; 
         align-items: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         text-transform: uppercase;
@@ -40,6 +41,8 @@
         padding: 5px 10px;
         border-radius: 4px;
         transition: background-color 0.3s;
+        /* Allocate a specific width for the left side to control spacing */
+        flex: 0 0 auto; 
     }
     .neon-header .left-side:hover {
         background-color: rgba(0, 0, 0, 0.1);
@@ -47,8 +50,15 @@
     .neon-header .right-side {
         display: flex;
         align-items: center;
-        gap: 15px;
+        /* Increased gap for better visual separation of the three elements */
+        gap: 20px; 
         font-size: 0.9em;
+        /* Push this section slightly more to the center-right */
+        margin-left: auto; /* Pushes it as far right as possible by default */
+        padding-right: 10%; /* Add right padding to move it left from the very end */
+    }
+    .date-info {
+        font-weight: bold;
     }
     .time-display {
         background-color: #000;
@@ -217,30 +227,6 @@
         font-size: 1.5rem;
     }
 
-    /* Badge styling (Original badge removed, keeping styles just in case but they are unused) */
-    .badge-container {
-        display: none; /* Hide the old badge container */
-    }
-    .open-badge {
-        display: inline-block;
-        background-color: #4caf50;
-        color: white;
-        padding: 0.5rem 1.25rem;
-        font-size: 1.2rem;
-        font-weight: bold;
-        border-radius: 30px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-        70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-    }
-    .badge-container.closed {
-        display: none;
-    }
-
     /* Call to action button */
     .cta-button {
         display: inline-block;
@@ -334,6 +320,15 @@
     }
 
     /* Responsive adjustments */
+    @media (max-width: 900px) {
+        /* Hide the long date string on slightly smaller desktops/tablets */
+        .neon-header .right-side .date-info {
+            display: none;
+        }
+        .neon-header .right-side {
+            padding-right: 5%;
+        }
+    }
     @media (max-width: 768px) {
         .container {
             margin: -40px auto 0;
@@ -345,29 +340,27 @@
             grid-template-columns: 1fr;
         }
         .neon-header .right-side {
-             /* Hide text on small screens */
-            gap: 5px;
-            font-size: 0.8em;
-        }
-        .neon-header .right-side span:first-child {
-            display: none;
+             gap: 10px;
+             padding-right: 5%;
         }
     }
     @media (max-width: 480px) {
-        .open-badge {
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
+        /* Hide OPEN FOR WORK on very small screens to prioritize time */
+        .neon-header .right-side span:first-child {
+            display: none;
         }
     }
   </style>
 </head>
 <body>
 
-    <!-- NEW: Fixed Neon Split Header -->
-    <div class="neon-header">
+    
+
+<div class="neon-header">
         <div class="left-side" onclick="openModal()">
-            <!-- SVG for visual icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display:inline-block; vertical-align: middle; margin-right: 5px;">
+            
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display:inline-block; vertical-align: middle; margin-right: 5px;">
                 <path d="M12.637 4.175a.5.5 0 0 0-.25-.436l-2.73-1.574a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433-.5-.866-.5-.866-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l2.73 1.574a.5.5 0 0 0 .5-.866l-.758-.438 1.5-2.598.75.433.5.866.5.866 1.5-2.598.75.433a.5.5 0 0 0 .5-.866l-2.73-1.574a.5.5 0 0 0-.25-.436z"/>
                 <path d="M2.5 14h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1z"/>
             </svg>
@@ -375,18 +368,18 @@
         </div>
         <div class="right-side">
             <span>OPEN FOR WORK OPPORTUNITIES</span>
+            <span class="date-info">Today is October 29, 2025 - Time is:</span>
             <span id="current-time" class="time-display">--:--:--</span>
         </div>
     </div>
-    <!-- END NEW FIXED HEADER -->
-
+    
 
   <div class="banner"></div>
 
   <div class="container">
-    <!-- REMOVED: Old badge container to avoid redundancy -->
+    
 
-    <div class="profile-header">
+<div class="profile-header">
         <h1>Kamara Rowe‑Ciftci (Meryem)</h1>
         <p class="intro">
             This page showcases my progress in data analytics and the tools I've used. It’s a growing record of learning, projects, and what’s next on my skills journey.
@@ -604,8 +597,9 @@
 
   </div>
   
-    <!-- NEW: Project Modal Pop-up -->
-    <div id="project-modal" class="modal" style="display: none;">
+    
+
+<div id="project-modal" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal()">&times;</span>
             <h3>Project Spotlight: NYC Waste Collection Analysis</h3>
@@ -624,14 +618,14 @@
             </a>
         </div>
     </div>
-    <!-- END NEW MODAL -->
+    
 
-  <script>
+<script>
     const modal = document.getElementById('project-modal');
     const timeDisplay = document.getElementById('current-time');
 
     /**
-     * Updates the real-time clock in the top banner (24-hour format).
+     * Updates the real-time clock (HH:MM:SS) and ensures the date prefix is fixed.
      */
     function updateTime() {
         const now = new Date();
@@ -641,6 +635,7 @@
 
         const timeString = `${hours}:${minutes}:${seconds}`;
         if (timeDisplay) {
+            // Only update the time part
             timeDisplay.textContent = timeString;
         }
     }
