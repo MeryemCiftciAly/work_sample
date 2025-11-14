@@ -1,675 +1,436 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Work Sample and Skills | Meryem</title>
-  <style>
-    /* General styles */
-    body {
-        margin: 0;
-        /* Added padding-top to account for the fixed neon header */
-        padding-top: 50px; 
-        background: #f0f2f5; /* Lighter background for a modern feel */
-        font-family: Arial, sans-serif;
-        color: #333;
-        line-height: 1.6;
-    }
-    
-    /* --- NEW NEON HEADER STYLES --- */
-    .neon-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: #39FF14; /* Neon Green */
-        color: #000;
-        font-weight: bold;
-        z-index: 1000;
-        padding: 0 1.5rem;
-        height: 50px;
-        display: flex;
-        /* Adjusted justify-content to spread items differently */
-        justify-content: space-between; 
-        align-items: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-transform: uppercase;
-        font-size: 0.9rem;
-    }
-    .neon-header .left-side {
-        cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-        /* Allocate a specific width for the left side to control spacing */
-        flex: 0 0 auto; 
-    }
-    .neon-header .left-side:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-    }
-    .neon-header .right-side {
-        display: flex;
-        align-items: center;
-        /* Increased gap for better visual separation of the three elements */
-        gap: 20px; 
-        font-size: 0.9em;
-        /* Push this section slightly more to the center-right */
-        margin-left: auto; /* Pushes it as far right as possible by default */
-        padding-right: 10%; /* Add right padding to move it left from the very end */
-    }
-    .date-info {
-        font-weight: bold;
-    }
-    .time-display {
-        background-color: #000;
-        color: #39FF14;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-family: monospace;
-        font-weight: normal;
-    }
-
-    /* --- NEW MODAL STYLES --- */
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed;
-        z-index: 1001; /* Above the header */
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-        /* Center content using flex */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .modal-content {
-        background-color: #fff;
-        margin: auto; 
-        padding: 20px;
-        border: 2px solid #39FF14;
-        width: 90%; 
-        max-width: 400px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(57, 255, 20, 0.5);
-        position: relative;
-    }
-    .modal-content h3 {
-        color: #1b4f72;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 10px;
-        margin-bottom: 15px;
-        font-size: 1.2rem;
-    }
-    .modal-content a.project-link {
-        display: block;
-        text-align: center;
-        margin-top: 20px;
-        padding: 10px;
-        background-color: #2c3e50;
-        color: #fff;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-    }
-    .modal-content a.project-link:hover {
-        background-color: #34495e;
-        text-decoration: none;
-    }
-    .modal-close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        line-height: 1;
-        position: absolute;
-        top: 10px;
-        right: 20px;
-    }
-    .modal-close:hover,
-    .modal-close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    /* --- END NEW STYLES --- */
-
-
-    .banner {
-        width: 100%;
-        height: 220px;
-        background: url('Trends_(1).png') center/cover;
-    }
-    .container {
-        max-width: 1000px;
-        margin: -60px auto 0; /* Move up to overlap the banner */
-        padding: 2rem 1.5rem;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        position: relative;
-    }
-    .profile-header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-    .profile-header h1 {
-        color: #2c3e50;
-        font-size: 2.5em;
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-    }
-    .intro {
-        font-size: 1.1rem;
-        color: #555;
-        max-width: 800px;
-        margin: 0 auto 2rem;
-    }
-    a {
-        color: #2874a6;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-        color: #1a5276;
-    }
-    
-    /* Section styling */
-    .section-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-    .section {
-        background: #fdfdfd;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,.05);
-        border: 1px solid #e0e0e0;
-        display: flex;
-        flex-direction: column;
-    }
-    .section h2 {
-        text-align: center;
-        color: #1b4f72;
-        margin-top: 0;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-    }
-    .section ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-    .section ul li {
-        margin-bottom: 0.75rem;
-        display: flex;
-        align-items: center;
-    }
-    .section ul li svg {
-        margin-right: 10px;
-        color: #2874a6;
-    }
-    .full-width-section {
-        background: #fdfdfd;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,.05);
-        border: 1px solid #e0e0e0;
-        margin-top: 2rem;
-    }
-    .full-width-section h2 {
-        text-align: center;
-        color: #1b4f72;
-        margin-top: 0;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-    }
-
-    /* Call to action button */
-    .cta-button {
-        display: inline-block;
-        background-color: #2c3e50;
-        color: #fff;
-        padding: 12px 25px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-        margin-top: 1rem;
-    }
-    .cta-button:hover {
-        background-color: #34495e;
-        text-decoration: none;
-    }
-
-    /* Collapsible details */
-    details {
-        margin-top: 0.75rem;
-    }
-    summary {
-        cursor: pointer;
-        font-weight: bold;
-        color: #1b4f72;
-    }
-    details p, details ul {
-        margin-left: 1rem;
-        font-size: 0.95rem;
-        color: #555;
-    }
-    details p.tools {
-        margin-top: 0.5rem;
-    }
-    details p.tools strong {
-        color: #34495e;
-    }
-
-    /* Skills List Styling */
-    .skills-list {
-      list-style-type: none;
-      padding-left: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .skills-list li {
-      margin-bottom: 0;
-    }
-    .skills-list li h3 {
-      font-size: 1.2rem;
-      color: #1b4f72;
-      margin-bottom: 0.5rem;
-    }
-    .skills-list ul {
-      list-style-type: disc;
-      margin-left: 1.5rem;
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-
-    /* Footer styling */
-    .footer {
-        text-align: center;
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid #ddd;
-    }
-    .footer ul {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
-    .footer ul li a {
-        color: #2874a6;
-        font-weight: bold;
-    }
-    .note {
-        font-style: italic;
-        color: #73c2fb;
-        font-size: 1rem;
-        font-weight: bold;
-        margin-top: 1rem;
-    }
-    .note2 {
-        font-size: 0.85rem;
-        color: #777;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-        /* Hide the long date string on slightly smaller desktops/tablets */
-        .neon-header .right-side .date-info {
-            display: none;
-        }
-        .neon-header .right-side {
-            padding-right: 5%;
-        }
-    }
-    @media (max-width: 768px) {
-        .container {
-            margin: -40px auto 0;
-        }
-        .profile-header h1 {
-            font-size: 2em;
-        }
-        .section-container {
-            grid-template-columns: 1fr;
-        }
-        .neon-header .right-side {
-             gap: 10px;
-             padding-right: 5%;
-        }
-    }
-    @media (max-width: 480px) {
-        /* Hide OPEN FOR WORK on very small screens to prioritize time */
-        .neon-header .right-side span:first-child {
-            display: none;
-        }
-    }
-  </style>
-</head>
-<body>
-
-    
-
-<div class="neon-header">
-        <div class="left-side" onclick="openModal()">
-            
-
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display:inline-block; vertical-align: middle; margin-right: 5px;">
-                <path d="M12.637 4.175a.5.5 0 0 0-.25-.436l-2.73-1.574a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433-.5-.866-.5-.866-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l2.73 1.574a.5.5 0 0 0 .5-.866l-.758-.438 1.5-2.598.75.433.5.866.5.866 1.5-2.598.75.433a.5.5 0 0 0 .5-.866l-2.73-1.574a.5.5 0 0 0-.25-.436z"/>
-                <path d="M2.5 14h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1z"/>
-            </svg>
-            VIEW LATEST PROJECT
-        </div>
-        <div class="right-side">
-            <span>OPEN FOR WORK OPPORTUNITIES</span>
-            <span class="date-info">Today is October 29, 2025 - Time is:</span>
-            <span id="current-time" class="time-display">--:--:--</span>
-        </div>
-    </div>
-    
-
-  <div class="banner"></div>
-
-  <div class="container">
-    
-
-<div class="profile-header">
-        <h1>Kamara Rowe‑Ciftci (Meryem)</h1>
-        <p class="intro">
-            This page showcases my progress in data analytics and the tools I've used. It’s a growing record of learning, projects, and what’s next on my skills journey.
-        </p>
-    </div>
-    
-    <div class="section-container">
-        <div class="section">
-            <h2>📊 Portfolios & Dashboards </h2>
-            <p>Interactive dashboards for visual analytics and storytelling.</p>
-            <ul>
-                <li>
-                    <a href="https://meryemciftcialy.github.io/work_sample/tableau.html" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
-                            <path d="M1 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-4zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.5zm4 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z"/>
-                        </svg>
-                        Tableau Public Portfolio
-                    </a>
-                </li>
-                <li>
-                    <a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
-                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/>
-                        </svg>
-                        Power BI Portfolio
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>💻 Projects & Code</h2>
-            <p>Explore my projects and code repositories:</p>
-            <ul>
-                <li>
-                    <a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16">
-                            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3h1.5A1.5 1.5 0 0 0 8 1.5a1.5 1.5 0 0 0-1.5 1.5H5v-.5A1.5 1.5 0 0 1 6.5 1z"/>
-                            <path d="M4 2.5A2.5 2.5 0 0 1 6.5 0h3A2.5 2.5 0 0 1 12 2.5V3h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2z"/>
-                        </svg>
-                        Freelancing Website
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2.21.17.4.24.55.15C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"/>
-                        </svg>
-                        SQL & Python Hubs
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/ADpsoscLKclA_ng-vpu9aDY/Excel?rlkey=7rc4uytibnjf07ix6zun3uyar&subfolder_nav_tracking=1&dl=0" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dropbox" viewBox="0 0 16 16">
-                            <path d="M8.01 4.555 4.047 7.864 8.01 11.173l3.963-3.31zm-3.963 3.31L.084 4.555 4.047 1.246 8.01 4.555zm3.963 3.31-3.963 3.309L8.01 15.144l3.963-3.31zm4.04-3.31L8.01 1.246 11.976 4.555 15.92 1.246zM4.046 1.246 0 4.555 4.046 7.864 8.01 4.555zm8.003 0-3.963 3.31 3.963 3.31L15.92 4.555z"/>
-                        </svg>
-                        Microsoft Excel Project Files
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.kaggle.com/meryemciftci" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.65-.544-1.127-1.232l5.05-6.604-5.05-6.604c-.523-.688.47-.646 1.127-1.232l5.482 4.796a1.5 1.5 0 0 1 0 2.496z"/>
-                        </svg>
-                        Kaggle Profile
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>🧠 AI & Prompt Engineering</h2>
-            <p>
-                I use **AI as a development tool** to efficiently build and design websites to showcase my projects. I leverage my knowledge of HTML, CSS, and basic JavaScript to guide the AI and customize the final output. Below are websites I created with the help of AI.
-            </p>
-            <details close>
-                <summary>Nominate a YouTube STEM Educator Campaign</summary>
-                <p>
-                    I leveraged AI tools to design this campaign page, using my knowledge of HTML, CSS, and basic JavaScript to structure the content and layout.
-                </p>
-                <p class="tools"><strong>Tools:</strong> HTML, CSS, JavaScript, Airtable, ChatGPT (AI Prompting), Firebase</p>
-                <p><a href="https://datacampaign.github.io/nominatebaraa/campaign-home" target="_blank">View Project</a></p>
-            </details>
-            <details close>
-                <summary>Freelance Services Website</summary>
-                <p>
-                    I used AI to design this site, which showcases my skills in data analytics, communication, and problem-solving to attract freelance clients.
-                </p>
-                <p class="tools"><strong>Tools:</strong> HTML, CSS, JavaScript, ChatGPT (AI Prompting)</p>
-                <p><a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/" target="_blank">View Freelancing Website</a></p>
-            </details>
-            <details>
-                <summary>This Current Work-Sample Site</summary>
-                <p>
-                    This site was developed with the help of AI to organize and present my portfolio in a clear, structured format. It serves as a hub for showcasing my data analytics skills, project work, and career transition.
-                </p>
-            </details>
-        </div>
-    </div>
-    
-    <div class="cta-section">
-        <a href="https://meryemciftcialy.github.io/work_sample/about_me.html" class="cta-button">👋 About Me & My Career Transition</a>
-           
-    </div>
- 
-
-    <div class="full-width-section">
-        <h2><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
-            <path d="M12.637 4.175a.5.5 0 0 0-.25-.436l-2.73-1.574a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433-.5-.866-.5-.866-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l.758.438-1.5 2.598-.75-.433a.5.5 0 0 0-.5.866l2.73 1.574a.5.5 0 0 0 .5-.866l-.758-.438 1.5-2.598.75.433.5.866.5.866 1.5-2.598.75.433a.5.5 0 0 0 .5-.866l-2.73-1.574a.5.5 0 0 0-.25-.436z"/>
-            <path d="M2.5 14h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1z"/>
-            </svg> Skills & Certifications</h2>
-        <ul class="skills-list">
-            <li>
-                <h3>Google Data Analytics Certification</h3>
-                <p>
-                    Completed January 2025 through Merit America / Coursera.
-                    <a href="https://coursera.org/verify/7IBWOVFHX2B5" target="_blank">View Validation</a>
-                </p>
-            </li>
-            <li>
-                <h3>SQL</h3>
-                <ul>
-                    <li><a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank">View My SQL Hub</a></li>
-                    <li><strong>Data Cleaning & Transformation:</strong> Handling nulls, duplicates, and data type conversions.</li>
-                    <li><strong>Querying & Analysis:</strong> Using `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `ORDER BY`.</li>
-                    <li><strong>Advanced Joins & Subqueries:</strong> Combining data from multiple tables for complex analysis.</li>
-                    <li><strong>Window Functions & Aggregations:</strong> Calculating running totals, ranks, and moving averages.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>Python</h3>
-                <ul>
-                    <li><a href="https://github.com/MeryemCiftciAly/my-python-journal" target="_blank">View My Python Hub</a></li>
-                    <li><strong>Data Manipulation:</strong> Using pandas for data framing, cleaning, and preparation.</li>
-                    <li><strong>Data Visualization:</strong> Creating charts and graphs with matplotlib and seaborn.</li>
-                    <li><strong>Scripting & Automation:</strong> Writing scripts to automate data tasks.</li>
-                    <li><strong>Exploratory Data Analysis (EDA):</strong> Discovering patterns and anomalies.</li>
-                </ul>
-            </li>
-            <li>
-                <h3>Excel</h3>
-                <ul>
-                    <li><strong>Data Cleaning:</strong> Text functions, conditional formatting, and data validation.</li>
-                    <li><strong>Advanced Formulas:</strong> `XLOOKUP`, `INDEX/MATCH`, PivotTables, and Power Query.</li>
-                    <li><strong>Dashboard Creation:</strong> Building interactive dashboards for data visualization.</li>
-                </ul>
-                
-                     <div class="cta-section">
-        <a href="https://meryemciftcialy.github.io/work_sample/excelskills.html" class="cta-button"> 🌟 View Interactive Excel Skills Showcase</a>
-           
-    </div>
-            </li>
-            
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Data Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for professional, elegant look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
-            <li>
-                <h3>Salesforce</h3>
-                <ul>
-                    <li><strong>CRM Fundamentals:</strong> Navigating the Salesforce platform.</li>
-                    <li><strong>Data Management:</strong> Importing, exporting, and organizing data.</li>
-                    <li><strong>Technical Administration:</strong> Configuring front-end and back-end Salesforce functionalities.</li>
-                </ul>
-                
-                               <div class="cta-section">
-        <a href="https://meryemciftcialy.github.io/work_sample/#" class="cta-button"> 🌟 View SalesForce Skills</a>
-           
-    </div>
-            </li>
-            <li>
-                <h3>Administrative & Operational Experience</h3>
-                <p>
-                    Over 5 years of experience in administrative operations and compliance, demonstrating proficiency in project coordination, attention to detail, and use of productivity tools like **Microsoft Office (Word, PowerPoint)**.
-                </p>
-            </li>
-        </ul>
-    </div>
-
-    <div class="section-container" style="margin-top: 2rem;">
-        <div class="section">
-            <h2>⭐ Project Spotlight</h2>
-            <p>
-                **Featured Project:** Program Performance Dashboard (Power BI)
-            </p>
-            <p>
-                A dynamic **Power BI dashboard** tracking key performance indicators (KPIs) like program success rate, incident severity, and identify high-risk individuals. This project showcases data modeling and advanced DAX calculations.
-            </p>
-            <p class="tools"><strong>Skills Used:</strong> Power BI Development, Data Modeling (Star Schema), DAX, Report Generation</p>
-            <p><a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank">View Power BI Portfolio</a></p>
-            <p style="text-align: center; margin-top: 1.5rem;">
-                <a href="https://meryemciftcialy.github.io/nuuraqlyz_analytics/" target="_blank">
-                    **View all my recent projects on my Freelancing Website**
-                </a>
-            </p>
-        </div>
-
-        <div class="section inactive">
-            <h2>☁️ Future Skills (Coming Soon)</h2>
-            <p>Future learning in AWS data engineering and analytics. Certification path coming soon.</p>
-            <p></p>
-            <p><strong>Learning Path:</strong> AWS Certified Data Analyst, Data Engineering Fundamentals, Cloud Concepts</p>
-        </div>
-    </div>
-    
-    <div class="footer">
-        <h2>📬 Contact Me</h2>
-        <p>Feel free to reach out if you’d like a copy of my resume or just want to connect!</p>
-        <ul>
-            <li><a href="mailto:meryemkciftci@gmail.com">Email</a></li>
-            <li><a href="https://linkedin.com/in/meryack" target="_blank">LinkedIn</a></li>
-            <li><a href="https://meryemciftcialy.github.io/work_sample/#">About Me</a></li>
-        </ul>
-        <p class="note">Currently open to work opportunities.</p>
-        <p class="note2">Last updated: September 2025. Check back for new additions!</p>
-    </div>
-
-  </div>
-  
-    
-
-<div id="project-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h3>Project Spotlight: Global Sales Performance (Power BI)</h3>
-            <p style="font-size: 0.95rem; color: #333;">
-                 A dynamic **Power BI dashboard** tracking key performance indicators (KPIs) like program success rate, incident severity, and identify high-risk individuals. This project showcases data modeling and advanced DAX calculations.
-            </p>
-            <p style="font-size: 0.85rem; color: #555; margin-top: 10px;">
-                **Tools Used:** Power BI Desktop, Data Modeling (Star Schema), DAX.
-            </p>
-            <a 
-                href="https://meryemciftcialy.github.io/work_sample/pbi.html" 
-                target="_blank" 
-                class="project-link"
-            >
-                View Power BI Portfolio
-            </a>
-        </div>
-    </div>
-    
-
-<script>
-    const modal = document.getElementById('project-modal');
-    const timeDisplay = document.getElementById('current-time');
-
-    /**
-     * Updates the real-time clock (HH:MM:SS) and ensures the date prefix is fixed.
-     */
-    function updateTime() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-
-        const timeString = `${hours}:${minutes}:${seconds}`;
-        if (timeDisplay) {
-            // Only update the time part
-            timeDisplay.textContent = timeString;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Very light slate background */
+            padding-top: 5rem; /* Space for fixed header */
         }
-    }
 
-    /**
-     * Shows the Project Modal pop-up.
-     */
-    function openModal() {
-        if (modal) {
-            modal.style.display = 'flex'; // Use flex to center the content
+        /* Header Style - Deep Navy Blue, Elegant */
+        .professional-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1f3d61; /* Deep Navy Blue */
+            color: white;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
-    }
 
-    /**
-     * Hides the Project Modal pop-up.
-     */
-    function closeModal() {
-        if (modal) {
-            modal.style.display = 'none';
+        /* Card Styles - Subtle Shadow, Clean Borders */
+        .portfolio-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e2e8f0; /* Light gray border */
+            background-color: white;
         }
-    }
 
-    // Set up initial time and interval on window load
-    window.onload = function() {
-        updateTime();
-        // Update the time every second
-        setInterval(updateTime, 1000);
+        .portfolio-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
 
-        // Optional: Close modal if user clicks outside of it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
+        /* Spotlight Section - Clean and Accentuated (Removed icon accents) */
+        .featured-project-section {
+            background-color: #ffffff; 
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            padding: 2.5rem 1.5rem;
+            border-left: 6px solid #1f3d61; /* Navy accent */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Full Width Section */
+        .full-width-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Button Styling - Navy CTA (Removed icon usage) */
+        .cta-button {
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .cta-button:hover {
+            background-color: #152945;
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Grid for Card Layout */
+        .two-col-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        /* For Certification Grid (4 columns on large screens) */
+        .cert-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+
+        @media (min-width: 640px) { /* sm breakpoint */
+            .two-col-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .cert-grid {
+                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
-    };
-  </script>
+        
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .cert-grid {
+                 grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+        
+        /* Accordion Transition for Colab */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding-top: 0;
+        }
+        .accordion-content.active {
+            max-height: 500px; /* Large enough to fit content */
+            padding-top: 0.75rem;
+        }
+        
+        /* Hero Banner Image Prominence */
+        .hero-banner {
+            background-color: #1f3d61; /* Base navy color */
+            position: relative;
+            isolation: isolate; /* To ensure opacity works correctly */
+        }
+        
+        .hero-banner .bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2; /* Subtle background image */
+            z-index: -1;
+        }
+        
+        /* Prominent LinkedIn Icon Styling */
+        .linkedin-cta {
+            background-color: #0A66C2; /* LinkedIn Blue */
+            color: white;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .linkedin-cta:hover {
+            background-color: #004182;
+            transform: scale(1.05);
+        }
+        
+    </style>
+</head>
+<body id="top" class="antialiased">
+
+    <!-- Header (Fixed Navigation Bar) - Removed Profile Picture for Hero Section -->
+    <header class="professional-header p-4 flex justify-between items-center shadow-lg">
+        <div class="flex items-center space-x-6">
+            <h1 class="text-2xl font-bold tracking-wide">Meryem's Portfolio</h1>
+             <!-- About Me Link -->
+             <a href="#about-me-section" class="text-blue-200 hover:text-white transition duration-150 font-medium hidden sm:block">About Me</a>
+        </div>
+    </header>
+
+    <!-- NEW HERO BANNER SECTION (Prominent Image Display) -->
+    <section id="hero" class="hero-banner text-white py-20 md:py-32 overflow-hidden">
+        <!-- Background Image -->
+        <img src="https://raw.githubusercontent.com/MeryemCiftciAly/work_sample/refs/heads/main/Trends_(1).png" 
+             alt="Data Trends Background" 
+             class="bg-img">
+        
+        <!-- Content -->
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">Data & Analytics Portfolio</h2>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                A dynamic showcase of data visualization, advanced analytics projects, and technical proficiencies in Python, SQL, and Power BI.
+            </p>
+            <!-- Prominent LinkedIn Icon (Requested) -->
+            <a href="https://linkedin.com/in/meryack" target="_blank" class="linkedin-cta inline-flex items-center font-semibold py-3 px-8 rounded-full shadow-2xl">
+                <!-- LinkedIn Icon SVG (using a simple, standard one for prominence) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.542-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.77 7 2.385v6.85z"/></svg>
+                Connect on LinkedIn
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+
+        <!-- NEW ABOUT ME SECTION (Requested) -->
+        <section id="about-me-section" class="full-width-section bg-gray-50 border-l-4 border-l-slate-400">
+            <h2 class="text-2xl font-bold text-gray-800 mb-3">About Me & My Journey</h2>
+            <p class="text-lg text-gray-700">
+                Welcome to my data analytics portfolio. This is a showcase of my ongoing **data analytics skills and growth** as I transition from over **7 years of administrative and operations experience** into the world of data analytics. Follow along as I showcase my proficiency by tackling independent projects using the tools and techniques I've mastered or am currently learning.
+            </p>
+        </section>
+
+        <!-- LATEST PROJECT SPOTLIGHT -->
+        <section class="featured-project-section">
+            <h2 class="text-3xl font-extrabold text-[#1f3d61] mb-3">Featured Project: Program Performance Dashboard (Power BI)</h2>
+            <p class="text-lg text-gray-700 mb-4 max-w-4xl">
+                A dynamic **Power BI dashboard** tracking key performance indicators (KPIs) like program success rate, incident severity, and identification of high-risk individuals. This project showcases proficiency in data modeling and advanced DAX calculations.
+            </p>
+            <div class="text-sm text-gray-600 mb-4">
+                <span class="font-bold text-[#1f3d61]">Skills Used:</span> Power BI Development, Data Modeling (Star Schema), DAX, Report Generation.
+            </div>
+            <a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank" class="cta-button inline-flex items-center bg-[#1f3d61] text-white font-semibold py-3 px-6 rounded-lg shadow-xl hover:shadow-2xl">
+                View Power BI Hub
+            </a>
+        </section>
+
+        <!-- --- DATA VISUALIZATION HUBS --- -->
+        <div class="full-width-section">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Data Visualization & Reporting Hubs</h2>
+            <div class="two-col-grid">
+                
+                <!-- Tableau Card (Link Updated) -->
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Tableau Public Gallery</h3>
+                        <p class="text-gray-600 mb-4">Explore interactive data stories, geospatial analyses, and performance dashboards built using Tableau Desktop and Public.</p>
+                    </div>
+                    <a href="https://meryemciftcialy.github.io/work_sample/tableau.html" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                        Go to Gallery
+                    </a>
+                </div>
+
+                <!-- Power BI Card (Link Updated) -->
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Microsoft Power BI Reports</h3>
+                        <p class="text-gray-600 mb-4">Complex ETL pipelines, DAX measure creation, and enterprise-grade reporting for financial and operational data.</p>
+                    </div>
+                    <a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                        View Sample Reports
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- CODE & ANALYSIS HUBS --- -->
+        <div class="full-width-section">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Code & Machine Learning Hubs</h2>
+            <div class="two-col-grid">
+                
+                <!-- GitHub Card (Link Updated to SQL Journey) -->
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">SQL & Python Code Repository (GitHub)</h3>
+                        <p class="text-gray-600 mb-4">Python scripts for data cleaning, SQL query optimization, and ML model deployment notebooks.</p>
+                    </div>
+                    <a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                        Visit GitHub Repository
+                    </a>
+                </div>
+
+                <!-- Kaggle Card (Link Updated) -->
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Kaggle Notebooks</h3>
+                        <p class="text-gray-600 mb-4">Showcasing data analysis, feature engineering, and advanced statistical modeling via detailed analytical notebooks.</p>
+                    </div>
+                    <a href="https://www.kaggle.com/meryemciftci" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                        Explore Kaggle Profile
+                    </a>
+                </div>
+
+                <!-- Google Colab Accordion (New) -->
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 cursor-pointer flex justify-between items-center" 
+                        onclick="toggleAccordion('colab-links', 'colab-arrow')">
+                        Google Colab Notebooks 
+                        <!-- Arrow indicator instead of icon -->
+                        <span id="colab-arrow" class="text-2xl transition-transform duration-300 transform inline-block">▼</span>
+                    </h3>
+                    <p class="text-gray-600 mb-2 text-sm">Interactive Python environments for quick analysis and prototyping.</p>
+                    <div id="colab-links" class="accordion-content">
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="https://colab.research.google.com/notebooks/intro.ipynb" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
+                                    Colab Sample 1: Data Cleaning Example
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://colab.research.google.com/notebooks/basic_features.ipynb" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
+                                    Colab Sample 2: Introduction to NumPy
+                                </a>
+                            </li>
+                            <!-- Add more links here later -->
+                            <li>
+                                <span class="text-sm text-gray-500 italic">...More links coming soon.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- --- MICROSOFT EXCEL HUB (UPDATED to two navy cards) --- -->
+        <!-- Changing accent color to match main theme (#1f3d61) -->
+        <div class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61]">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Excel Hub</h2>
+            <p class="text-gray-600 mb-4">Detailed examples of complex financial forecasts, dynamic budget templates using Power Query and Pivot Tables, and large-scale data cleansing with advanced formulas (XLOOKUP, INDEX/MATCH, ARRAYFORMULAS).</p>
+            
+            <!-- Replacing single button with two cohesive cards in a grid -->
+            <div class="two-col-grid mt-4">
+                
+                <!-- Dropbox Excel Folder Card (Navy Theme) -->
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border-2 border-[#1f3d61]">
+                    <h3 class="text-xl font-bold text-[#1f3d61] mb-2">Dropbox Excel Folder</h3>
+                    <p class="text-sm text-gray-600 mb-4">Access a range of dynamic financial models and specialized data cleanup workbooks.</p>
+                    <a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/ADpsoscLKclA_ng-vpu9aDY/Excel?rlkey=7rc4uytibnjf07ix6zun3uyar&subfolder_nav_tracking=1&dl=0" target="_blank" class="cta-button inline-block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-[#152945] w-full text-center">
+                        View Dropbox
+                    </a>
+                </div>
+
+                <!-- Excel Projects Gallery Card (Navy Theme) -->
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border-2 border-[#1f3d61]">
+                    <h3 class="text-xl font-bold text-[#1f3d61] mb-2">Excel Projects Gallery</h3>
+                    <p class="text-sm text-gray-600 mb-4">See an interactive gallery showcasing various Excel projects and skills.</p>
+                    <a href="https://meryemciftcialy.github.io/work_sample/excelskills.html" target="_blank" class="cta-button inline-block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-[#152945] w-full text-center">
+                        Explore Gallery
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- BUSINESS OPERATIONS CARD (Color Scheme Updated) --- -->
+        <!-- Changing accent color to match main theme (#1f3d61) -->
+        <div class="full-width-section bg-blue-50 border-l-4 border-l-[#1f3d61]">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Business Operations & CRM Proficiency</h2>
+            <div class="portfolio-card bg-white p-6 rounded-xl shadow-md">
+                <!-- Changed title color from indigo-700 to the navy color -->
+                <h3 class="text-xl font-bold text-[#1f3d61] mb-3">Administrative & Operational Experience</h3>
+                
+                <!-- Administrative Experience -->
+                <p class="text-gray-700 mb-4">Over 5 years of experience in administrative operations and compliance, demonstrating proficiency in project coordination, attention to detail, and use of productivity tools like <span class="font-bold">Microsoft Office (Word, PowerPoint)</span>.</p>
+                
+                <!-- Salesforce Knowledge -->
+                <h4 class="text-lg font-semibold text-gray-800 mb-2">Salesforce Knowledge: Salesforce (Intermediate)</h4>
+                <ul class="list-disc ml-5 space-y-1 text-gray-600">
+                    <li>Proficient in managing Leads, Accounts, Contacts, and Opportunities; creating and maintaining clean, structured records.</li>
+                    <li>Experienced in building and customizing standard reports and dashboards to support operational and leadership decision-making.</li>
+                    <li>Familiar with Salesforce backend administration basics, including updating fields, modifying forms, and maintaining object data through standard configuration tools.</li>
+                    <li>Comfortable performing routine CRM tasks such as data entry, record updates, list views, user support, and troubleshooting basic workflow issues.</li>
+                    <li>Completed Salesforce Trailhead modules covering CRM fundamentals, data management, platform navigation, and best practices.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- --- SKILLS (Removed Icons) --- -->
+        <div class="full-width-section">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Core Technical Skills</h2>
+            <div class="lg:w-1/2">
+                <h3 class="text-xl font-semibold text-blue-700 mb-3">Technical Proficiencies</h3>
+                <ul class="space-y-2 text-gray-700 skills-list">
+                    <li><span class="font-bold">Languages:</span> Python (Pandas, NumPy), SQL (PostgreSQL, MySQL), R.</li>
+                    <li><span class="font-bold">Databases:</span> Google BigQuery.</li>
+                    <li><span class="font-bold">Visualization:</span> Tableau, Power BI, Matplotlib.</li>
+                    <li><span class="font-bold">Cloud/Tools:</span> Git, GitHub.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- --- CERTIFICATION CARDS (Redesigned for Elegance, No Icons) --- -->
+        <div class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61]">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Professional Certifications</h2>
+            <div class="cert-grid">
+                
+                <!-- Google Certification Card -->
+                <div class="portfolio-card bg-white p-5 rounded-xl shadow-lg border-2 border-slate-200">
+                    <h3 class="text-lg font-bold text-[#1f3d61] mb-2">Google Data Analytics Certification</h3>
+                    <p class="text-sm text-gray-600 mb-3">Completed January 2025 through Merit America / Coursera.</p>
+                    <a href="https://coursera.org/verify/7IBWOVFHX2B5" target="_blank" class="text-blue-600 text-sm font-medium inline-block hover:text-blue-800 underline">
+                        View Validation Link
+                    </a>
+                </div>
+
+                <!-- Placeholder 1 (Updated: Azure Data Scientist) -->
+                <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 1</h3>
+                    <p class="text-sm text-gray-500">Future Certification Goal (e.g., Azure Data Scientist)</p>
+                </div>
+
+                <!-- Placeholder 2 (Updated: Power BI Specialist) -->
+                <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 2</h3>
+                    <p class="text-sm text-gray-500">Future Certification Goal (e.g., Power BI Specialist)</p>
+                </div>
+
+                <!-- Placeholder 3 (Updated: AWS Cloud Practitioner) -->
+                <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 3</h3>
+                    <p class="text-sm text-gray-500">Future Certification Goal (e.g., AWS Cloud Practitioner)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- AI & AUTOMATION EXPERIENCE SECTION (Removed Icons) --- -->
+        <div class="full-width-section bg-white border-2 border-gray-300">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">AI, Automation & Prompt Engineering Experience</h2>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Balanced AI Integration for Technical Work</h3>
+            <ul class="list-disc ml-5 space-y-2 text-gray-700">
+                <li>Skilled in using **AI tools as workflow enhancers** to validate logic, review code, and explore alternative solutions, while independently writing, understanding, and testing all final technical work.</li>
+                <li>Consistently integrates AI support in a balanced way to **increase efficiency, reduce errors**, and streamline the analytical process, while maintaining full ownership of deliverables and decision-making.</li>
+            </ul>
+        </div>
+
+
+    </main>
+
+    <!-- Footer - Clean and Professional (Includes Back to Top Button) -->
+    <footer class="bg-gray-800 text-white p-6 mt-8">
+        <div class="container mx-auto max-w-7xl flex justify-between items-center text-sm">
+            <p>&copy; 2025 Data Portfolio Showcase | Contact: your.email@example.com</p>
+            
+            <!-- Back to Top Button (Requested) -->
+            <a href="#top" class="inline-flex items-center text-white bg-gray-700 py-2 px-4 rounded-lg hover:bg-gray-600 transition duration-300">
+                Back to Top
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Function to handle the Google Colab Accordion functionality
+        function toggleAccordion(contentId, arrowId) {
+            const content = document.getElementById(contentId);
+            const arrow = document.getElementById(arrowId);
+            
+            content.classList.toggle('active');
+
+            if (content.classList.contains('active')) {
+                // Rotate arrow up (from ▼ to ▲)
+                arrow.textContent = '▲'; 
+                // Set max-height for smooth transition (Tailwind class active sets this)
+            } else {
+                // Rotate arrow down (from ▲ to ▼)
+                arrow.textContent = '▼';
+                // Max-height returns to 0
+            }
+        }
+        
+    </script>
 </body>
 </html>
