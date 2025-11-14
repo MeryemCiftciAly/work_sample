@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Excel Portfolio</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Interactive Excel Portfolio (Navy Theme)</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind configuration for custom colors (Excel green and blue)
+        // Tailwind configuration for professional Navy Blue theme
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        // Light background color for the header
-                        'excel-blue': '#f0f2f5', 
-                        // Dark green for text and primary accents (Intermediate level)
-                        'excel-green': '#107C41',
-                        // Custom colors for skill levels
-                        'basic-yellow': '#FBBF24', // Yellow 500
-                        'adv-orange': '#F97316',   // Orange 600
+                        // Professional Navy Blue Theme
+                        'navy-primary': '#1A237E', // Deep Navy (main accent/active color)
+                        'cyan-accent': '#00BCD4', // Bright Cyan/Teal (secondary accent/highlights)
+                        'navy-light': '#E8EAF6', // Very Light Blue (light background color for cards/structure)
+                        
+                        // Custom colors for skill levels (using theme colors)
+                        'basic-theme': '#BBDEFB', // Light Blue 200 for Basic contrast
+                        'inter-theme': '#1A237E', // Deep Navy for Intermediate
+                        'adv-theme': '#00BCD4', // Cyan for Advanced
+                        
+                        // Keeping alert colors standard for high visibility
+                        'alert-yellow': '#FBBF24',
+                        'alert-red': '#DC2626',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -27,8 +32,7 @@
             }
         }
     </script>
-    <!-- Custom CSS for the essential iframe dimensions and link styles -->
-    <style>
+    <!-- Custom CSS for the essential iframe dimensions and link styles --><style>
         /* Sets the critical height and ensures responsiveness */
         #excel-viewer {
             width: 100%;
@@ -40,7 +44,7 @@
 
         /* Styling for the active project button */
         .project-button.active {
-            background-color: #107C41; 
+            background-color: #1A237E; /* Navy Primary */
             color: white;
             font-weight: 600;
         }
@@ -57,7 +61,7 @@
             text-align: left;
         }
         .project-button:hover {
-            background-color: #f3f4f6;
+            background-color: #e5e7eb; /* Light gray hover */
             transform: translateY(-1px);
         }
         
@@ -85,8 +89,8 @@
             color: #111827; /* Gray 900 */
         }
         .tab-button.active-tab {
-            border-color: #107C41; /* excel-green */
-            color: #107C41; /* excel-green */
+            border-color: #1A237E; /* Navy Primary */
+            color: #1A237E; /* Navy Primary */
             font-weight: 600;
         }
 
@@ -116,38 +120,34 @@
             margin-bottom: 1rem;
         }
         .footer ul li a {
-            color: #2874a6;
+            color: #1A237E; /* Navy Primary for links */
             font-weight: bold;
             transition: color 0.3s;
         }
         .footer ul li a:hover {
-            color: #1e40af;
+            color: #00BCD4; /* Cyan Accent hover */
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-slate-50 font-sans">
 
-    <!-- Header Section - Contrast fixed and made relative for the absolute home link -->
-    <header class="bg-excel-blue text-excel-green text-center p-8 shadow-xl relative">
-        <!-- Home Link -->
-        <a href="https://meryemciftcialy.github.io/work_sample/" target="_self" 
+    <!-- Header Section - Now Navy Blue --><header class="bg-navy-primary text-white text-center p-8 shadow-2xl relative">
+        <!-- Home Link (Cyan Accent) --><a href="https://meryemciftcialy.github.io/work_sample/" target="_self" 
            class="absolute top-4 left-4 sm:top-6 sm:left-6 
-                  px-4 py-2 bg-excel-green text-white rounded-lg 
-                  text-base font-semibold shadow-lg hover:opacity-90 
-                  transition duration-150 flex items-center z-10">
+                 px-4 py-2 bg-cyan-accent text-navy-primary rounded-lg 
+                 text-base font-semibold shadow-lg hover:opacity-90 
+                 transition duration-150 flex items-center z-10">
             <span class="text-xl mr-2">&#x2190;</span> Back to Main Site
         </a>
         <h1 class="text-4xl font-bold mb-2"> Interactive Excel Skills Showcase </h1>
-        <p class="text-xl opacity-90">Welcome! Select a project below to see an interactive example and the mixed skill set used.</p>
+        <p class="text-xl opacity-90 text-navy-light">Professional portfolio showcasing mixed Excel skills and data projects.</p>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 mt-6 bg-white rounded-xl shadow-2xl">
+    <!-- Main Content Area --><main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 mt-6 bg-white rounded-xl shadow-2xl">
         
-        <!-- Under Development Message (UPDATED) -->
-        <div class="p-4 sm:p-6 mb-8 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg shadow-md transition duration-500" role="alert">
-            <p class="text-xl font-semibold text-yellow-800 flex items-center">
-                <svg class="w-6 h-6 mr-3 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        <!-- Under Development Message (THEME UPDATED) --><div class="p-4 sm:p-6 mb-8 bg-navy-light border-l-4 border-cyan-accent rounded-r-lg shadow-md transition duration-500" role="alert">
+            <p class="text-xl font-semibold text-navy-primary flex items-center">
+                <svg class="w-6 h-6 mr-3 text-cyan-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                 Notice: Project Status
             </p>
             <p class="mt-2 text-gray-700">
@@ -161,54 +161,42 @@
 
         <hr class="border-gray-300 my-8">
 
-        <!-- Hybrid Table of Contents (TOC) Navigation by Skill Level -->
-        <section id="toc" class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Interactive Project Portfolio by Skill Level</h2>
+        <!-- Hybrid Table of Contents (TOC) Navigation by Skill Level --><section id="toc" class="mb-8">
+            <h2 class="text-2xl font-semibold text-slate-800 mb-6 text-center">Interactive Project Portfolio by Skill Level</h2>
             
             <div id="project-navigation-grid" class="grid md:grid-cols-3 gap-6">
-                <!-- Navigation links will be dynamically injected here by the script -->
-            </div>
+                <!-- Navigation links will be dynamically injected here by the script --></div>
         </section>
 
         <hr class="border-gray-300 my-8">
 
-        <!-- Project View Area (where the spreadsheet embeds and skills are listed) -->
-        <section id="project-display">
+        <!-- Project View Area (where the spreadsheet embeds and skills are listed) --><section id="project-display">
             
-            <!-- Skills Breakdown Section -->
-            <div id="skills-breakdown" class="p-4 bg-gray-100 rounded-lg shadow-inner mb-6 transition duration-300 ease-in-out hidden">
-                <h3 class="text-xl font-bold text-gray-700 mb-3 border-b pb-2">Skills Demonstrated in Project: <span id="project-title-display" class="text-excel-green"></span></h3>
+            <!-- Skills Breakdown Section --><div id="skills-breakdown" class="p-4 bg-gray-100 rounded-lg shadow-inner mb-6 transition duration-300 ease-in-out hidden">
+                <h3 class="text-xl font-bold text-gray-700 mb-3 border-b pb-2">Skills Demonstrated in Project: <span id="project-title-display" class="text-navy-primary"></span></h3>
                 <h4 class="text-lg font-semibold text-gray-600 mb-2">Mixed Formulas and Techniques Used:</h4>
-                <!-- The skills list content will be generated here -->
-                <div id="skills-list">
-                    <!-- Structured skills content will be dynamically injected here -->
-                </div>
+                <!-- The skills list content will be generated here --><div id="skills-list">
+                    <!-- Structured skills content will be dynamically injected here --></div>
             </div>
 
-            <!-- New: File Selector Tabs -->
-            <div id="file-tabs-container" class="mb-6 hidden">
+            <!-- New: File Selector Tabs --><div id="file-tabs-container" class="mb-6 hidden">
                 <h4 class="text-lg font-semibold text-gray-700 mb-2">Select File Version:</h4>
                 <nav id="file-tabs" class="-mb-px flex space-x-2 sm:space-x-8" aria-label="Tabs">
-                    <!-- Tab Buttons will be dynamically generated and loaded here -->
-                </nav>
+                    <!-- Tab Buttons will be dynamically generated and loaded here --></nav>
             </div>
 
-            <!-- Single IFRAME Container -->
-            <div class="excel-embed-container rounded-xl overflow-hidden shadow-xl">
-                <!-- Initial Message -->
-                <p id="initial-message" class="text-center p-12 text-lg text-gray-500 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 transition duration-500 block">
+            <!-- Single IFRAME Container --><div class="excel-embed-container rounded-xl overflow-hidden shadow-xl">
+                <!-- Initial Message --><p id="initial-message" class="text-center p-12 text-lg text-gray-500 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 transition duration-500 block">
                     Please select a project from the navigation above to load and interact with the Excel project.
                 </p>
                 <!-- 
                     The single IFRAME element that will have its source dynamically updated by JavaScript.
-                -->
-                <iframe id="excel-viewer" src="" allowfullscreen class="hidden"></iframe>
+                --><iframe id="excel-viewer" src="" allowfullscreen class="hidden"></iframe>
             </div>
         </section>
     </main>
 
-    <!-- Footer Section -->
-    <div class="footer">
+    <!-- Footer Section --><div class="footer">
         <h2>📬 Contact Me</h2>
         <p>Feel free to reach out if you’d like a copy of my resume or just want to connect!</p>
         <ul>
@@ -216,19 +204,18 @@
             <li><a href="https://linkedin.com/in/meryack" target="_blank">LinkedIn</a></li>
             <li><a href="https://meryemciftcialy.github.io/work_sample/about_me.html">About Me</a></li>
         </ul>
-        <p class="note text-sm text-excel-green font-semibold">Currently open to work opportunities.</p>
+        <p class="note text-sm text-cyan-accent font-semibold">Currently open to work opportunities.</p>
         <p class="note2 text-xs text-gray-400">Last updated: September 2025. Check back for new additions!</p>
     </div>
 
 
-    <!-- JavaScript for Interactivity and Dynamic Content Generation -->
-    <script>
+    <!-- JavaScript for Interactivity and Dynamic Content Generation --><script>
         // NOTE: To fix the "refused to connect" error, ensure that all URLs here are the official
         // "Embed" link generated by OneDrive/SharePoint, not a standard "share" link.
         // Look for the option: File -> Share -> Embed.
         const projectData = {
             'Basic': {
-                color: 'basic-yellow',
+                color: 'basic-theme', // Light Blue for visual differentiation
                 projects: [
                     { 
                         name: "Project 1: Data Formalization", 
@@ -245,11 +232,10 @@
                         ],
                         isPlaceholder: false
                     }
-                    // Project 2 (Monthly Budget Tracker) has been removed as requested.
                 ]
             },
             'Intermediate': {
-                color: 'excel-green',
+                color: 'inter-theme', // Deep Navy for main theme consistency
                 projects: [
                     { 
                         name: "Project 3: Customer Information Lookup", 
@@ -267,11 +253,10 @@
                         ],
                         isPlaceholder: false
                     }
-                    // Project 4 (HR Payroll Calculator) has been removed as requested.
                 ]
             },
             'Advanced': {
-                color: 'adv-orange',
+                color: 'adv-theme', // Cyan Accent for Advanced focus
                 projects: [
                     { 
                         name: "Project 5: Not yet added", 
@@ -292,7 +277,6 @@
                         ],
                         isPlaceholder: true
                     }
-                    // Project 6 (Automated Report Prep) has been removed as requested.
                 ]
             }
         };
@@ -385,15 +369,15 @@
                 if (isPlaceholder || !urls.project || urls.project.includes('Placeholder')) {
                     excelViewer.src = "";
                     initialMessage.innerHTML = `
-                        <p class="text-center p-12 text-2xl font-semibold text-adv-orange">
+                        <p class="text-center p-12 text-2xl font-semibold text-adv-theme">
                             ${projectName}
                         </p>
                         <p class="text-center p-4 text-lg text-gray-700">
                             This project is currently in development.
                         </p>
-                        <div class="max-w-md mx-auto p-4 bg-yellow-50 rounded-lg shadow-inner mt-4">
-                            <h5 class="font-semibold text-gray-800 mb-2">Planned Content:</h5>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+                        <div class="max-w-md mx-auto p-4 bg-navy-light rounded-lg shadow-inner mt-4">
+                            <h5 class="font-semibold text-navy-primary mb-2">Planned Content:</h5>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                                 ${skills[0].techniques.map(t => `<li>${t.name}</li>`).join('')}
                             </ul>
                         </div>
@@ -440,7 +424,6 @@
 
                 // Check if skills data is in the new structured format (array of objects with category)
                 if (skills && skills.length > 0 && typeof skills[0] === 'object' && skills[0].category) {
-                    // Structured Skills Rendering (Using a lightweight, table-like grid)
                     
                     const introText = document.createElement('p');
                     introText.className = 'text-base font-medium text-gray-700 mb-4 border-b border-gray-300 pb-2';
@@ -457,9 +440,9 @@
                         const categoryBlock = document.createElement('div');
                         categoryBlock.className = 'p-3 bg-white rounded-lg border border-gray-200 shadow-sm transition duration-150 hover:shadow-md';
                         
-                        // Category Title - acting as the column header
+                        // Category Title - acting as the column header (Now uses Navy Primary)
                         const categoryTitle = document.createElement('h5');
-                        categoryTitle.className = 'font-bold text-gray-800 mb-2 border-b pb-1 text-excel-green';
+                        categoryTitle.className = 'font-bold text-gray-800 mb-2 border-b pb-1 text-navy-primary';
                         categoryTitle.textContent = categoryData.category;
                         categoryBlock.appendChild(categoryTitle);
 
@@ -505,19 +488,25 @@
                     const levelData = projectData[level];
                     const levelColor = levelData.color;
                     
+                    // Determine the card background color based on the level color
+                    let bgColorClass = 'bg-white';
+                    if (levelColor === 'basic-theme') bgColorClass = 'bg-blue-50';
+                    else if (levelColor === 'inter-theme') bgColorClass = 'bg-navy-light';
+                    else if (levelColor === 'adv-theme') bgColorClass = 'bg-cyan-100/50';
+
                     // Create the level container
                     const levelDiv = document.createElement('div');
-                    levelDiv.className = `p-4 rounded-xl shadow-lg border border-gray-200 bg-${levelColor.replace('-500', '-100/50').replace('-600', '-100/50')}`;
+                    // Use a dynamic bg-color for the card wrapper
+                    levelDiv.className = `p-4 rounded-xl shadow-lg border border-gray-200 ${bgColorClass}`; 
                     
                     // Level Header with colored circle
                     levelDiv.innerHTML = `
-                        <h3 class="text-xl font-bold mb-4 flex items-center text-gray-800">
+                        <h3 class="text-xl font-bold mb-4 flex items-center text-slate-800">
                             <span class="w-4 h-4 rounded-full bg-${levelColor} mr-3 shadow"></span>
                             ${level} Skills
                         </h3>
                         <div id="projects-${level.toLowerCase()}" class="space-y-1">
-                            <!-- Project buttons go here -->
-                        </div>
+                            <!-- Project buttons go here --></div>
                     `;
                     navGrid.appendChild(levelDiv);
 
