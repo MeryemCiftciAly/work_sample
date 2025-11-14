@@ -147,8 +147,7 @@
     <header class="professional-header p-4 flex justify-between items-center shadow-lg">
         <div class="flex items-center space-x-6">
             <h1 class="text-2xl font-bold tracking-wide">Meryem's Portfolio</h1>
-             <!-- About Me Link -->
-             <a href="#about-me-section" class="text-blue-200 hover:text-white transition duration-150 font-medium hidden sm:block">About Me</a>
+            <!-- The 'About Me' link was removed from here -->
         </div>
     </header>
 
@@ -228,23 +227,34 @@
             </div>
         </div>
 
-        <!-- --- CODE & ANALYSIS HUBS --- -->
+        <!-- --- CODE & ANALYSIS HUBS (UPDATED TO TWO CARDS) --- -->
         <div class="full-width-section">
             <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Code & Machine Learning Hubs</h2>
             <div class="two-col-grid">
                 
-                <!-- GitHub Card (Link Updated to SQL Journey) -->
+                <!-- NEW: SQL Journey Repository Card -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">SQL & Python Code Repository (GitHub)</h3>
-                        <p class="text-gray-600 mb-4">Python scripts for data cleaning, SQL query optimization, and ML model deployment notebooks.</p>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">SQL Journey Repository</h3>
+                        <p class="text-gray-600 mb-4">View dedicated projects focused on SQL querying, database design, and optimization techniques (e.g., PostgreSQL, MySQL).</p>
                     </div>
                     <a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
-                        Visit GitHub Repository
+                        Explore SQL Projects
                     </a>
                 </div>
 
-                <!-- Kaggle Card (Link Updated) -->
+                <!-- NEW: Python Journal Repository Card -->
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Python Journal Repository</h3>
+                        <p class="text-gray-600 mb-4">Jupyter Notebooks showcasing data cleaning, analysis with Pandas/NumPy, and machine learning scripts.</p>
+                    </div>
+                    <a href="https://github.com/MeryemCiftciAly/my-python-journal" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                        Explore Python Projects
+                    </a>
+                </div>
+                
+                <!-- Existing: Kaggle Card -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Kaggle Notebooks</h3>
@@ -255,7 +265,7 @@
                     </a>
                 </div>
 
-                <!-- Google Colab Accordion (New) -->
+                <!-- Existing: Google Colab Accordion (UPDATED CONTENT) -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md">
                     <h3 class="text-xl font-bold text-gray-900 cursor-pointer flex justify-between items-center" 
                         onclick="toggleAccordion('colab-links', 'colab-arrow')">
@@ -266,14 +276,16 @@
                     <p class="text-gray-600 mb-2 text-sm">Interactive Python environments for quick analysis and prototyping.</p>
                     <div id="colab-links" class="accordion-content">
                         <ul class="space-y-2">
+                            <!-- NOTEBOOK 1: Expense Cleaning (Active Link) -->
                             <li>
-                                <a href="https://colab.research.google.com/notebooks/intro.ipynb" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
-                                    Colab Sample 1: Data Cleaning Example
+                                <a href="https://colab.research.google.com/drive/1gIoxBPE4ORHgIyXiVjoXPe16g6LajgBU" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
+                                    Expense Excel Cleaning, Categorizing & Output
                                 </a>
                             </li>
+                            <!-- NOTEBOOK 2: Sanctions Analysis (Link Placeholder - UPDATED) -->
                             <li>
-                                <a href="https://colab.research.google.com/notebooks/basic_features.ipynb" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
-                                    Colab Sample 2: Introduction to NumPy
+                                <a href="javascript:void(0)" class="text-sm text-gray-500 cursor-not-allowed opacity-75">
+                                    Interactive International Sanctions Analysis (Link coming soon)
                                 </a>
                             </li>
                             <!-- Add more links here later -->
@@ -403,7 +415,7 @@
     <!-- Footer - Clean and Professional (Includes Back to Top Button) -->
     <footer class="bg-gray-800 text-white p-6 mt-8">
         <div class="container mx-auto max-w-7xl flex justify-between items-center text-sm">
-            <p>&copy; 2025 Data Portfolio Showcase </p>
+            <p>&copy; 2025 Data Portfolio Showcase | Contact: your.email@example.com</p>
             
             <!-- Back to Top Button (Requested) -->
             <a href="#top" class="inline-flex items-center text-white bg-gray-700 py-2 px-4 rounded-lg hover:bg-gray-600 transition duration-300">
