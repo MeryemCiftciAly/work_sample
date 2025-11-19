@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Data Portfolio</title>
-    <!-- Load Tailwind CSS -->
+    <title>Meryem's Data Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide icons for clean, modern symbols -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        /* Define a simple pulsing keyframe animation */
+        @keyframes pulse-once {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
         /* Custom styles for professional, elegant look */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8; /* Very light slate background */
-            padding-top: 5rem; /* Space for fixed header */
+            /* Tailwind utility pt-28 (112px) handles spacing for fixed header/banner */
         }
 
         /* Header Style - Deep Navy Blue, Elegant */
@@ -24,8 +31,26 @@
             width: 100%;
             background-color: #1f3d61; /* Deep Navy Blue */
             color: white;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            z-index: 50; /* Ensure it's on top */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* NEW: Open for Work Banner Style */
+        .work-status-banner {
+            position: fixed;
+            top: 4rem; /* Below the fixed header (p-4 is roughly 4rem) */
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50; /* Prominent Green/Success Color */
+            color: white;
+            text-align: center;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            font-weight: 600;
+            z-index: 40; /* Above content, below main header */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* Apply subtle pulse animation */
+            animation: pulse-once 3s infinite;
         }
 
         /* Card Styles - Subtle Shadow, Clean Borders */
@@ -37,29 +62,20 @@
 
         .portfolio-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* More prominent hover shadow */
         }
 
-        /* Spotlight Section - Clean and Accentuated (Removed icon accents) */
+        /* Spotlight Section */
         .featured-project-section {
             background-color: #ffffff; 
             border-radius: 0.75rem;
             margin-bottom: 2rem;
             padding: 2.5rem 1.5rem;
-            border-left: 6px solid #1f3d61; /* Navy accent */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 8px solid #1f3d61; /* Thicker Navy accent */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow */
         }
         
-        /* Full Width Section */
-        .full-width-section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Button Styling - Navy CTA (Removed icon usage) */
+        /* Button Styling - Navy CTA */
         .cta-button {
             transition: background-color 0.2s, transform 0.1s;
         }
@@ -82,19 +98,18 @@
             grid-template-columns: repeat(1, minmax(0, 1fr));
         }
 
-
         @media (min-width: 640px) { /* sm breakpoint */
             .two-col-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
             .cert-grid {
-                 grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
         
         @media (min-width: 1024px) { /* lg breakpoint */
             .cert-grid {
-                 grid-template-columns: repeat(4, minmax(0, 1fr));
+                grid-template-columns: repeat(4, minmax(0, 1fr));
             }
         }
         
@@ -102,10 +117,10 @@
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
             padding-top: 0;
         }
-        .accordion-content.active {
+        .accordion-content[aria-expanded="true"] {
             max-height: 500px; /* Large enough to fit content */
             padding-top: 0.75rem;
         }
@@ -114,7 +129,7 @@
         .hero-banner {
             background-color: #1f3d61; /* Base navy color */
             position: relative;
-            isolation: isolate; /* To ensure opacity works correctly */
+            isolation: isolate;
         }
         
         .hero-banner .bg-img {
@@ -141,69 +156,79 @@
         
     </style>
 </head>
-<body id="top" class="antialiased">
+<!-- Increased padding-top to accommodate both the 4rem header and 2.5rem banner (plus spacing) -->
+<body id="top" class="antialiased pt-28">
 
-    <!-- Header (Fixed Navigation Bar) - Removed Profile Picture for Hero Section -->
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="absolute left-0 top-0 -translate-y-full focus:translate-y-0 p-3 bg-yellow-400 text-gray-900 font-bold z-[100]">Skip to main content</a>
+
     <header class="professional-header p-4 flex justify-between items-center shadow-lg">
         <div class="flex items-center space-x-6">
             <h1 class="text-2xl font-bold tracking-wide">Meryem's Portfolio</h1>
-            <!-- The 'About Me' link was removed from here -->
         </div>
+        <!-- Simple Navigation Placeholder (Could be expanded) -->
+        <nav class="hidden sm:block">
+            <ul class="flex space-x-6 text-sm font-medium">
+                <li><a href="#hero" class="hover:text-gray-300 transition">Home</a></li>
+                <li><a href="#projects" class="hover:text-gray-300 transition">Projects</a></li>
+                <li><a href="#skills" class="hover:text-gray-300 transition">Skills</a></li>
+                <li><a href="#contact" class="hover:text-gray-300 transition">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- NEW HERO BANNER SECTION (Prominent Image Display) -->
+    <div class="work-status-banner">
+        🎉 **OPEN FOR WORK** - Freelance Projects or a Role on a Data Analytics Team
+    </div>
+
     <section id="hero" class="hero-banner text-white py-20 md:py-32 overflow-hidden">
-        <!-- Background Image -->
         <img src="https://raw.githubusercontent.com/MeryemCiftciAly/work_sample/refs/heads/main/Trends_(1).png" 
-             alt="Data Trends Background" 
-             class="bg-img">
+             alt="Abstract data trends in navy blue background" 
+             class="bg-img"
+             onerror="this.onerror=null; this.src='https://placehold.co/1200x600/1f3d61/ffffff?text=Data+Trends+Background'">
         
-        <!-- Content -->
         <div class="container mx-auto px-4 relative z-10 text-center">
             <h2 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">Data & Analytics Portfolio</h2>
             <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
                 A dynamic showcase of data visualization, advanced analytics projects, and technical proficiencies in Python, SQL, and Power BI.
             </p>
-            <!-- Prominent LinkedIn Icon (Requested) -->
-            <a href="https://linkedin.com/in/meryack" target="_blank" class="linkedin-cta inline-flex items-center font-semibold py-3 px-8 rounded-full shadow-2xl">
-                <!-- LinkedIn Icon SVG (using a simple, standard one for prominence) -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.542-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.77 7 2.385v6.85z"/></svg>
+            <a href="https://linkedin.com/in/meryack" target="_blank" 
+               class="linkedin-cta inline-flex items-center font-semibold py-3 px-8 rounded-full shadow-2xl hover:shadow-3xl transition"
+               aria-label="Connect with Meryem on LinkedIn">
+                <!-- Lucide icon: Linkedin -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin mr-2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                 Connect on LinkedIn
             </a>
         </div>
     </section>
 
-    <!-- Main Content Container -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+    <!-- Main Content Start Point for Skip Link -->
+    <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
 
-        <!-- NEW ABOUT ME SECTION (Requested) -->
-        <section id="about-me-section" class="full-width-section bg-gray-50 border-l-4 border-l-slate-400">
-            <h2 class="text-2xl font-bold text-gray-800 mb-3">About Me & My Journey</h2>
+        <section id="about" class="full-width-section bg-gray-50 border-l-4 border-l-slate-400 rounded-xl" role="region" aria-labelledby="about-me-title">
+            <h2 id="about-me-title" class="text-2xl font-bold text-gray-800 mb-3">About Me & My Journey</h2>
             <p class="text-lg text-gray-700">
                 Welcome to my data analytics portfolio. This is a showcase of my ongoing **data analytics skills and growth** as I transition from over **7 years of administrative and operations experience** into the world of data analytics. Follow along as I showcase my proficiency by tackling independent projects using the tools and techniques I've mastered or am currently learning.
             </p>
         </section>
 
-        <!-- LATEST PROJECT SPOTLIGHT -->
-        <section class="featured-project-section">
-            <h2 class="text-3xl font-extrabold text-[#1f3d61] mb-3">Featured Project: Program Performance Dashboard (Power BI)</h2>
+        <section id="projects" class="featured-project-section" role="region" aria-labelledby="featured-project-title">
+            <h2 id="featured-project-title" class="text-3xl font-extrabold text-[#1f3d61] mb-3">Featured Project: Program Performance Dashboard (Power BI)</h2>
             <p class="text-lg text-gray-700 mb-4 max-w-4xl">
                 A dynamic **Power BI dashboard** tracking key performance indicators (KPIs) like program success rate, incident severity, and identification of high-risk individuals. This project showcases proficiency in data modeling and advanced DAX calculations.
             </p>
             <div class="text-sm text-gray-600 mb-4">
                 <span class="font-bold text-[#1f3d61]">Skills Used:</span> Power BI Development, Data Modeling (Star Schema), DAX, Report Generation.
             </div>
-            <a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank" class="cta-button inline-flex items-center bg-[#1f3d61] text-white font-semibold py-3 px-6 rounded-lg shadow-xl hover:shadow-2xl">
+            <a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank" class="cta-button inline-flex items-center bg-[#1f3d61] text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:shadow-2xl">
                 View Power BI Hub
             </a>
         </section>
 
-        <!-- --- DATA VISUALIZATION HUBS --- -->
-        <div class="full-width-section">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Data Visualization & Reporting Hubs</h2>
+        <div class="full-width-section rounded-xl" role="region" aria-labelledby="viz-reports-title">
+            <h2 id="viz-reports-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Data Visualization & Reporting Hubs</h2>
             <div class="two-col-grid">
                 
-                <!-- Tableau Card (Link Updated) -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Tableau Public Gallery</h3>
@@ -211,10 +236,11 @@
                     </div>
                     <a href="https://meryemciftcialy.github.io/work_sample/tableau.html" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
                         Go to Gallery
+                        <!-- Lucide icon: ArrowRight -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
 
-                <!-- Power BI Card (Link Updated) -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Microsoft Power BI Reports</h3>
@@ -222,17 +248,17 @@
                     </div>
                     <a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
                         View Sample Reports
+                        <!-- Lucide icon: ArrowRight -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- --- CODE & ANALYSIS HUBS (UPDATED TO TWO CARDS) --- -->
-        <div class="full-width-section">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Code & Machine Learning Hubs</h2>
+        <div class="full-width-section rounded-xl" role="region" aria-labelledby="code-ml-title">
+            <h2 id="code-ml-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Code & Machine Learning Hubs</h2>
             <div class="two-col-grid">
                 
-                <!-- NEW: SQL Journey Repository Card -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">SQL Journey Repository</h3>
@@ -240,10 +266,11 @@
                     </div>
                     <a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
                         Explore SQL Projects
+                        <!-- Lucide icon: Github -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github ml-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.4-.4 6.7-2.7 6.7-7 0-1.7-.6-3-1.7-4A4.2 4.2 0 0 0 17 2c0-1.5-.7-2-2-2s-2.7.5-3 2c-1.1-.3-2.3-.4-3.5-.4C4.3 2 2.6 3.6 2 5c-1.1 1-1.7 2.3-1.7 4 0 4.3 3.3 6.6 6.7 7-.3.5-.5 1.2-.5 2v4"/></svg>
                     </a>
                 </div>
 
-                <!-- NEW: Python Journal Repository Card -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Python Journal Repository</h3>
@@ -251,10 +278,11 @@
                     </div>
                     <a href="https://github.com/MeryemCiftciAly/my-python-journal" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
                         Explore Python Projects
+                        <!-- Lucide icon: Github -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github ml-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.4-.4 6.7-2.7 6.7-7 0-1.7-.6-3-1.7-4A4.2 4.2 0 0 0 17 2c0-1.5-.7-2-2-2s-2.7.5-3 2c-1.1-.3-2.3-.4-3.5-.4C4.3 2 2.6 3.6 2 5c-1.1 1-1.7 2.3-1.7 4 0 4.3 3.3 6.6 6.7 7-.3.5-.5 1.2-.5 2v4"/></svg>
                     </a>
                 </div>
                 
-                <!-- Existing: Kaggle Card -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Kaggle Notebooks</h3>
@@ -262,33 +290,32 @@
                     </div>
                     <a href="https://www.kaggle.com/meryemciftci" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
                         Explore Kaggle Profile
+                        <!-- Lucide icon: BarChart3 -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-3 ml-1"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
                     </a>
                 </div>
 
-                <!-- Existing: Google Colab Accordion (UPDATED CONTENT) -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md">
                     <h3 class="text-xl font-bold text-gray-900 cursor-pointer flex justify-between items-center" 
-                        onclick="toggleAccordion('colab-links', 'colab-arrow')">
+                        onclick="toggleAccordion('colab-links', 'colab-arrow')"
+                        aria-controls="colab-links"
+                        aria-expanded="false">
                         Google Colab Notebooks 
-                        <!-- Arrow indicator instead of icon -->
                         <span id="colab-arrow" class="text-2xl transition-transform duration-300 transform inline-block">▼</span>
                     </h3>
                     <p class="text-gray-600 mb-2 text-sm">Interactive Python environments for quick analysis and prototyping.</p>
-                    <div id="colab-links" class="accordion-content">
+                    <div id="colab-links" class="accordion-content" aria-expanded="false">
                         <ul class="space-y-2">
-                            <!-- NOTEBOOK 1: Expense Cleaning (Active Link) -->
                             <li>
                                 <a href="https://colab.research.google.com/drive/1gIoxBPE4ORHgIyXiVjoXPe16g6LajgBU" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
                                     Expense Excel Cleaning, Categorizing & Output
                                 </a>
                             </li>
-                            <!-- NOTEBOOK 2: Sanctions Analysis (Link Placeholder - UPDATED) -->
                             <li>
-                                <a href="https://colab.research.google.com/drive/1O3nwXqDDG5tzOJNdoiXCKoy1XEjo1HKs?usp=sharing" target="_blank" class="text-sm text-gray-500 cursor-not-allowed opacity-75">
-                                    Interactive International Sanctions Analysis (Link coming soon)
+                                <a href="https://colab.research.google.com/drive/1O3nwXqDDG5tzOJNdoiXCKoy1XEjo1HKs?usp=sharing" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
+                                    Interactive International Sanctions Analysis
                                 </a>
                             </li>
-                            <!-- Add more links here later -->
                             <li>
                                 <span class="text-sm text-gray-500 italic">...More links coming soon.</span>
                             </li>
@@ -299,48 +326,42 @@
             </div>
         </div>
 
-        <!-- --- MICROSOFT EXCEL HUB (UPDATED to two navy cards) --- -->
-        <!-- Changing accent color to match main theme (#1f3d61) -->
-        <div class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61]">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Excel Hub</h2>
+        <div id="excel-hub" class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61] rounded-xl" role="region" aria-labelledby="excel-title">
+            <h2 id="excel-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Excel Hub</h2>
             <p class="text-gray-600 mb-4">Detailed examples of complex financial forecasts, dynamic budget templates using Power Query and Pivot Tables, and large-scale data cleansing with advanced formulas (XLOOKUP, INDEX/MATCH, ARRAYFORMULAS).</p>
             
-            <!-- Replacing single button with two cohesive cards in a grid -->
             <div class="two-col-grid mt-4">
                 
-                <!-- Dropbox Excel Folder Card (Navy Theme) -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border-2 border-[#1f3d61]">
                     <h3 class="text-xl font-bold text-[#1f3d61] mb-2">Dropbox Excel Folder</h3>
                     <p class="text-sm text-gray-600 mb-4">Access a range of dynamic financial models and specialized data cleanup workbooks.</p>
-                    <a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/ADpsoscLKclA_ng-vpu9aDY/Excel?rlkey=7rc4uytibnjf07ix6zun3uyar&subfolder_nav_tracking=1&dl=0" target="_blank" class="cta-button inline-block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-[#152945] w-full text-center">
+                    <a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/ADpsoscLKclA_ng-vpu9aDY/Excel?rlkey=7rc4uytibnjf07ix6zun3uyar&subfolder_nav_tracking=1&dl=0" target="_blank" class="cta-button inline-block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-xl shadow-md hover:bg-[#152945] w-full text-center">
                         View Dropbox
                     </a>
                 </div>
 
-                <!-- Excel Projects Gallery Card (Navy Theme) -->
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border-2 border-[#1f3d61]">
                     <h3 class="text-xl font-bold text-[#1f3d61] mb-2">Excel Projects Gallery</h3>
                     <p class="text-sm text-gray-600 mb-4">See an interactive gallery showcasing various Excel projects and skills.</p>
-                    <a href="https://meryemciftcialy.github.io/work_sample/excelskills.html" target="_blank" class="cta-button inline-block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-lg shadow-md hover:bg-[#152945] w-full text-center">
+                    <a href="https://meryemciftcialy.github.io/work_sample/excelskills.html" target="_blank" class="cta-button inline-block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-xl shadow-md hover:bg-[#152945] w-full text-center">
                         Explore Gallery
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- --- BUSINESS OPERATIONS CARD (Color Scheme Updated) --- -->
-        <!-- Changing accent color to match main theme (#1f3d61) -->
-        <div class="full-width-section bg-blue-50 border-l-4 border-l-[#1f3d61]">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Business Operations & CRM Proficiency</h2>
+        <div id="operations" class="full-width-section bg-blue-50 border-l-4 border-l-[#1f3d61] rounded-xl" role="region" aria-labelledby="operations-title">
+            <h2 id="operations-title" class="text-2xl font-bold text-gray-800 mb-4">Business Operations & CRM Proficiency</h2>
             <div class="portfolio-card bg-white p-6 rounded-xl shadow-md">
-                <!-- Changed title color from indigo-700 to the navy color -->
                 <h3 class="text-xl font-bold text-[#1f3d61] mb-3">Administrative & Operational Experience</h3>
                 
-                <!-- Administrative Experience -->
                 <p class="text-gray-700 mb-4">Over 5 years of experience in administrative operations and compliance, demonstrating proficiency in project coordination, attention to detail, and use of productivity tools like <span class="font-bold">Microsoft Office (Word, PowerPoint)</span>.</p>
                 
-                <!-- Salesforce Knowledge -->
-                <h4 class="text-lg font-semibold text-gray-800 mb-2">Salesforce Knowledge: Salesforce (Intermediate)</h4>
+                <h4 class="text-lg font-semibold text-gray-800 mb-2 flex items-center">
+                    <!-- Lucide icon: Database -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database text-blue-500 mr-2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+                    Salesforce Knowledge: Salesforce (Intermediate)
+                </h4>
                 <ul class="list-disc ml-5 space-y-1 text-gray-600">
                     <li>Proficient in managing Leads, Accounts, Contacts, and Opportunities; creating and maintaining clean, structured records.</li>
                     <li>Experienced in building and customizing standard reports and dashboards to support operational and leadership decision-making.</li>
@@ -351,11 +372,14 @@
             </div>
         </div>
         
-        <!-- --- SKILLS (Removed Icons) --- -->
-        <div class="full-width-section">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Core Technical Skills</h2>
+        <div id="skills" class="full-width-section rounded-xl" role="region" aria-labelledby="core-skills-title">
+            <h2 id="core-skills-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Core Technical Skills</h2>
             <div class="lg:w-1/2">
-                <h3 class="text-xl font-semibold text-blue-700 mb-3">Technical Proficiencies</h3>
+                <h3 class="text-xl font-semibold text-blue-700 mb-3 flex items-center">
+                    <!-- Lucide icon: Code2 -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2 text-blue-500 mr-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                    Technical Proficiencies
+                </h3>
                 <ul class="space-y-2 text-gray-700 skills-list">
                     <li><span class="font-bold">Languages:</span> Python (Pandas, NumPy), SQL (PostgreSQL, MySQL), R.</li>
                     <li><span class="font-bold">Databases:</span> Google BigQuery.</li>
@@ -365,12 +389,10 @@
             </div>
         </div>
         
-        <!-- --- CERTIFICATION CARDS (Redesigned for Elegance, No Icons) --- -->
-        <div class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61]">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Professional Certifications</h2>
+        <div id="certs" class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61] rounded-xl" role="region" aria-labelledby="certifications-title">
+            <h2 id="certifications-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Professional Certifications</h2>
             <div class="cert-grid">
                 
-                <!-- Google Certification Card -->
                 <div class="portfolio-card bg-white p-5 rounded-xl shadow-lg border-2 border-slate-200">
                     <h3 class="text-lg font-bold text-[#1f3d61] mb-2">Google Data Analytics Certification</h3>
                     <p class="text-sm text-gray-600 mb-3">Completed January 2025 through Merit America / Coursera.</p>
@@ -379,29 +401,25 @@
                     </a>
                 </div>
 
-                <!-- Placeholder 1 (Coming Soon: PL-300: Microsoft Power BI Data Analyst) -->
                 <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 1</h3>
                     <p class="text-sm text-gray-500">Future Certification Goal </p>
                 </div>
 
-                <!-- Placeholder 2 (Updated: Power BI Specialist) -->
                 <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 2</h3>
                     <p class="text-sm text-gray-500">Future Certification Goal (e.g., Power BI Specialist)</p>
                 </div>
 
-                <!-- Placeholder 3 (Updated: AWS Cloud Practitioner) -->
                 <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
                     <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 3</h3>
                     <p class="text-sm text-gray-500">Future Certification Goal (e.g., AWS Cloud Practitioner)</p>
                 </div>
             </div>
         </div>
-
-        <!-- --- AI & AUTOMATION EXPERIENCE SECTION (Removed Icons) --- -->
-        <div class="full-width-section bg-white border-2 border-gray-300">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">AI, Automation & Prompt Engineering Experience</h2>
+        
+        <div class="full-width-section bg-white border-2 border-gray-300 rounded-xl" role="region" aria-labelledby="ai-title">
+            <h2 id="ai-title" class="text-2xl font-bold text-gray-800 mb-4">AI, Automation & Prompt Engineering Experience</h2>
             <h3 class="text-xl font-semibold text-gray-800 mb-3">Balanced AI Integration for Technical Work</h3>
             <ul class="list-disc ml-5 space-y-2 text-gray-700">
                 <li>Skilled in using **AI tools as workflow enhancers** to validate logic, review code, and explore alternative solutions, while independently writing, understanding, and testing all final technical work.</li>
@@ -412,34 +430,39 @@
 
     </main>
 
-    <!-- Footer - Clean and Professional (Includes Back to Top Button) -->
-    <footer class="bg-gray-800 text-white p-6 mt-8">
+    <footer id="contact" class="bg-gray-800 text-white p-6 mt-8">
         <div class="container mx-auto max-w-7xl flex justify-between items-center text-sm">
-            <p>&copy; 2025 Data Portfolio Showcase</p>
+            <p>&copy; 2025 Meryem's Data Portfolio Showcase</p>
             
-            <!-- Back to Top Button (Requested) -->
             <a href="#top" class="inline-flex items-center text-white bg-gray-700 py-2 px-4 rounded-lg hover:bg-gray-600 transition duration-300">
+                <!-- Lucide icon: ArrowUp -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up mr-1"><path d="m12 19-7-7 7-7"/><path d="M12 19v-14"/></svg>
                 Back to Top
             </a>
         </div>
     </footer>
 
     <script>
-        // Function to handle the Google Colab Accordion functionality
+        /**
+         * Toggles the accordion content and updates the accessibility attributes.
+         * @param {string} contentId - The ID of the content div to toggle.
+         * @param {string} arrowId - The ID of the arrow span to update.
+         */
         function toggleAccordion(contentId, arrowId) {
             const content = document.getElementById(contentId);
             const arrow = document.getElementById(arrowId);
+            const isExpanded = content.getAttribute('aria-expanded') === 'true';
             
-            content.classList.toggle('active');
+            // Toggle the expanded state
+            content.setAttribute('aria-expanded', String(!isExpanded));
 
-            if (content.classList.contains('active')) {
-                // Rotate arrow up (from ▼ to ▲)
+            // Update the arrow visual
+            if (!isExpanded) {
+                // Expanded
                 arrow.textContent = '▲'; 
-                // Set max-height for smooth transition (Tailwind class active sets this)
             } else {
-                // Rotate arrow down (from ▲ to ▼)
+                // Collapsed
                 arrow.textContent = '▼';
-                // Max-height returns to 0
             }
         }
         
