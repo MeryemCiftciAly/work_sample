@@ -120,6 +120,31 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
+        /* --- RECENT Dashboard Styling (Orange) --- */
+        .dashboard-recent {
+            border: 3px solid #f39c12; /* Orange border to highlight */
+            position: relative;
+            background-color: #fff8ed; /* Light orange background */
+        }
+        .dashboard-recent::before {
+            content: '✨ RECENT';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #f39c12; /* Orange background for the flag */
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.8em;
+            border-bottom-left-radius: 8px;
+            z-index: 10;
+        }
+        .dashboard-recent:hover {
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.25); /* Orange shadow on hover */
+            transform: translateY(-5px) scale(1.01); /* Slightly more emphasis */
+        }
+        /* ------------------------------------- */
+
         .dashboard-item img {
             width: 100%;
             height: 200px;
@@ -144,6 +169,18 @@
             margin-bottom: 1rem;
             color: #555;
         }
+        .dashboard-content ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding-left: 0;
+            margin-bottom: 1rem;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .dashboard-content ul li {
+            margin-bottom: 5px;
+        }
+
         .dashboard-links {
             margin-top: auto;
             display: flex;
@@ -353,6 +390,55 @@
         <h2>📈 Dashboards</h2>
         
         <div class="dashboard-grid">
+            
+            <!-- START NEW RECENT PROJECT (Financial Performance Dashboard) -->
+            <div class="dashboard-item dashboard-recent">
+                <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/Revised%20Dashboard%20No.%203.png" alt="Tableau Financial Performance Dashboard">
+                <div class="dashboard-content">
+                    <h3>Financial Performance Dashboard</h3>
+                    <p>
+                        <B>Objective:</B> The primary objective of this dashboard was to develop a financial performance tool that provides clear, dynamic insights into expense trends and spending behavior across different business years (2023–2025).
+                    </p>
+                    <p>
+                        <B>Key Users & Value:</B> This visualization is specifically designed to support targeted decision-making:
+                    </p>
+                    <ul>
+                        <li><B>Financial Analysts: </B> To quickly monitor month-over-month and year-over-year spend fluctuations and identify outliers in expense categories.</li>
+                        <li><B>Cost Control Managers: </B>To track the effectiveness of cost-saving initiatives and assess whether declining spend indicates efficiency or business contraction.</li>
+                        <li><B>Executive Leadership: </B> To gain a high-level, stable overview of normalized spending trends (in USD) without being distracted by complex filtering limitations or unnecessary data points.</li>
+                    </ul>
+                    <div class="dashboard-links">
+                        <a href="https://public.tableau.com/app/profile/meryem.ciftci/viz/GlobalExpenseWorkflowPerformance/Dashboard1" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                            View Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- END NEW RECENT PROJECT -->
+            
+            <!-- Strategic Expense Analysis Dashboard (Now standard) -->
+            <div class="dashboard-item">
+                <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/Expense%20Report%20Consultant%20Style-Tableau.png" alt="Tableau Strategic Expense Analysis Dashboard">
+                <div class="dashboard-content">
+                    <h3>Strategic Expense Analysis Dashboard</h3>
+                    <p>This consultant-style dashboard moves beyond simple expense tracking to convey the **strategic value** of expense report analysis. It provides leadership with actionable insights to optimize spending and support better financial decision-making.</p>
+                    <div class="dashboard-links">
+                        <a href="https://public.tableau.com/app/profile/meryem.ciftci/viz/TheStrategicValueofanExpenseReport/Dashboard1" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                            </svg>
+                            View Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- END Strategic Expense Analysis Dashboard -->
+
             <div class="dashboard-item">
                 <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/tableau_hr_dashboard.png" alt="Tableau HR Dashboard">
                 <div class="dashboard-content">
@@ -386,25 +472,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- NEW PROJECT ADDED HERE -->
-            <div class="dashboard-item">
-                <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/Expense%20Report%20Consultant%20Style-Tableau.png" alt="Tableau Strategic Expense Analysis Dashboard">
-                <div class="dashboard-content">
-                    <h3>Strategic Expense Analysis Dashboard</h3>
-                    <p>This consultant-style dashboard moves beyond simple expense tracking to convey the **strategic value** of expense report analysis. It provides leadership with actionable insights to optimize spending and support better financial decision-making.</p>
-                    <div class="dashboard-links">
-                        <a href="https://public.tableau.com/app/profile/meryem.ciftci/viz/TheStrategicValueofanExpenseReport/Dashboard1" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                            </svg>
-                            View Dashboard
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- END NEW PROJECT -->
 
             <div class="dashboard-item">
                 <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/tableau_expense_claims_dashboard.png" alt="Tableau Expense Claims Dashboard">
