@@ -5,77 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meryem's Data Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide icons for clean, modern symbols -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Define a simple pulsing keyframe animation */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
         @keyframes pulse-once {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.8; }
         }
 
-        /* Custom styles for professional, elegant look */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Very light slate background */
-            /* Tailwind utility pt-28 (112px) handles spacing for fixed header/banner */
+            background-color: #f0f4f8;
         }
 
-        /* Header Style - Deep Navy Blue, Elegant */
         .professional-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #1f3d61; /* Deep Navy Blue */
+            background-color: #1f3d61;
             color: white;
-            z-index: 50; /* Ensure it's on top */
+            z-index: 50;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* NEW: Open for Work Banner Style */
         .work-status-banner {
             position: fixed;
-            top: 4rem; /* Below the fixed header (p-4 is roughly 4rem) */
+            top: 4rem;
             left: 0;
             width: 100%;
-            background-color: #4CAF50; /* Prominent Green/Success Color */
+            background-color: #4CAF50;
             color: white;
             text-align: center;
             padding: 0.5rem 0;
             font-size: 1rem;
             font-weight: 600;
-            z-index: 40; /* Above content, below main header */
+            z-index: 40;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            /* Apply subtle pulse animation */
             animation: pulse-once 3s infinite;
         }
 
-        /* Card Styles - Subtle Shadow, Clean Borders */
         .portfolio-card {
             transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #e2e8f0; /* Light gray border */
+            border: 1px solid #e2e8f0;
             background-color: white;
         }
 
         .portfolio-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* More prominent hover shadow */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        /* Spotlight Section */
         .featured-project-section {
             background-color: #ffffff; 
             border-radius: 0.75rem;
             margin-bottom: 2rem;
             padding: 2.5rem 1.5rem;
-            border-left: 8px solid #1f3d61; /* Thicker Navy accent */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+            border-left: 8px solid #1f3d61;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        /* Button Styling - Navy CTA */
         .cta-button {
             transition: background-color 0.2s, transform 0.1s;
         }
@@ -84,36 +74,27 @@
             transform: translateY(-1px);
         }
 
-        /* Responsive Grid for Card Layout */
         .two-col-grid {
             display: grid;
             gap: 1.5rem;
             grid-template-columns: repeat(1, minmax(0, 1fr));
         }
         
-        /* For Certification Grid (4 columns on large screens) */
         .cert-grid {
             display: grid;
             gap: 1.5rem;
             grid-template-columns: repeat(1, minmax(0, 1fr));
         }
 
-        @media (min-width: 640px) { /* sm breakpoint */
-            .two-col-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .cert-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
+        @media (min-width: 640px) {
+            .two-col-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         
-        @media (min-width: 1024px) { /* lg breakpoint */
-            .cert-grid {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-            }
+        @media (min-width: 1024px) {
+            .cert-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         }
         
-        /* Accordion Transition for Colab */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
@@ -121,13 +102,12 @@
             padding-top: 0;
         }
         .accordion-content[aria-expanded="true"] {
-            max-height: 500px; /* Large enough to fit content */
+            max-height: 500px;
             padding-top: 0.75rem;
         }
         
-        /* Hero Banner Image Prominence */
         .hero-banner {
-            background-color: #1f3d61; /* Base navy color */
+            background-color: #1f3d61;
             position: relative;
             isolation: isolate;
         }
@@ -139,13 +119,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.2; /* Subtle background image */
+            opacity: 0.2;
             z-index: -1;
         }
         
-        /* Prominent LinkedIn Icon Styling */
         .linkedin-cta {
-            background-color: #0A66C2; /* LinkedIn Blue */
+            background-color: #0A66C2;
             color: white;
             transition: background-color 0.3s, transform 0.1s;
         }
@@ -153,35 +132,34 @@
             background-color: #004182;
             transform: scale(1.05);
         }
-        
+
+        .full-width-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+        }
     </style>
 </head>
-<!-- Increased padding-top to accommodate both the 4rem header and 2.5rem banner (plus spacing) -->
 <body id="top" class="antialiased pt-28">
 
-    <!-- Accessibility Skip Link -->
     <a href="#main-content" class="absolute left-0 top-0 -translate-y-full focus:translate-y-0 p-3 bg-yellow-400 text-gray-900 font-bold z-[100]">Skip to main content</a>
 
     <header class="professional-header p-4 flex justify-between items-center shadow-lg">
         <div class="flex items-center space-x-6">
             <h1 class="text-2xl font-bold tracking-wide">Meryem's Portfolio</h1>
         </div>
-        <!-- Simple Navigation Placeholder (Could be expanded) -->
         <nav class="hidden sm:block">
             <ul class="flex space-x-6 text-sm font-medium">
                 <li><a href="#hero" class="hover:text-gray-300 transition">Home</a></li>
-                <!-- UPDATED: About Me link -->
                 <li><a href="#about" class="hover:text-gray-300 transition">About</a></li>
                 <li><a href="#projects" class="hover:text-gray-300 transition">Projects</a></li>
                 <li><a href="#skills" class="hover:text-gray-300 transition">Skills</a></li>
-                <!-- Contact link now points to the dedicated section -->
                 <li><a href="#contact" class="hover:text-gray-300 transition">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="work-status-banner">
-        🎉 **OPEN FOR WORK** - Freelance Projects or a Role on a Data Analytics Team
+        🎉 <strong>OPEN FOR WORK</strong> - Freelance Projects or a Role on a Data Analytics Team
     </div>
 
     <section id="hero" class="hero-banner text-white py-20 md:py-32 overflow-hidden">
@@ -198,86 +176,99 @@
             <a href="https://linkedin.com/in/meryack" target="_blank" 
                class="linkedin-cta inline-flex items-center font-semibold py-3 px-8 rounded-full shadow-2xl hover:shadow-3xl transition"
                aria-label="Connect with Meryem on LinkedIn">
-                <!-- Lucide icon: Linkedin -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin mr-2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                <i data-lucide="linkedin" class="mr-2"></i>
                 Connect on LinkedIn
             </a>
         </div>
     </section>
 
-    <div class="work-status-banner">
-        🎉 **OPEN FOR WORK** - Freelance Projects or a Role on a Data Analytics Team
-    </div>
+    <main id="main-content" class="container mx-auto px-4 mt-12 max-w-7xl">
 
-    <!-- Main Content Start Point for Skip Link -->
-    <main id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
-
-        <!-- UPDATED ABOUT SECTION WITH USER-PROVIDED CONTENT -->
-        <section id="about" class="full-width-section bg-gray-50 border-l-4 border-l-slate-400 rounded-xl p-6 shadow-md mb-8" role="region" aria-labelledby="about-me-title">
-            <h2 id="about-me-title" class="text-3xl font-extrabold text-[#1f3d61] mb-4 border-b pb-2">About Meryem</h2>
-            
+        <section id="about" class="full-width-section bg-white border-l-4 border-l-slate-400 rounded-xl shadow-md" role="region" aria-labelledby="about-me-title">
+            <h2 id="about-me-title" class="text-3xl font-extrabold text-[#1f3d61] mb-4 border-b pb-2">About</h2>
             <p class="text-lg text-gray-700 mb-4">
-                Hi, I’m Meryem. I'm a data analyst with a genuine passion for turning complex data into clear, actionable insights. Whether I'm contributing to a collaborative team or tackling a specific project as a freelancer, my goal is always the same: to help you solve real-world problems and achieve strategic goals.
+                I am a data analyst with a strong foundation in business operations and administrative support. My background allows me to approach data with a practical, decision-oriented mindset, ensuring insights are accurate, relevant, and actionable.
             </p>
-
-            <!-- MODIFIED PARAGRAPH - Using <strong> tags for explicit bolding -->
-            <p class="text-lg text-gray-700 mb-6">
-                My journey began in business administrative support, where I discovered my natural curiosity for finding patterns and telling stories with data. This foundation led me to complete the <strong>Google Data Analytics Certificate Program through Merit America</strong>, where I developed a strong technical skill set in trend analysis and data-driven problem-solving. However, that certification is not where I intend to stop; I am committed to continuously <strong>upskilling</strong> and learning more advanced data techniques and tools to keep pace with the ever-evolving analytics landscape.
+            <p class="text-lg text-gray-700 mb-4">
+                I began my career supporting operational and compliance-driven teams, where accuracy, documentation, and trust in data were critical. Over time, I transitioned into analytics to work more directly with data—cleaning it, analyzing it, and translating it into insights that inform strategy and execution.
             </p>
-            <!-- END MODIFIED PARAGRAPH -->
-            
-            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-6">
-                <h3 class="text-xl font-bold text-gray-800 mb-3">How I Can Help</h3>
-                <p class="text-gray-700 mb-4">
-                    I thrive in collaborative environments where my analytical skills can support a team's strategic vision. I am committed to continuous learning and believe in aligning technical insights with broader organizational goals to create meaningful, lasting change. I love working with teams that are dedicated to purpose-driven analytics in business, health, and community work.
-                </p>
-                
-                <h3 class="text-xl font-bold text-gray-800 mb-3">For Freelance Projects</h3>
-                <p class="text-gray-700">
-                    I partner with entrepreneurs, small businesses, and individual professionals as a flexible and reliable partner. I focus on turning your raw data into clear, compelling insights that give you the confidence to move forward with your business objectives. My approach is purpose-driven, ensuring you get the actionable information you need to make informed decisions.
-                </p>
-            </div>
-
-            <h3 class="text-2xl font-extrabold text-[#1f3d61] mb-3">Nuuraqlyz Analytics</h3>
-            <p class="text-gray-700 mb-6">
-                <b>Nuuraqlyz Analytics</b> is an initiative I created to serve as a reliable one-on-one partner for clients. This flexible approach allows me to continuously grow as a data professional while directly helping individuals and small businesses turn their data into powerful, life-changing insights.
+            <p class="text-lg text-gray-700">
+                I bring a balanced perspective that combines technical analytics skills with real-world business context. I am particularly effective in environments where data supports leadership decisions, operational improvement, and cross-functional collaboration.
             </p>
+        </section>
 
-            <div class="bg-blue-100 p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold text-blue-800 mb-3 flex items-center">
-                    <!-- Lucide icon: BookOpen -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-text mr-2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/><path d="M6 8h2"/><path d="M6 12h2"/><path d="M16 8h2"/><path d="M16 12h2"/></svg>
-                    What You Don’t Know About Me
-                </h3>
-                <p class="text-gray-800 mb-4">
-                    In addition to my work in analytics, I'm a three-time published author on Amazon. When I'm not doing data analytics, I enjoy writing fictional stories about heroic characters who find their path and do good. This passion for crafting narratives with purpose directly informs my work. Just as a compelling story should guide a reader through a journey, I believe data should be presented as a clear narrative that empowers stakeholders to make confident decisions and achieve a positive outcome.
-                </p>
-                <p class="text-sm font-semibold">
-                    📚 See my books on Amazon: 
-                    <a href="https://www.amazon.com/stores/Meryem-%C3%87ift%C3%A7i/author/B0D6BX799Y?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true" target="_blank" class="text-blue-700 hover:text-blue-900 underline transition">
-                        View Author Page
+        <section id="projects" class="featured-project-section" role="region" aria-labelledby="recent-project-title">
+            <h2 id="recent-project-title" class="text-3xl font-extrabold text-[#1f3d61] mb-6">
+                Most Recent Project: Lina’s Christmas Project (SQL & Data Modeling)
+            </h2>
+            <div class="portfolio-card p-6 rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="w-full">
+                    <img 
+                        src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/Lina%E2%80%99s%20Christmas%20Project.png"
+                        alt="Data model and SQL analysis overview"
+                        class="rounded-lg shadow-md border border-gray-200 object-cover w-full h-auto"
+                        onerror="this.onerror=null; this.src='https://placehold.co/600x400/1f3d61/ffffff?text=Project+Preview';"
+                    >
+                </div>
+                <div>
+                    <p class="text-lg text-gray-700 mb-4">
+                        This project was designed as an end-to-end analytical case study, using a narrative framework to model a real-world financial and operational problem involving an 11-year-old entrepreneur.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        I designed a relational dataset representing sales, shipping, and expenses. Using SQL, I queried the data to answer business-style questions related to profitability, cost allocation, and resource trade-offs.
+                    </p>
+                    <div class="text-sm text-gray-600 mb-6 bg-gray-50 p-3 rounded-lg">
+                        <span class="font-bold text-[#1f3d61]">Skills Used:</span>
+                        SQL (Intermediate), Data Modeling, Relational Tables, Data Cleaning, Business Logic.
+                    </div>
+                    <a href="https://meryemciftcialy.github.io/work_sample/general_projects.html" target="_blank" 
+                       class="cta-button inline-flex items-center bg-[#1f3d61] text-white font-semibold py-3 px-6 rounded-xl shadow-lg">
+                        View Project Analysis
+                        <i data-lucide="external-link" class="ml-2 w-4 h-4"></i>
                     </a>
-                </p>
+                </div>
             </div>
         </section>
 
-
-        <!-- UPDATED FEATURED PROJECT SECTION -->
-        <section id="projects" class="featured-project-section" role="region" aria-labelledby="featured-project-title">
-            <h2 id="featured-project-title" class="text-3xl font-extrabold text-[#1f3d61] mb-3">Featured Project: Financial Performance Dashboard (Tableau)</h2>
-            <p class="text-lg text-gray-700 mb-4 max-w-4xl">
-                The primary objective was to develop a financial performance dashboard to provide clear, dynamic insights into expense trends and spending behavior across different business years 2023–2025.
-            </p>
-            <div class="text-sm text-gray-600 mb-4">
-                <span class="font-bold text-[#1f3d61]">Skills Used:</span> Tableau, Excel, Data Cleaning, Data Transformation, Tableau Calculated Fields, Data Storytelling.
+        <section id="skills" class="full-width-section bg-white border-l-4 border-l-[#1f3d61] rounded-xl shadow-md" role="region" aria-labelledby="skills-title">
+            <h2 id="skills-title" class="text-3xl font-extrabold text-[#1f3d61] mb-6 border-b pb-2">Core Skills & Tools</h2>
+            <div class="two-col-grid">
+                <div class="portfolio-card p-5 rounded-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Data & Analytics</h3>
+                    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+                        <li>SQL (Intermediate): querying, joins, aggregations</li>
+                        <li>Data cleaning & transformation</li>
+                        <li>ETL fundamentals & analytical workflows</li>
+                        <li>Ensuring data integrity in messy datasets</li>
+                    </ul>
+                </div>
+                <div class="portfolio-card p-5 rounded-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Excel & Reporting</h3>
+                    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+                        <li>Advanced Excel: PivotTables, XLOOKUP, INDEX/MATCH</li>
+                        <li>Exploratory analysis & summarization</li>
+                        <li>Executive-ready reports & presentations</li>
+                    </ul>
+                </div>
+                <div class="portfolio-card p-5 rounded-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Visualization & BI</h3>
+                    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+                        <li>Power BI and Tableau dashboards</li>
+                        <li>Trend analysis and KPI tracking</li>
+                        <li>User-focused data storytelling</li>
+                    </ul>
+                </div>
+                <div class="portfolio-card p-5 rounded-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Business Systems</h3>
+                    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+                        <li>Salesforce CRM (Intermediate)</li>
+                        <li>Document management & compliance</li>
+                        <li>Operational reporting for stakeholders</li>
+                    </ul>
+                </div>
             </div>
-            <!-- LINK UPDATED TO TABLEAU HUB -->
-            <a href="https://meryemciftcialy.github.io/work_sample/tableau.html" target="_blank" class="cta-button inline-flex items-center bg-[#1f3d61] text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:shadow-2xl">
-                View Tableau Hub
-            </a>
         </section>
-
-        <div class="full-width-section rounded-xl" role="region" aria-labelledby="viz-reports-title">
+<div class="full-width-section rounded-xl" role="region" aria-labelledby="viz-reports-title">
             <h2 id="viz-reports-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Data Visualization & Reporting Hubs</h2>
             <div class="two-col-grid">
                 
@@ -306,258 +297,189 @@
                 </div>
             </div>
         </div>
-
-        <div class="full-width-section rounded-xl" role="region" aria-labelledby="code-ml-title">
-            <h2 id="code-ml-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Code & Machine Learning Hubs</h2>
-            <div class="two-col-grid">
-                
-                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">SQL Journey Repository</h3>
-                        <p class="text-gray-600 mb-4">View dedicated projects focused on SQL querying, database design, and optimization techniques (e.g., PostgreSQL, MySQL).</p>
+        <section id="hubs" class="space-y-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Code & Machine Learning Hubs</h2>
+                <div class="two-col-grid">
+                    <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">SQL Journey Repository</h3>
+                            <p class="text-gray-600 mb-4">Dedicated projects focused on SQL querying, database design, and optimization techniques.</p>
+                        </div>
+                        <a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                            Explore SQL Projects <i data-lucide="github" class="ml-2 w-4 h-4"></i>
+                        </a>
                     </div>
-                    <a href="https://github.com/MeryemCiftciAly/my_sql_journey" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
-                        Explore SQL Projects
-                        <!-- Lucide icon: Github -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github ml-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.4-.4 6.7-2.7 6.7-7 0-1.7-.6-3-1.7-4A4.2 4.2 0 0 0 17 2c0-1.5-.7-2-2-2s-2.7.5-3 2c-1.1-.3-2.3-.4-3.5-.4C4.3 2 2.6 3.6 2 5c-1.1 1-1.7 2.3-1.7 4 0 4.3 3.3 6.6 6.7 7-.3.5-.5 1.2-.5 2v4"/></svg>
-                    </a>
-                </div>
-
-                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Python Journal Repository</h3>
-                        <p class="text-gray-600 mb-4">Jupyter Notebooks showcasing data cleaning, analysis with Pandas/NumPy, and machine learning scripts.</p>
+                    <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Python Journal Repository</h3>
+                            <p class="text-gray-600 mb-4">Jupyter Notebooks showcasing data cleaning and analysis with Pandas/NumPy.</p>
+                        </div>
+                        <a href="https://github.com/MeryemCiftciAly/my-python-journal" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                            Explore Python Projects <i data-lucide="github" class="ml-2 w-4 h-4"></i>
+                        </a>
                     </div>
-                    <a href="https://github.com/MeryemCiftciAly/my-python-journal" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
-                        Explore Python Projects
-                        <!-- Lucide icon: Github -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github ml-1"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.4-.4 6.7-2.7 6.7-7 0-1.7-.6-3-1.7-4A4.2 4.2 0 0 0 17 2c0-1.5-.7-2-2-2s-2.7.5-3 2c-1.1-.3-2.3-.4-3.5-.4C4.3 2 2.6 3.6 2 5c-1.1 1-1.7 2.3-1.7 4 0 4.3 3.3 6.6 6.7 7-.3.5-.5 1.2-.5 2v4"/></svg>
-                    </a>
-                </div>
-                
-                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Kaggle Notebooks</h3>
-                        <p class="text-gray-600 mb-4">Showcasing data analysis, feature engineering, and advanced statistical modeling via detailed analytical notebooks.</p>
+                    <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Kaggle Notebooks</h3>
+                            <p class="text-gray-600 mb-4">Analytical notebooks showcasing feature engineering and statistical modeling.</p>
+                        </div>
+                        <a href="https://www.kaggle.com/meryemciftci" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                            Explore Kaggle <i data-lucide="bar-chart-3" class="ml-2 w-4 h-4"></i>
+                        </a>
                     </div>
-                    <a href="https://www.kaggle.com/meryemciftci" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
-                        Explore Kaggle Profile
-                        <!-- Lucide icon: BarChart3 -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-3 ml-1"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
-                    </a>
-                </div>
-
-                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-bold text-gray-900 cursor-pointer flex justify-between items-center" 
-                        onclick="toggleAccordion('colab-links', 'colab-arrow')"
-                        aria-controls="colab-links"
-                        aria-expanded="false">
-                        Google Colab Notebooks 
-                        <span id="colab-arrow" class="text-2xl transition-transform duration-300 transform inline-block">▼</span>
-                    </h3>
-                    <p class="text-gray-600 mb-2 text-sm">Interactive Python environments for quick analysis and prototyping.</p>
-                    <div id="colab-links" class="accordion-content" aria-expanded="false">
-                        <ul class="space-y-2">
-                            <li>
-                                <a href="https://colab.research.google.com/drive/1gIoxBPE4ORHgIyXiVjoXPe16g6LajgBU" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
-                                    Expense Excel Cleaning, Categorizing & Output
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://colab.research.google.com/drive/1O3nwXqDDG5tzOJNdoiXCKoy1XEjo1HKs?usp=sharing" target="_blank" class="text-sm text-indigo-600 font-medium hover:text-indigo-800">
-                                    Interactive International Sanctions Analysis
-                                </a>
-                            </li>
-                            <li>
-                                <span class="text-sm text-gray-500 italic">...More links coming soon.</span>
-                            </li>
-                        </ul>
+                    <div class="portfolio-card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-gray-900 cursor-pointer flex justify-between items-center" 
+                            onclick="toggleAccordion('colab-links', 'colab-arrow')">
+                            Google Colab Notebooks 
+                            <span id="colab-arrow">▼</span>
+                        </h3>
+                        <div id="colab-links" class="accordion-content">
+                            <ul class="space-y-2 mt-2">
+                                <li><a href="https://colab.research.google.com/drive/1gIoxBPE4ORHgIyXiVjoXPe16g6LajgBU" target="_blank" class="text-sm text-indigo-600 hover:underline">Expense Excel Cleaning & Categorizing</a></li>
+                                <li><a href="https://colab.research.google.com/drive/1O3nwXqDDG5tzOJNdoiXCKoy1XEjo1HKs" target="_blank" class="text-sm text-indigo-600 hover:underline">International Sanctions Analysis</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-
             </div>
-        </div>
 
-        <div id="excel-hub" class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61] rounded-xl" role="region" aria-labelledby="excel-title">
-            <h2 id="excel-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Excel Hub</h2>
-            <p class="text-gray-600 mb-4">Detailed examples of complex financial forecasts, dynamic budget templates using Power Query and Pivot Tables, and large-scale data cleansing with advanced formulas (XLOOKUP, INDEX/MATCH, ARRAYFORMULAS).</p>
+            <div id="excel-hub" class="bg-slate-50 border-l-4 border-l-[#1f3d61] rounded-xl p-6 shadow-md">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Excel Hub</h2>
+                <div class="two-col-grid">
+                    <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border-2 border-[#1f3d61]">
+                        <h3 class="text-xl font-bold text-[#1f3d61] mb-2">Dropbox Excel Folder</h3>
+                        <p class="text-sm text-gray-600 mb-4">Access dynamic financial models and specialized data cleanup workbooks.</p>
+                        <a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/ADpsoscLKclA_ng-vpu9aDY/Excel?rlkey=7rc4uytibnjf07ix6zun3uyar&dl=0" target="_blank" class="cta-button block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-xl text-center">View Dropbox</a>
+                    </div>
+                    <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border-2 border-[#1f3d61]">
+                        <h3 class="text-xl font-bold text-[#1f3d61] mb-2">Excel Projects Gallery</h3>
+                        <p class="text-sm text-gray-600 mb-4">Interactive gallery showcasing various Excel projects and skills.</p>
+                        <a href="https://meryemciftcialy.github.io/work_sample/excelskills.html" target="_blank" class="cta-button block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-xl text-center">Explore Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+<div id="certs" 
+     class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61] rounded-xl mt-20"
+     role="region"
+     aria-labelledby="certifications-title">
+
+    <h2 id="certifications-title" 
+        class="text-2xl font-bold text-gray-800 mb-8 pb-3 border-b border-gray-200">
+        Professional Certifications
+    </h2>
+
+    <div class="cert-grid grid gap-8 md:grid-cols-2">
+
+        <!-- Completed Certification -->
+        <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border border-slate-200 relative">
             
-            <div class="two-col-grid mt-4">
-                
-                <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border-2 border-[#1f3d61]">
-                    <h3 class="text-xl font-bold text-[#1f3d61] mb-2">Dropbox Excel Folder</h3>
-                    <p class="text-sm text-gray-600 mb-4">Access a range of dynamic financial models and specialized data cleanup workbooks.</p>
-                    <a href="https://www.dropbox.com/scl/fo/lsm59ot9c59tyalbiejqs/ADpsoscLKclA_ng-vpu9aDY/Excel?rlkey=7rc4uytibnjf07ix6zun3uyar&subfolder_nav_tracking=1&dl=0" target="_blank" class="cta-button inline-block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-xl shadow-md hover:bg-[#152945] w-full text-center">
-                        View Dropbox
-                    </a>
-                </div>
+            <!-- Status Badge -->
+            <span class="absolute top-4 right-4 
+                         text-xs font-semibold uppercase tracking-wide 
+                         bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                Completed
+            </span>
 
-                <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border-2 border-[#1f3d61]">
-                    <h3 class="text-xl font-bold text-[#1f3d61] mb-2">Excel Projects Gallery</h3>
-                    <p class="text-sm text-gray-600 mb-4">See an interactive gallery showcasing various Excel projects and skills.</p>
-                    <a href="https://meryemciftcialy.github.io/work_sample/excelskills.html" target="_blank" class="cta-button inline-block bg-[#1f3d61] text-white font-semibold py-2 px-5 rounded-xl shadow-md hover:bg-[#152945] w-full text-center">
-                        Explore Gallery
-                    </a>
-                </div>
-            </div>
-        </div>
+            <h3 class="text-lg font-bold text-[#1f3d61] mb-2">
+                Google Data Analytics Certificate
+            </h3>
 
-        <div id="operations" class="full-width-section bg-blue-50 border-l-4 border-l-[#1f3d61] rounded-xl" role="region" aria-labelledby="operations-title">
-            <h2 id="operations-title" class="text-2xl font-bold text-gray-800 mb-4">Business Operations & CRM Proficiency</h2>
-            <div class="portfolio-card bg-white p-6 rounded-xl shadow-md">
-                <h3 class="text-xl font-bold text-[#1f3d61] mb-3">Administrative & Operational Experience</h3>
-                
-                <p class="text-gray-700 mb-4">Over 5 years of experience in administrative operations and compliance, demonstrating proficiency in project coordination, attention to detail, and use of productivity tools like <span class="font-bold">Microsoft Office (Word, PowerPoint)</span>.</p>
-                
-                <h4 class="text-lg font-semibold text-gray-800 mb-2 flex items-center">
-                    <!-- Lucide icon: Database -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-database text-blue-500 mr-2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-                    Salesforce Knowledge: Salesforce (Intermediate)
-                </h4>
-                <ul class="list-disc ml-5 space-y-1 text-gray-600">
-                    <li>Proficient in managing Leads, Accounts, Contacts, and Opportunities; creating and maintaining clean, structured records.</li>
-                    <li>Experienced in building and customizing standard reports and dashboards to support operational and leadership decision-making.</li>
-                    <li>Familiar with Salesforce backend administration basics, including updating fields, modifying forms, and maintaining object data through standard configuration tools.</li>
-                    <li>Comfortable performing routine CRM tasks such as data entry, record updates, list views, user support, and troubleshooting basic workflow issues.</li>
-                    <li>Completed Salesforce Trailhead modules covering CRM fundamentals, data management, platform navigation, and best practices.</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div id="skills" class="full-width-section rounded-xl" role="region" aria-labelledby="core-skills-title">
-            <h2 id="core-skills-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Core Technical Skills</h2>
-            <div class="lg:w-1/2">
-                <h3 class="text-xl font-semibold text-blue-700 mb-3 flex items-center">
-                    <!-- Lucide icon: Code2 -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2 text-blue-500 mr-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-                    Technical Proficiencies
-                </h3>
-                <ul class="space-y-2 text-gray-700 skills-list">
-                    <li><span class="font-bold">Languages:</span> Python (Pandas, NumPy), SQL (PostgreSQL, MySQL), R.</li>
-                    <li><span class="font-bold">Databases:</span> Google BigQuery.</li>
-                    <li><span class="font-bold">Visualization:</span> Tableau, Power BI, Matplotlib.</li>
-                    <li><span class="font-bold">Cloud/Tools:</span> Git, GitHub.</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div id="certs" class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61] rounded-xl" role="region" aria-labelledby="certifications-title">
-            <h2 id="certifications-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Professional Certifications</h2>
-            <div class="cert-grid">
-                
-                <div class="portfolio-card bg-white p-5 rounded-xl shadow-lg border-2 border-slate-200">
-                    <h3 class="text-lg font-bold text-[#1f3d61] mb-2">Google Data Analytics Certification</h3>
-                    <p class="text-sm text-gray-600 mb-3">Completed January 2025 through Merit America / Coursera.</p>
-                    <a href="https://coursera.org/verify/7IBWOVFHX2B5" target="_blank" class="text-blue-600 text-sm font-medium inline-block hover:text-blue-800 underline">
-                        View Validation Link
-                    </a>
-                </div>
-
-                <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 1</h3>
-                    <p class="text-sm text-gray-500">Future Certification Goal </p>
-                </div>
-
-                <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 2</h3>
-                    <p class="text-sm text-gray-500">Future Certification Goal (e.g., Power BI Specialist)</p>
-                </div>
-
-                <div class="portfolio-card bg-white p-5 rounded-xl shadow-md opacity-75 border border-dashed border-gray-300">
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Certification Placeholder 3</h3>
-                    <p class="text-sm text-gray-500">Future Certification Goal (e.g., AWS Cloud Practitioner)</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="full-width-section bg-white border-2 border-gray-300 rounded-xl" role="region" aria-labelledby="ai-title">
-            <h2 id="ai-title" class="text-2xl font-bold text-gray-800 mb-4">AI, Automation & Prompt Engineering Experience</h2>
-            <h3 class="text-xl font-semibold text-gray-800 mb-3">Balanced AI Integration for Technical Work</h3>
-            <ul class="list-disc ml-5 space-y-2 text-gray-700">
-                <li>Skilled in using <b>AI tools as workflow enhancers</b> to validate logic, review code, and explore alternative solutions, while independently writing, understanding, and testing all final technical work.</li>
-                <li>Consistently integrates AI support in a balanced way to <b>increase efficiency, reduce errors</b>, and streamline the analytical process, while maintaining full ownership of deliverables and decision-making.</li>
-            </ul>
-        </div>
-        
-        <!-- DEDICATED CONTACT SECTION -->
-        <section id="contact" class="full-width-section bg-white p-10 rounded-xl shadow-2xl border-t-8 border-t-[#1f3d61] mt-8" role="region" aria-labelledby="contact-title">
-            <h2 id="contact-title" class="text-3xl font-extrabold text-[#1f3d61] mb-6 text-center">Get in Touch</h2>
-            <p class="text-center text-xl text-gray-700 mb-8 max-w-4xl mx-auto">
-                I am currently <b>Open for Work</b> and actively seeking roles or freelance projects in Data Analytics. Let's discuss how my skills can drive value for your team.
+            <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                  <b>Google Data Analytics Certificate:</b> Completed January 2025 through Merit America / Coursera.  
+                Focused on data cleaning, SQL, analysis, and stakeholder-driven insights.
             </p>
+
+            <a href="https://coursera.org/verify/7IBWOVFHX2B5"
+               target="_blank"
+               class="text-blue-600 text-sm font-medium inline-block hover:text-blue-800 underline">
+                View credential verification
+            </a>
+        </div>
+
+        <!-- Planned Certification -->
+        <div class="portfolio-card bg-white p-6 rounded-xl shadow-md border border-dashed border-gray-300 relative">
             
+            <!-- Status Badge -->
+            <span class="absolute top-4 right-4 
+                         text-xs font-semibold uppercase tracking-wide 
+                         bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+                Planned
+            </span>
+
+            <h3 class="text-lg font-bold text-gray-900 mb-2">
+                Microsoft Power BI Data Analyst (PL-300)
+            </h3>
+
+            <p class="text-sm text-gray-500 leading-relaxed">
+                   <b> Microsoft Power BI Data Analyst (PL-300):</b> Targeted for 2026.  
+                Focus on data modeling, DAX, Power BI service, and enterprise reporting.
+            </p>
+        </div>
+
+        <!-- Future / Placeholder Certification -->
+        <div class="portfolio-card bg-white p-6 rounded-xl shadow-sm 
+                    border border-dashed border-gray-200 
+                    text-center flex items-center justify-center min-h-[160px]">
+            
+            <p class="text-sm text-gray-400 italic">
+                Future certification — to be added upon completion
+            </p>
+        </div>
+
+    </div>
+</div>
+
+        <section id="contact" class="bg-white p-10 rounded-xl shadow-2xl border-t-8 border-t-[#1f3d61] mt-12 text-center" role="region">
+            <h2 class="text-3xl font-extrabold text-[#1f3d61] mb-6">Get in Touch</h2>
+            <p class="text-xl text-gray-700 mb-8 max-w-4xl mx-auto">
+                I am currently <b>Open for Work</b>. Let's discuss how my skills can drive value for your team.
+            </p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-12">
-                <div class="text-center p-4 bg-gray-50 rounded-lg shadow-inner w-full sm:w-auto">
+                <div class="p-4 bg-gray-50 rounded-lg shadow-inner w-full sm:w-auto">
                     <h3 class="text-xl font-semibold text-gray-800 flex items-center justify-center mb-2">
-                        <!-- Lucide icon: Mail -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail text-blue-500 mr-2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.9 5.2-8.9-5.2"/></svg>
-                        Email Me Directly
+                        <i data-lucide="mail" class="text-blue-500 mr-2"></i> Email Me
                     </h3>
-                    <!-- EMAIL ADDRESS (Meryem's email) -->
                     <p class="text-lg text-[#1f3d61] font-bold">meryemkciftci@gmail.com</p>
                 </div>
-                
-                <div class="text-center p-4 bg-gray-50 rounded-lg shadow-inner w-full sm:w-auto">
+                <div class="p-4 bg-gray-50 rounded-lg shadow-inner w-full sm:w-auto">
                     <h3 class="text-xl font-semibold text-gray-800 flex items-center justify-center mb-2">
-                        <!-- Lucide icon: MapPin -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin text-red-500 mr-2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        Current Location
+                        <i data-lucide="map-pin" class="text-red-500 mr-2"></i> Location
                     </h3>
-                    <!-- LOCATION (New York City, United States) -->
-                    <p class="text-lg text-[#1f3d61] font-bold">New York City, United States</p>
+                    <p class="text-lg text-[#1f3d61] font-bold">New York City, USA</p>
                 </div>
             </div>
-            
-            <div class="text-center mt-10">
+            <div class="mt-10">
                 <a href="https://linkedin.com/in/meryack" target="_blank" 
-                   class="linkedin-cta inline-flex items-center font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition"
-                   aria-label="Connect with Meryem on LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin mr-2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                    Connect on LinkedIn
+                   class="linkedin-cta inline-flex items-center font-semibold py-3 px-8 rounded-full shadow-lg">
+                    <i data-lucide="linkedin" class="mr-2"></i> Connect on LinkedIn
                 </a>
             </div>
         </section>
 
-
     </main>
 
-    <!-- Footer now only contains copyright and back-to-top -->
-    <footer class="bg-gray-800 text-white p-6 mt-8">
+    <footer class="bg-gray-800 text-white p-6 mt-12">
         <div class="container mx-auto max-w-7xl flex justify-between items-center text-sm">
             <p>&copy; 2026 Meryem's Data Portfolio Showcase</p>
-            
-            <a href="#top" class="inline-flex items-center text-white bg-gray-700 py-2 px-4 rounded-lg hover:bg-gray-600 transition duration-300">
-                <!-- Lucide icon: ArrowUp -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up mr-1"><path d="m12 19-7-7 7-7"/><path d="M12 19v-14"/></svg>
-                Back to Top
+            <a href="#top" class="inline-flex items-center bg-gray-700 py-2 px-4 rounded-lg hover:bg-gray-600 transition">
+                <i data-lucide="arrow-up" class="mr-1 w-4 h-4"></i> Back to Top
             </a>
         </div>
     </footer>
 
     <script>
-        /**
-         * Toggles the accordion content and updates the accessibility attributes.
-         * @param {string} contentId - The ID of the content div to toggle.
-         * @param {string} arrowId - The ID of the arrow span to update.
-         */
+        lucide.createIcons();
+
         function toggleAccordion(contentId, arrowId) {
             const content = document.getElementById(contentId);
             const arrow = document.getElementById(arrowId);
             const isExpanded = content.getAttribute('aria-expanded') === 'true';
             
-            // Toggle the expanded state
             content.setAttribute('aria-expanded', String(!isExpanded));
-
-            // Update the arrow visual
-            if (!isExpanded) {
-                // Expanded
-                arrow.textContent = '▲'; 
-            } else {
-                // Collapsed
-                arrow.textContent = '▼';
-            }
+            arrow.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
         }
-        
     </script>
 </body>
 </html>
