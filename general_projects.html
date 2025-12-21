@@ -19,17 +19,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-        }
-        .banner-content {
-            z-index: 1;
-            text-align: center;
-            color: white;
         }
         .banner-content h1 {
             margin: 0;
             font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .container {
             max-width: 1100px;
@@ -37,9 +32,7 @@
             padding: 2rem;
             background-color: #fff;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 5;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .nav-link {
             display: inline-block;
@@ -48,17 +41,18 @@
             text-decoration: none;
             font-weight: bold;
         }
-        .nav-link:hover { text-decoration: underline; }
-
-        h2 { color: #1b4f72; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 0; }
-        
+        h2 {
+            color: #1b4f72;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-
         .project-card {
             background: #fff;
             border-radius: 10px;
@@ -72,54 +66,54 @@
             transform: translateY(-8px);
             box-shadow: 0 12px 20px rgba(0,0,0,0.1);
         }
-
         .featured-tag {
-            background: #e67e22;
+            background: #1f3d61;
             color: white;
             padding: 4px 12px;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: bold;
             border-radius: 4px;
             display: inline-block;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
-        
         .coming-soon-tag {
             background: #7f8c8d;
             color: white;
             padding: 4px 12px;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: bold;
             border-radius: 4px;
             display: inline-block;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
-
         .project-image {
             width: 100%;
             height: 220px;
-            background-color: #f0f0f0;
             object-fit: cover;
+            background-color: #f0f0f0;
         }
-
         .project-info {
             padding: 20px;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
+            flex-grow: 1;
         }
-
-        .project-info h3 { margin: 0 0 10px 0; color: #2c3e50; }
-        .project-info p { font-size: 0.95em; color: #666; margin-bottom: 15px; }
-
+        .project-info h3 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+        }
+        .project-info p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 14px;
+        }
         .project-links {
             margin-top: auto;
             padding-top: 15px;
             border-top: 1px solid #eee;
         }
-
         .btn-view {
             display: inline-flex;
             align-items: center;
@@ -129,15 +123,7 @@
             font-weight: bold;
             border-radius: 5px;
             text-decoration: none;
-            transition: background-color 0.3s;
         }
-        .btn-view:hover {
-            background-color: #d0e7fb;
-        }
-        .btn-view svg {
-            margin-right: 8px;
-        }
-
         .footer {
             text-align: center;
             padding: 40px 20px;
@@ -146,79 +132,102 @@
             margin-top: 60px;
         }
         .footer a { color: #5dade2; text-decoration: none; }
-
-        @media (max-width: 768px) {
-            .container { margin-top: -20px; padding: 1.5rem; }
-            .banner { height: 150px; }
-        }
     </style>
 </head>
+
 <body>
 
-    <div class="banner">
-        <div class="banner-content">
-            <h1>Creative & Personal Projects</h1>
-        </div>
+<div class="banner">
+    <div class="banner-content">
+        <h1>Creative & Personal Projects</h1>
     </div>
+</div>
 
-    <div class="container">
-        <!-- Link updated per user request -->
-        <a href="https://meryemciftcialy.github.io/work_sample/" class="nav-link">← Back to Data Portfolio</a>
-        
-        <h2>Creative & General Projects</h2>
-        <p>Beyond data analytics, I enjoy storytelling and finding creative ways to use my data analytic skills for visualization, organizing my workflow, and project execution. I believe data is at its best when it's used to tell a compelling narrative.</p>
+<div class="container">
+    <a href="https://meryemciftcialy.github.io/work_sample/" class="nav-link">← Back to Data Portfolio</a>
 
-        <div class="project-grid">
-            
-            <!-- PROJECT: Lina Christmas -->
-            <div class="project-card">
-                <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/Lina%E2%80%99s%20Christmas%20Project.png" alt="Lina's Christmas Project" class="project-image">
-                <div class="project-info">
-                    <span class="featured-tag">Data Storytelling</span>
-                    <h3>The Lina Christmas Project</h3>
-                    <p>
-                        A unique storytelling project that uses the Christmas holiday as a creative framework. I crafted a narrative centered on 11-year-old Lena, exploring her world through a creative lens.
-                    </p>
-                    <p>
-                        <strong>The Data-Driven Narrative:</strong> To bring the story to life, I built custom datasets within the narrative structure. On Christmas Eve, when Lena’s family asks her questions about her project, I used SQL to query the data and find the exact answers. 
-                    </p>
-                    <p>
-                        Instead of traditional dialogue, Lina’s responses are data-driven insights—demonstrating how technical skills can be used to anchor creative storytelling in factual accuracy.
-                    </p>
-                    
-                    <div class="project-links">
-                        <a href="https://github.com/MeryemCiftciAly/my_sql_journey/blob/45fd6b0a1e1e92adf99371369b863cce8c27a007/02_mini-projects/lina_christmas_project/Project_README.md" class="btn-view" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                            </svg>
-                            View Project README
-                        </a>
-                    </div>
+    <h2>Creative & General Projects</h2>
+    <p>
+        I explore creative applications of data to strengthen narrative clarity, analytical thinking, and end-to-end project execution. Each project emphasizes structure, intent, and communication.
+    </p>
+
+    <div class="project-grid">
+
+        <!-- LINA CHRISTMAS PROJECT -->
+        <div class="project-card">
+            <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/Lina%E2%80%99s%20Christmas%20Project.png"
+                 alt="Lina's Christmas Project"
+                 class="project-image">
+            <div class="project-info">
+                <span class="featured-tag">Data and Storytelling </span>
+                <h3>The Lina Christmas Project</h3>
+                <p>
+                    A narrative-driven analytics project presented as a chronological timeline. The story follows an analytically minded 11-year-old who designs a small revenue-generating initiative to purchase and ship holiday gifts independently.
+                </p>
+                <p>
+                    The project walks through the complete analytical lifecycle—from dataset design and data generation, to SQL querying, validation, and insight development—culminating in structured, question-driven conclusions.
+                </p>
+                <p>
+                    Instead of traditional dialogue, the character’s responses are grounded in query results, demonstrating how analytical methods can anchor storytelling in structured, verifiable data.
+                </p>
+                <div class="project-links">
+                    <a href="https://github.com/MeryemCiftciAly/my_sql_journey/blob/45fd6b0a1e1e92adf99371369b863cce8c27a007/02_mini-projects/lina_christmas_project/Project_README.md"
+                       target="_blank"
+                       class="btn-view">
+                        View Project README
+                    </a>
                 </div>
             </div>
+        </div>
 
-            <!-- PLACEHOLDER FOR NEXT PROJECT -->
-            <div class="project-card">
-                <div style="height: 220px; background: #fdfdfd; display: flex; align-items: center; justify-content: center; color: #cbd5e0; border-bottom: 1px solid #edf2f7;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                </div>
-                <div class="project-info">
-                    <span class="coming-soon-tag">Coming Soon</span>
-                    <h3>Future Creative Project</h3>
-                    <p>I am currently brainstorming new ways to blend data analysis with creative execution. This space will soon feature a new project focused on workflow innovation and visual storytelling.</p>
+        <!-- NYC SANITATION ANALYSIS PROJECT -->
+        <div class="project-card">
+            <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/refs/heads/main/dataanalysis_screenshot.png"
+                 alt="NYC Sanitation Waste Analysis"
+                 class="project-image">
+            <div class="project-info">
+                <span class="featured-tag">End-to-End Data Analysis Timeline</span>
+                <h3>NYC Waste Collection Analysis</h3>
+                <p>
+                    A project analyzing public data from the New York City Sanitation Department to explore how waste is categorized across the five boroughs.
+                </p>
+                <p>
+                    This timeline demonstrates the full analytical process: obtaining and cleaning raw data, performing SQL queries to examine trends, validating categorization accuracy, and visualizing insights in a presentation.
+                </p>
+                <p>
+                    The analysis identifies the most prevalent waste categories per borough and provides insights into collection practices, highlighting patterns in proper and improper waste categorization.
+                </p>
+                <div class="project-links">
+                    <a href="https://meryemciftcialy.github.io/work_sample/nyc-analy-prj-timeline.html"
+                       target="_blank"
+                       class="btn-view">
+                        View Project Timeline
+                    </a>
                 </div>
             </div>
-
         </div>
-    </div>
 
-    <div class="footer">
-        <p>© 2025 Meryem A. Rowe-Ciftci</p>
-        <p>Interested in collaborating on a creative project? <a href="mailto:meryemkciftci@gmail.com">Let's connect.</a></p>
+        <!-- PLACEHOLDER -->
+        <div class="project-card">
+            <div style="height:220px;display:flex;align-items:center;justify-content:center;color:#cbd5e0;border-bottom:1px solid #edf2f7;">
+                +
+            </div>
+            <div class="project-info">
+                <span class="coming-soon-tag">Coming Soon</span>
+                <h3>Future Creative Project</h3>
+                <p>
+                    This space will feature a new project focused on structured problem-solving, workflow design, and data-driven storytelling.
+                </p>
+            </div>
+        </div>
+
     </div>
+</div>
+
+<div class="footer">
+    <p>© 2026 Kamara Rowe-Ciftci</p>
+    <p>Interested in collaborating? <a href="mailto:meryemkciftci@gmail.com">Let’s connect.</a></p>
+</div>
 
 </body>
 </html>
