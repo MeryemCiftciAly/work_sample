@@ -30,22 +30,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .work-status-banner {
-            position: fixed;
-            top: 4rem;
-            left: 0;
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 0.5rem 0;
-            font-size: 1rem;
-            font-weight: 600;
-            z-index: 40;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            animation: pulse-once 3s infinite;
-        }
-
         .portfolio-card {
             transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid #e2e8f0;
@@ -65,47 +49,7 @@
             border-left: 8px solid #1f3d61;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
-        .cta-button {
-            transition: background-color 0.2s, transform 0.1s;
-        }
-        .cta-button:hover {
-            background-color: #152945;
-            transform: translateY(-1px);
-        }
 
-        .two-col-grid {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-        
-        .cert-grid {
-            display: grid;
-            gap: 1.5rem;
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-
-        @media (min-width: 640px) {
-            .two-col-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        }
-        
-        @media (min-width: 1024px) {
-            .cert-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-        }
-        
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-            padding-top: 0;
-        }
-        .accordion-content[aria-expanded="true"] {
-            max-height: 500px;
-            padding-top: 0.75rem;
-        }
-        
         .hero-banner {
             background-color: #1f3d61;
             position: relative;
@@ -137,6 +81,54 @@
             margin-bottom: 2rem;
             padding: 1.5rem;
         }
+
+        .two-col-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .cert-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        @media (min-width: 640px) {
+            .two-col-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            padding-top: 0;
+        }
+        .accordion-content[aria-expanded="true"] {
+            max-height: 500px;
+            padding-top: 0.75rem;
+        }
+
+        .roadmap-link {
+            background-color: #f8fafc;
+            border: 2px solid #3b82f6;
+            color: #1e40af;
+            transition: all 0.3s ease;
+        }
+        .roadmap-link:hover {
+            background-color: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .cta-button:hover {
+            background-color: #152945;
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body id="top" class="antialiased pt-28">
@@ -151,14 +143,14 @@
             <ul class="flex space-x-6 text-sm font-medium">
                 <li><a href="#hero" class="hover:text-gray-300 transition">Home</a></li>
                 <li><a href="#about" class="hover:text-gray-300 transition">About</a></li>
-                <li><a href="https://meryemciftcialy.github.io/work_sample/general_projects.html" class="hover:text-gray-300 transition">Projects</a></li>
+                <li><a href="#projects" class="hover:text-gray-300 transition">Projects</a></li>
                 <li><a href="#skills" class="hover:text-gray-300 transition">Skills</a></li>
                 <li><a href="#contact" class="hover:text-gray-300 transition">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-      <section id="hero" class="hero-banner text-white py-20 md:py-32 overflow-hidden">
+    <section id="hero" class="hero-banner text-white py-20 md:py-32 overflow-hidden">
         <img src="https://raw.githubusercontent.com/MeryemCiftciAly/work_sample/refs/heads/main/Trends_(1).png" 
              alt="Abstract data trends in navy blue background" 
              class="bg-img"
@@ -170,8 +162,7 @@
                 A dynamic showcase of data visualization, advanced analytics projects, and technical proficiencies in Python, SQL, and Power BI.
             </p>
             <a href="https://linkedin.com/in/meryack" target="_blank" 
-               class="linkedin-cta inline-flex items-center font-semibold py-3 px-8 rounded-full shadow-2xl hover:shadow-3xl transition"
-               aria-label="Connect with Meryem on LinkedIn">
+               class="linkedin-cta inline-flex items-center font-semibold py-3 px-8 rounded-full shadow-2xl hover:shadow-3xl transition">
                 <i data-lucide="linkedin" class="mr-2"></i>
                 Connect on LinkedIn
             </a>
@@ -180,19 +171,39 @@
 
     <main id="main-content" class="container mx-auto px-4 mt-12 max-w-7xl">
 
-        <section id="about" class="full-width-section bg-white border-l-4 border-l-slate-400 rounded-xl shadow-md" role="region" aria-labelledby="about-me-title">
-            <h2 id="about-me-title" class="text-3xl font-extrabold text-[#1f3d61] mb-4 border-b pb-2">About</h2>
-            <p class="text-lg text-gray-700 mb-4">
-               Kamara (Meryem) Rowe-Ciftci Data Specialist | Operations & Analytics. I am a data professional with a career-long focus on the integrity, management, and strategic utility of information. My background in business operations and compliance has shaped a practical, decision-oriented mindset: I don’t just look at numbers; I look for the business logic behind them.
-            </p>
-            <p class="text-lg text-gray-700 mb-4">
-               The Evolution For much of my career, I have been responsible for the full lifecycle of operational data—from curation and management to the final delivery of insights for leadership. Transitioning into advanced data analytics is the natural next phase of my career. I am moving from foundational data work to advanced analytical thinking, leveraging my current BA in Business Analytics to bridge the gap between raw data and high-impact strategy.
-            </p>
-            <p class="text-lg text-gray-700">
-             The Value Add I bring a rare combination of operational common sense and technical fluency. I am equally effective at ensuring data integrity in complex environments as I am at delivering comprehensive visualizations and predictive insights. My goal is to ensure that data is not just managed, but harnessed to drive smarter, faster business decisions.
-            </p>
+        <!-- About Section -->
+        <section id="about" class="full-width-section bg-white border-l-4 border-l-slate-400 rounded-xl shadow-md mb-12" role="region" aria-labelledby="about-me-title">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
+                <div class="flex-1">
+                    <h2 id="about-me-title" class="text-3xl font-extrabold text-[#1f3d61] mb-4 border-b pb-2">About</h2>
+                    <p class="text-lg text-gray-700 mb-4">
+                       Kamara (Meryem) Rowe-Ciftci Data Specialist | Operations & Analytics. I am a data professional with a career-long focus on the integrity, management, and strategic utility of information. My background in business operations and compliance has shaped a practical, decision-oriented mindset: I don’t just look at numbers; I look for the business logic behind them.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4">
+                       The Evolution For much of my career, I have been responsible for the full lifecycle of operational data—from curation and management to the final delivery of insights for leadership. Transitioning into advanced data analytics is the natural next phase of my career. I am moving from foundational data work to advanced analytical thinking, leveraging my current BA in Business Analytics to bridge the gap between raw data and high-impact strategy.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                      The Value Add I bring a rare combination of operational common sense and technical fluency. I am equally effective at ensuring data integrity in complex environments as I am at delivering comprehensive visualizations and predictive insights. My goal is to ensure that data is not just managed, but harnessed to drive smarter, faster business decisions.
+                    </p>
+                </div>
+
+                <div class="md:w-72 w-full">
+                    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 shadow-sm">
+                        <h4 class="font-bold text-blue-900 mb-2 flex items-center gap-2">
+                            <i data-lucide="map" class="w-5 h-5"></i>
+                            Future Focused
+                        </h4>
+                        <p class="text-sm text-blue-800 mb-4">Explore my continuous learning roadmap and technical milestones for 2026-2027.</p>
+                        <a href="https://meryemciftcialy.github.io/work_sample/contd_learning.html" class="roadmap-link flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm shadow-md">
+                            View My Learning Path
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="featured-project-section" role="region" aria-labelledby="recent-project-title">
             <h2 id="recent-project-title" class="text-3xl font-extrabold text-[#1f3d61] mb-6">
                 Most Recent Project: Lina’s Christmas Project (SQL & Data Modeling)
@@ -226,7 +237,8 @@
             </div>
         </section>
 
-        <section id="skills" class="full-width-section bg-white border-l-4 border-l-[#1f3d61] rounded-xl shadow-md" role="region" aria-labelledby="skills-title">
+        <!-- Skills Section -->
+        <section id="skills" class="full-width-section bg-white border-l-4 border-l-[#1f3d61] rounded-xl shadow-md mb-12" role="region" aria-labelledby="skills-title">
             <h2 id="skills-title" class="text-3xl font-extrabold text-[#1f3d61] mb-6 border-b pb-2">Core Skills & Tools</h2>
             <div class="two-col-grid">
                 <div class="portfolio-card p-5 rounded-lg">
@@ -264,10 +276,11 @@
                 </div>
             </div>
         </section>
-<div class="full-width-section rounded-xl" role="region" aria-labelledby="viz-reports-title">
+
+        <!-- Visualization Hubs -->
+        <div class="full-width-section rounded-xl mb-12" role="region" aria-labelledby="viz-reports-title">
             <h2 id="viz-reports-title" class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Data Visualization & Reporting Hubs</h2>
             <div class="two-col-grid">
-                
                 <div class="portfolio-card bg-white p-6 rounded-xl shadow-md flex flex-col justify-between">
                     <div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Tableau Public Gallery</h3>
@@ -275,8 +288,7 @@
                     </div>
                     <a href="https://meryemciftcialy.github.io/work_sample/tableau.html" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
                         Go to Gallery
-                        <!-- Lucide icon: ArrowRight -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
                     </a>
                 </div>
 
@@ -287,13 +299,14 @@
                     </div>
                     <a href="https://meryemciftcialy.github.io/work_sample/pbi.html" target="_blank" class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
                         View Sample Reports
-                        <!-- Lucide icon: ArrowRight -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
                     </a>
                 </div>
             </div>
         </div>
-        <section id="hubs" class="space-y-8">
+
+        <!-- Hubs Section -->
+        <section id="hubs" class="space-y-8 mb-12">
             <div>
                 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Code & Machine Learning Hubs</h2>
                 <div class="two-col-grid">
@@ -328,7 +341,7 @@
                         <h3 class="text-xl font-bold text-gray-900 cursor-pointer flex justify-between items-center" 
                             onclick="toggleAccordion('colab-links', 'colab-arrow')">
                             Google Colab Notebooks 
-                            <span id="colab-arrow">▼</span>
+                            <span id="colab-arrow" class="transition-transform duration-300">▼</span>
                         </h3>
                         <div id="colab-links" class="accordion-content">
                             <ul class="space-y-2 mt-2">
@@ -356,77 +369,31 @@
                 </div>
             </div>
         </section>
-<div id="certs" 
-     class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61] rounded-xl mt-20"
-     role="region"
-     aria-labelledby="certifications-title">
 
-    <h2 id="certifications-title" 
-        class="text-2xl font-bold text-gray-800 mb-8 pb-3 border-b border-gray-200">
-        Professional Certifications
-    </h2>
+        <!-- Certifications -->
+        <div id="certs" class="full-width-section bg-slate-50 border-l-4 border-l-[#1f3d61] rounded-xl mt-20 mb-20" role="region" aria-labelledby="certifications-title">
+            <h2 id="certifications-title" class="text-2xl font-bold text-gray-800 mb-8 pb-3 border-b border-gray-200">Professional Certifications</h2>
+            <div class="cert-grid">
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border border-slate-200 relative">
+                    <span class="absolute top-4 right-4 text-xs font-semibold uppercase tracking-wide bg-green-100 text-green-700 px-3 py-1 rounded-full">Completed</span>
+                    <h3 class="text-lg font-bold text-[#1f3d61] mb-2">Google Data Analytics Certificate</h3>
+                    <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                         <b>Google Data Analytics Certificate:</b> Completed January 2025 through Merit America / Coursera. Focused on data cleaning, SQL, analysis, and stakeholder-driven insights.
+                    </p>
+                    <a href="https://coursera.org/verify/7IBWOVFHX2B5" target="_blank" class="text-blue-600 text-sm font-medium inline-block hover:text-blue-800 underline">View verification</a>
+                </div>
 
-    <div class="cert-grid grid gap-8 md:grid-cols-2">
-
-        <!-- Completed Certification -->
-        <div class="portfolio-card bg-white p-6 rounded-xl shadow-lg border border-slate-200 relative">
-            
-            <!-- Status Badge -->
-            <span class="absolute top-4 right-4 
-                         text-xs font-semibold uppercase tracking-wide 
-                         bg-green-100 text-green-700 px-3 py-1 rounded-full">
-                Completed
-            </span>
-
-            <h3 class="text-lg font-bold text-[#1f3d61] mb-2">
-                Google Data Analytics Certificate
-            </h3>
-
-            <p class="text-sm text-gray-600 mb-4 leading-relaxed">
-                  <b>Google Data Analytics Certificate:</b> Completed January 2025 through Merit America / Coursera.  
-                Focused on data cleaning, SQL, analysis, and stakeholder-driven insights.
-            </p>
-
-            <a href="https://coursera.org/verify/7IBWOVFHX2B5"
-               target="_blank"
-               class="text-blue-600 text-sm font-medium inline-block hover:text-blue-800 underline">
-                View credential verification
-            </a>
+                <div class="portfolio-card bg-white p-6 rounded-xl shadow-md border border-dashed border-gray-300 relative">
+                    <span class="absolute top-4 right-4 text-xs font-semibold uppercase tracking-wide bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Planned</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Microsoft Power BI Data Analyst (PL-300)</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">
+                           <b> Microsoft Power BI Data Analyst (PL-300):</b> Targeted for 2026. Focus on data modeling, DAX, Power BI service, and enterprise reporting.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <!-- Planned Certification -->
-        <div class="portfolio-card bg-white p-6 rounded-xl shadow-md border border-dashed border-gray-300 relative">
-            
-            <!-- Status Badge -->
-            <span class="absolute top-4 right-4 
-                         text-xs font-semibold uppercase tracking-wide 
-                         bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
-                Planned
-            </span>
-
-            <h3 class="text-lg font-bold text-gray-900 mb-2">
-                Microsoft Power BI Data Analyst (PL-300)
-            </h3>
-
-            <p class="text-sm text-gray-500 leading-relaxed">
-                   <b> Microsoft Power BI Data Analyst (PL-300):</b> Targeted for 2026.  
-                Focus on data modeling, DAX, Power BI service, and enterprise reporting.
-            </p>
-        </div>
-
-        <!-- Future / Placeholder Certification -->
-        <div class="portfolio-card bg-white p-6 rounded-xl shadow-sm 
-                    border border-dashed border-gray-200 
-                    text-center flex items-center justify-center min-h-[160px]">
-            
-            <p class="text-sm text-gray-400 italic">
-                Future certification — to be added upon completion
-            </p>
-        </div>
-
-    </div>
-</div>
-
+        <!-- Contact Section -->
         <section id="contact" class="bg-white p-10 rounded-xl shadow-2xl border-t-8 border-t-[#1f3d61] mt-12 text-center" role="region">
             <h2 class="text-3xl font-extrabold text-[#1f3d61] mb-6">Get in Touch</h2>
             <p class="text-xl text-gray-700 mb-8 max-w-4xl mx-auto">
