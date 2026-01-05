@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamara Rowe-Ciftci | BA in Business Analytics Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            overflow-x: auto;
+            overflow-y: hidden;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* The Horizontal Container */
+        .world-container {
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            padding: 0 100px;
+            width: fit-content;
+            min-width: 100vw;
+            position: relative;
+        }
+
+        /* The Winding Path (SVG) */
+        .road-svg {
+            position: absolute;
+            top: 55%; /* Adjusted to stay below most text */
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.4; /* Slightly faded to ensure text pops */
+        }
+
+        .milestone-node {
+            position: relative;
+            z-index: 10;
+            width: 380px;
+            flex-shrink: 0;
+            margin: 0 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .milestone-node:hover {
+            transform: translateY(-10px);
+        }
+
+        .shrub {
+            position: absolute;
+            bottom: 25%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .shining-hat {
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
+            50% { transform: scale(1.15); filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.9)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
+        }
+
+        /* Custom scrollbar for a nicer look */
+        ::-webkit-scrollbar {
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-900">
+
+    <!-- Fixed Title Bar -->
+    <div class="fixed top-0 left-0 w-full p-8 z-50 pointer-events-none">
+        <div class="bg-white/80 backdrop-blur-md inline-block p-6 rounded-2xl shadow-sm border border-slate-100 pointer-events-auto">
+            <h1 class="text-3xl font-extrabold tracking-tight text-slate-800">
+                The Evolution of <span class="text-blue-600">Skillset</span> & Continuous Learning
+            </h1>
+            <p class="text-blue-600 font-bold text-lg mt-1 uppercase tracking-wide">
+                BA in Business Analytics <span class="text-slate-400 font-medium">| Kamara (Meryem) Rowe-Ciftci</span>
+            </p>
+            <p class="text-slate-500 text-sm font-medium italic mt-1">Journey to Professional Graduation: Spring 2027</p>
+        </div>
+    </div>
+
+    <div class="world-container">
+        
+        <!-- SVG Path Decoration (Winding Road) -->
+        <svg class="road-svg" width="5000" height="500" viewBox="0 0 5000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 250C250 250 250 450 500 450C750 450 750 150 1000 150C1250 150 1250 400 1500 400C1750 400 1750 200 2000 200C2250 200 2250 450 2500 450C2750 450 2750 150 3000 150C3250 150 3250 350 3500 350C3750 350 3750 200 4000 200C4250 200 4250 450 4500 450" stroke="#CBD5E1" stroke-width="16" stroke-linecap="round" stroke-dasharray="25 25" />
+        </svg>
+
+        <!-- Start: Professional Foundation -->
+        <div class="milestone-node" style="margin-top: -80px;">
+            <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 relative">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="font-bold text-xl mb-3 pt-2">Operational Foundation</h3>
+                <p class="text-sm text-slate-500 mb-6 leading-relaxed">The starting point: Years of managing data integrity, compliance, and business workflows within complex professional environments.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-[11px] bg-slate-100 px-3 py-1.5 rounded-lg font-bold uppercase text-slate-600 tracking-wider">Compliance</span>
+                    <span class="text-[11px] bg-slate-100 px-3 py-1.5 rounded-lg font-bold uppercase text-slate-600 tracking-wider">Data Curation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenery: Shrub 1 -->
+        <div class="shrub" style="left: 450px; bottom: 30%;">
+            <svg width="50" height="40" viewBox="0 0 50 40" fill="#94a3b8"><circle cx="15" cy="25" r="10"/><circle cx="35" cy="25" r="12"/><circle cx="25" cy="15" r="10"/></svg>
+        </div>
+
+        <!-- Milestone 1: Current Semester (Winter 2026) -->
+        <div class="milestone-node" style="margin-top: 250px;">
+            <div class="bg-white p-8 rounded-3xl shadow-2xl border-2 border-blue-500 relative ring-8 ring-blue-500/5">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <span class="text-[11px] font-black text-blue-600 uppercase tracking-widest mb-2 block">Active Learning Phase</span>
+                <h3 class="font-bold text-2xl mb-5 text-slate-800">Winter 2026: Technical Upskilling</h3>
+                
+                <div class="space-y-5">
+                    <div class="border-l-4 border-blue-500 pl-4 bg-blue-50/50 p-3 rounded-r-xl">
+                        <p class="text-sm font-bold text-blue-900">Business Intelligence (BUS 2210)</p>
+                        <p class="text-[12px] text-slate-600 mt-1">Mastering software to turn raw data into strategic foresight.</p>
+                    </div>
+                    <div class="border-l-4 border-blue-200 pl-4 p-3">
+                        <p class="text-sm font-bold text-slate-800">Quantitative Methods (MAT 2212)</p>
+                        <p class="text-[12px] text-slate-600 mt-1">Applying math for resource optimization and business forecasting.</p>
+                    </div>
+                    <div class="border-l-4 border-blue-200 pl-4 p-3">
+                        <p class="text-sm font-bold text-slate-800">Advanced Spreadsheets (CIS 2201)</p>
+                        <p class="text-[12px] text-slate-600 mt-1">Automating complex reporting through macros and "What-If" modeling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenery: Tree 1 -->
+        <div class="shrub" style="left: 1250px; bottom: 65%;">
+             <svg width="80" height="120" viewBox="0 0 80 120">
+                <rect x="36" y="80" width="8" height="40" fill="#cbd5e1"/>
+                <circle cx="40" cy="50" r="35" fill="#cbd5e1" fill-opacity="0.4"/>
+             </svg>
+        </div>
+
+        <!-- Milestone 2: Placeholder for next journey -->
+        <div class="milestone-node" style="margin-top: -200px; opacity: 0.6;">
+            <div class="bg-white/60 p-6 rounded-3xl shadow-sm border border-dashed border-slate-300">
+                <h3 class="font-bold text-lg text-slate-400 mb-2">Phase 2: Data Narratives</h3>
+                <p class="text-xs text-slate-400 mb-4">Expanding into advanced SQL, data storytelling, and comprehensive visualizations.</p>
+                <div class="mt-4 w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                    <div class="bg-slate-300 h-full w-1/3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Milestone 3: Future Focus -->
+        <div class="milestone-node" style="margin-top: 200px; opacity: 0.4;">
+            <div class="bg-white/60 p-6 rounded-3xl shadow-sm border border-dashed border-slate-300">
+                <h3 class="font-bold text-lg text-slate-400 mb-2">Phase 3: Decision Science</h3>
+                <p class="text-xs text-slate-400">Integrating machine learning fundamentals with operational strategy.</p>
+            </div>
+        </div>
+
+        <!-- Final Destination: Graduation -->
+        <div class="milestone-node flex flex-col items-center" style="margin-top: -120px;">
+            <!-- Large Graduation Hat -->
+            <div class="shining-hat mb-8">
+                <svg width="160" height="160" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4L3 9L12 14L21 9L12 4Z" fill="#1e293b" stroke="#1e293b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 9V15M21 9V15M12 14V20" stroke="#1e293b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 11.5V15.5C5 15.5 8 18.5 12 18.5C16 18.5 19 15.5 19 15.5V11.5" stroke="#1e293b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="4" r="1" fill="#fbbf24"/>
+                </svg>
+            </div>
+            
+            <div class="bg-gradient-to-br from-slate-900 to-blue-900 p-10 rounded-3xl shadow-2xl text-white text-center w-full border border-blue-400/30">
+                <h3 class="font-extrabold text-3xl mb-2">Spring 2027</h3>
+                <p class="text-blue-400 font-black text-sm uppercase tracking-[0.2em] mb-4">The Evolution Complete</p>
+                <div class="bg-white/10 py-3 px-4 rounded-xl mb-4 border border-white/10">
+                    <span class="text-lg font-bold">BA in Business Analytics</span>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    A fully-equipped Business Analytics professional, merging years of operational domain knowledge with high-level technical mastery and strategic foresight.
+                </p>
+            </div>
+        </div>
+
+        <!-- Ending Section / Contact Trigger -->
+        <div class="flex flex-col justify-center px-24 py-12 ml-20 bg-white/40 backdrop-blur-sm rounded-3xl border border-white/60">
+            <h2 class="text-5xl font-black text-slate-800 mb-6 whitespace-nowrap">Ready for the <span class="text-blue-600 underline decoration-blue-200 underline-offset-8">Next Phase</span></h2>
+            <p class="text-slate-600 text-lg max-w-lg mb-10 font-medium leading-relaxed">
+                I am actively applying each of these milestones to my professional work in real-time. 
+                Let's discuss how my analytical growth can drive impact for your team.
+            </p>
+            <div class="flex gap-4">
+                <a href="https://meryemciftcialy.github.io/work_sample/#hero" target="_blank" class="inline-block bg-blue-600 text-white font-bold py-5 px-12 rounded-2xl shadow-2xl shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all text-center text-lg">
+                    View My Work Samples
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-slate-200 flex items-center gap-4 shadow-sm z-50">
+        <span class="text-xs font-black text-slate-500 uppercase tracking-widest">Scroll Horizontally to Explore Journey</span>
+        <svg class="w-5 h-5 text-blue-600 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+    </div>
+
+    <style>
+        @keyframes bounce-x {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(8px); }
+        }
+        .animate-bounce-x {
+            animation: bounce-x 1.2s infinite;
+        }
+    </style>
+
+</body>
+</html>
