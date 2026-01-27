@@ -6,8 +6,14 @@
     <title>Kamara Rowe-Ciftci | Learning & Growth</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --slate-900: #0f172a;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
@@ -15,19 +21,19 @@
             overflow-y: hidden;
             height: 100vh;
             margin: 0;
+            scroll-behavior: smooth;
         }
 
         .world-container {
             display: flex;
             align-items: center;
             height: 100vh;
-            padding: 0 150px;
+            padding: 0 8vw;
             width: fit-content;
             min-width: 100vw;
             position: relative;
         }
 
-        /* The Winding Path (SVG) */
         .road-svg {
             position: absolute;
             top: 50%;
@@ -35,323 +41,267 @@
             transform: translateY(-50%);
             z-index: 1;
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0.12;
         }
 
         .milestone-node {
             position: relative;
             z-index: 10;
-            width: 420px;
+            width: 400px;
             flex-shrink: 0;
-            margin: 0 120px;
+            margin: 0 60px;
+            transition: transform 0.3s ease;
         }
 
-        /* The "Hanging" Card Style */
         .hanging-card {
             position: absolute;
-            top: 110%;
-            left: 10%;
+            top: calc(100% + 16px);
+            left: 5%;
             width: 90%;
             background: white;
             padding: 1.25rem;
-            border-radius: 1.5rem;
-            border-left: 4px solid #10b981;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-radius: 1.25rem;
+            border-top: 4px solid #10b981;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
             z-index: 5;
         }
 
         .hanging-card::before {
             content: '';
             position: absolute;
-            top: -20px;
+            top: -16px;
             left: 20px;
             width: 2px;
-            height: 20px;
+            height: 16px;
             background: #cbd5e1;
         }
 
         .shining-hat {
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
-            animation: pulse 2.5s infinite;
+            filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.3));
+            animation: float 4s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        /* Availability Dropdown Logic */
-        #availability-menu, #impact-dropdown-menu {
+        #availability-menu {
             display: none;
-            animation: fadeIn 0.2s ease-out;
+            transform-origin: top right;
         }
-        #availability-menu.show, #impact-dropdown-menu.show {
+        #availability-menu.show {
             display: block;
+            animation: dropdownScale 0.2s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes dropdownScale {
+            from { opacity: 0; transform: scale(0.95) translateY(-5px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        ::-webkit-scrollbar { height: 10px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar { height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        
+        .compact-list-item {
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .compact-list-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body class="antialiased text-slate-900">
 
-    <!-- Header Area -->
-    <div class="fixed top-0 left-0 w-full p-8 z-50 pointer-events-none">
-        <div class="bg-white/95 backdrop-blur-md flex items-center justify-between p-6 rounded-3xl shadow-xl border border-slate-100 pointer-events-auto max-w-6xl">
-            <div class="flex-1">
-                <div class="flex items-center gap-4">
-                    <h1 class="text-3xl font-extrabold tracking-tight text-slate-800">
-                        <span class="text-blue-600">Learning</span> & Growth
-                    </h1>
-                </div>
-                
-                <div class="mt-2 space-y-1">
-                    <p class="text-slate-700 font-bold text-sm">
-                        Currently completing a BA in Business Analytics, Graduation Spring 2027
-                    </p>
-                    <p class="text-slate-500 text-xs font-medium uppercase tracking-wide flex items-center gap-2">
-                        <svg class="w-3 h-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12V12a4 4 0 002 3.465V14.5a1 1 0 112 0v2.784a1 1 0 01-1.394.922 6 6 0 01-3.606-6.416V10.12l-1.69-.723a1 1 0 010-1.838l.492-.21a1.001 1.001 0 01.394 1.838v.01zm13.38 0l1.69-.723a1 1 0 000-1.838l-.492-.21a1 1 0 00-.394 1.838v.01a6 6 0 01-3.606 6.416v-2.784a1 1 0 10-2 0v.865A4 4 0 0015 12V10.12l1.69-.723z"></path></svg>
-                        Focused on Applied Analytics, Business Intelligence, and Quantitative Methods
-                    </p>
-                </div>
+    <header class="fixed top-0 left-0 w-full p-6 z-50 pointer-events-none">
+        <div class="bg-white/90 backdrop-blur-md flex items-center justify-between p-4 rounded-3xl shadow-xl border border-slate-100 pointer-events-auto max-w-6xl mx-auto">
+            <div class="flex-1 px-2">
+                <h1 class="text-2xl font-black text-slate-800">Kamara <span class="text-blue-600">Rowe-Ciftci</span></h1>
+                <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Learning & Growth Roadmap</p>
             </div>
-
-            <!-- Availability Dropdown -->
-            <div class="relative ml-8">
-                <button id="availability-btn" class="bg-blue-50 text-blue-700 font-bold py-3 px-6 rounded-2xl border border-blue-100 flex items-center gap-3 hover:bg-blue-100 transition-colors shadow-sm">
-                    Availability 
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                
-                <div id="availability-menu" class="absolute right-0 mt-3 w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 p-5 z-50">
-                    <div class="space-y-4">
-                        <div class="flex gap-3">
-                            <div class="w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            </div>
-                            <p class="text-sm font-semibold text-slate-800 leading-snug">Fully available for full-time roles</p>
-                        </div>
-                        <div class="flex gap-3">
-                            <div class="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                            </div>
-                            <p class="text-sm text-slate-600 leading-snug">Asynchronous courses allow work and learning to occur simultaneously</p>
-                        </div>
-                        <div class="flex gap-3">
-                            <div class="w-5 h-5 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.49L19 6.4l1.35 1.46-4.62 3.63H22v2h-6.27l4.62 3.63L19 18.6l-5.97-4.09V22c5.07-.5 9-4.79 9-10s-3.93-9.5-9-10z"/></svg>
-                            </div>
-                            <p class="text-sm text-slate-600 leading-snug font-medium italic">Online and flexible academic program designed for working professionals</p>
-                        </div>
-                        <div class="pt-3 border-t border-slate-50">
-                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Institution</p>
-                            <p class="text-xs font-bold text-slate-800">Berkeley College, New York</p>
-                        </div>
+            <button id="availability-btn" class="bg-slate-900 text-white font-bold py-2.5 px-5 rounded-xl text-sm flex items-center gap-2 hover:bg-blue-600 transition-all shadow-lg">
+                Status
+                <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="availability-menu" class="absolute right-6 mt-[420px] w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 z-50">
+                <div class="space-y-4">
+                    <div class="flex gap-3">
+                        <div class="w-8 h-8 bg-green-50 text-green-600 rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+                        <p class="text-[11px] font-black text-slate-800 leading-tight">Fully available for full-time roles</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-[10px] text-slate-500 leading-relaxed italic">Asynchronous courses allow work and learning to occur simultaneously.</p>
+                        <p class="text-[10px] text-slate-600 font-medium leading-relaxed border-l-2 border-blue-100 pl-3">Online and flexible academic program designed for working professionals.</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-50">
+                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Institution</p>
+                        <p class="text-xs font-extrabold text-blue-600">Berkeley College, New York</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 
     <div class="world-container">
-        
-        <!-- Winding Road SVG -->
-        <svg class="road-svg" width="6000" height="600" viewBox="0 0 6000 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 300C300 300 300 500 600 500C900 500 900 150 1200 150C1500 150 1500 450 1800 450C2100 450 2100 200 2400 200C2700 200 2700 500 3000 500C3300 500 3300 200 3600 200C3900 200 3900 450 4200 450C4500 450 4500 250 4800 250" stroke="#94a3b8" stroke-width="12" stroke-linecap="round" stroke-dasharray="20 30" />
+        <svg class="road-svg" width="6000" height="600" viewBox="0 0 6000 600" fill="none">
+            <path d="M0 300C300 300 300 500 600 500C900 500 900 150 1200 150C1500 150 1500 450 1800 450C2100 450 2100 200 2400 200C2700 200 2700 500 3000 500" stroke="#2563eb" stroke-width="2" stroke-dasharray="10 10" />
         </svg>
 
-        <!-- Milestone Nodes -->
+        <!-- Phase 0: Foundation -->
         <div class="milestone-node" style="margin-top: -100px;">
-            <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl relative border border-slate-700">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="font-bold text-2xl">Operational Foundation</h3>
-                </div>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    Built expertise in managing data integrity, compliance, and business workflows across multiple industries, ensuring accurate, reliable, and actionable information for decision-making.
-                </p>
-
+            <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-xl border border-slate-700">
+                <h3 class="font-bold text-xl mb-3 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-xs">01</span>
+                    Operational Foundation
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed mb-2">Built expertise in managing data integrity and business workflows across multiple industries.</p>
                 <div class="hanging-card">
-                    <div class="flex items-start gap-3">
-                        <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                        </div>
+                    <div class="flex gap-3">
+                        <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
                         <div>
-                            <p class="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-0.5">Professional Certification</p>
-                            <h4 class="font-bold text-sm text-slate-800">Google Data Analytics</h4>
-                            <p class="text-[11px] text-slate-500 mt-1">Foundational training in SQL, Tableau, Excel, and data storytelling to translate raw data into actionable insights.</p>
+                            <p class="text-[9px] font-black text-emerald-600 uppercase tracking-widest">Completed</p>
+                            <h4 class="font-bold text-xs text-slate-800">Google Data Analytics</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Winter 2026 Milestone -->
-        <div class="milestone-node" style="margin-top: 320px;">
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border-2 border-blue-500 relative">
-                <div class="flex items-center justify-between mb-6">
-                    <div class="px-3 py-1 bg-blue-600 text-white text-[10px] font-black uppercase rounded shadow-lg tracking-wider">Winter 2026: Active</div>
-                    
-                    <!-- Interactive Dropdown -->
-                    <div class="relative">
-                        <button id="impact-dropdown-btn" class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase rounded-full hover:bg-blue-100 transition-colors border border-blue-100">
-                            Course Impact
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                        
-                        <div id="impact-dropdown-menu" class="absolute right-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-blue-100 p-5 z-20">
-                            <div class="flex justify-between items-center mb-3">
-                                <p class="text-[10px] font-black text-blue-600 uppercase tracking-widest">Academic Excellence</p>
-                                <div class="bg-blue-600 text-white px-2 py-0.5 rounded text-[10px] font-bold">GPA: TBA</div>
-                            </div>
-                            <p class="text-xs text-slate-700 leading-relaxed italic border-t border-blue-50 pt-3">
-                                “These courses integrate technical skills, quantitative analysis, and business problem-solving, preparing me to extract actionable insights across diverse sectors, including <b>Fintech</b>, <b>corporate</b>, <b>nonprofit</b>, <b>legal</b>, and <b>technology</b> domains.”
-                            </p>
-                        </div>
+        <!-- Phase 1: Winter 2026 (Active) -->
+        <div class="milestone-node" style="margin-top: 280px;">
+            <div class="bg-white p-7 rounded-[2.5rem] shadow-2xl border-2 border-blue-600 relative">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="px-3 py-1 bg-blue-600 text-white text-[9px] font-black uppercase rounded tracking-widest">Winter 2026</span>
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-[8px] font-black uppercase rounded">Active</span>
                     </div>
+                    <div class="bg-blue-50 text-blue-700 px-3 py-1 rounded text-[10px] font-bold">GPA: TBA</div>
                 </div>
-
-                <h3 class="font-bold text-2xl text-slate-800 mb-6 flex items-center gap-3">
-                    <span class="w-2 h-8 bg-blue-500 rounded-full"></span>
-                    Coursework
+                
+                <h3 class="font-black text-xl text-slate-800 mb-5 flex items-center gap-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                    Current Studies
                 </h3>
                 
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex items-center gap-2">
-                             <div class="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                             <p class="text-sm font-bold text-slate-800">Business Intelligence (BUS 221)</p>
-                        </div>
-                        <p class="text-[11px] text-slate-500 mt-1 ml-3.5 leading-relaxed">Mastering analytics software to turn raw data into strategic insights; developing critical thinking and quantitative reasoning to analyze real-world business problems.</p>
+                <div class="space-y-4">
+                    <div class="compact-list-item">
+                        <p class="text-xs font-extrabold text-slate-800">Business Intelligence & Analytics</p>
+                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Turning raw data into strategic insights with a heavy emphasis on critical thinking and quantitative reasoning.</p>
                     </div>
-                    <div class="h-px bg-slate-100"></div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                             <div class="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                             <p class="text-sm font-bold text-slate-800">Quantitative Methods</p>
-                        </div>
-                        <p class="text-[11px] text-slate-500 mt-1 ml-3.5 leading-relaxed">Applying math and analytical techniques to optimize resources, forecast business outcomes, and support data-driven decision-making.</p>
+                    <div class="compact-list-item">
+                        <p class="text-xs font-extrabold text-slate-800">Quantitative Methods</p>
+                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Optimizing resources and forecasting business outcomes through mathematical modeling and analysis.</p>
                     </div>
-                    <div class="h-px bg-slate-100"></div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                             <div class="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
-                             <p class="text-sm font-bold text-slate-800">Advanced Spreadsheets</p>
-                        </div>
-                        <p class="text-[11px] text-slate-500 mt-1 ml-3.5 leading-relaxed">Automating complex reporting using macros and what-if modeling to improve efficiency and accuracy in data analysis.</p>
+                    <div class="compact-list-item">
+                        <p class="text-xs font-extrabold text-slate-800">Advanced Spreadsheets</p>
+                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Automating complex reporting via macros and what-if modeling to drive analytical efficiency.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="milestone-node" style="margin-top: -200px;">
-            <div class="bg-white/60 p-8 rounded-[2.5rem] border-2 border-dashed border-slate-200 relative">
-                <h3 class="font-bold text-xl text-slate-400 mb-2">Phase 2: Spring Classes 2026 - TBA</h3>
+        <!-- Phase 2: Spring 2026 (Scheduled) -->
+        <div class="milestone-node" style="margin-top: -120px;">
+            <div class="bg-white p-7 rounded-[2.5rem] shadow-xl border border-slate-100 relative">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-white text-[9px] font-black uppercase rounded tracking-widest">Spring 2026</span>
+                        <span class="px-2 py-1 bg-amber-50 text-amber-600 text-[8px] font-black uppercase rounded border border-amber-100">Scheduled</span>
+                    </div>
+                </div>
+                
+                <h3 class="font-black text-xl text-slate-800 mb-5 flex items-center gap-2">
+                    <span class="w-1.5 h-6 bg-slate-800 rounded-full"></span>
+                    Curriculum
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="compact-list-item">
+                        <p class="text-xs font-extrabold text-slate-800">Business Communication</p>
+                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Practical strategies for success in a continuously evolving work environment.</p>
+                    </div>
+                    <div class="compact-list-item">
+                        <p class="text-xs font-extrabold text-slate-800">Intro to Database Mgmt</p>
+                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Development of relational systems using MS Access and SQL modeling.</p>
+                    </div>
+                    <div class="compact-list-item">
+                        <p class="text-xs font-extrabold text-slate-800">IT Project Management</p>
+                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">lifecycle management from inception to post-implementation review.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- Node 4: Certification -->
         <div class="milestone-node" style="margin-top: 250px;">
-             <div class="bg-white/40 p-8 rounded-[2.5rem] border-2 border-dashed border-slate-300 relative opacity-60 grayscale-[0.5]">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                    </div>
-                    <div>
-                        <p class="text-[10px] font-black text-amber-600 uppercase tracking-widest mb-1">Projected: Fall 2026</p>
-                        <h4 class="font-bold text-xl text-slate-800">Microsoft PL-300</h4>
-                        <p class="text-sm text-slate-500 mt-2 italic leading-relaxed">Power BI Data Analyst Associate Certification (In Progress)</p>
-                    </div>
+             <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-lg">
+                <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"></path></svg>
                 </div>
+                <p class="text-[9px] font-black text-amber-600 uppercase tracking-widest mb-1">Target: Fall 2026</p>
+                <h4 class="font-bold text-lg text-slate-800">Microsoft PL-300</h4>
+                <p class="text-xs text-slate-500 mt-2">Power BI Data Analyst Associate Certification prep.</p>
             </div>
         </div>
 
-        <!-- Spring 2027 Graduation Milestone -->
-        <div class="milestone-node flex flex-col items-center" style="margin-top: -100px;">
+        <!-- Node 5: Graduation -->
+        <div class="milestone-node flex flex-col items-center" style="margin-top: -80px;">
             <div class="shining-hat mb-6">
-                <svg width="140" height="140" viewBox="0 0 24 24" fill="none">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="none">
                     <path d="M12 4L3 9L12 14L21 9L12 4Z" fill="#1e293b"/>
                     <path d="M12 14V20" stroke="#1e293b" stroke-width="1.2"/>
                     <path d="M5 11.5V15.5C5 15.5 8 18.5 12 18.5C16 18.5 19 15.5 19 15.5V11.5" stroke="#1e293b" stroke-width="1.2"/>
-                    <circle cx="12" cy="4" r="1" fill="#fbbf24"/>
                 </svg>
             </div>
-            <div class="bg-gradient-to-br from-slate-900 to-blue-900 p-10 rounded-[2.5rem] shadow-2xl text-white text-center w-full border border-blue-400/30">
-                <h3 class="font-extrabold text-4xl mb-2">Spring 2027 - Graduation</h3>
-                <p class="text-blue-400 font-black text-sm uppercase tracking-[0.2em] mb-4">BA Business Analytics</p>
-                <div class="h-px bg-white/20 mb-4"></div>
-                <p class="text-slate-100 font-bold text-base mb-2">Degree Completion & Ongoing Professional Growth</p>
-                <p class="text-slate-300 text-sm leading-relaxed mb-3">
-                    Completion of my degree while actively applying new skills to current roles or projects.
-                </p>
-                <p class="text-slate-400 text-xs italic leading-relaxed">
-                    Gained additional knowledge and capabilities to enhance my contributions today and in future roles.
-                </p>
+            <div class="bg-slate-900 p-10 rounded-[3rem] shadow-2xl text-white text-center w-full border border-blue-500/30">
+                <h3 class="font-black text-3xl mb-2">Spring 2027</h3>
+                <p class="text-blue-400 font-black text-[10px] uppercase tracking-[0.3em] mb-4">Graduation</p>
+                <p class="text-slate-100 font-bold text-sm">BA in Business Analytics</p>
             </div>
         </div>
 
-        <!-- FINAL CTA -->
-        <div class="flex flex-row items-center gap-12 px-16 py-12 ml-32 bg-white shadow-2xl rounded-[4rem] border border-slate-100 min-w-[1000px]">
+        <!-- Final CTA -->
+        <div class="flex items-center gap-12 px-16 py-12 ml-20 bg-white shadow-2xl rounded-[4rem] border border-slate-50 min-w-[900px]">
             <div class="flex-1">
-                <h2 class="text-4xl font-black text-slate-800 mb-6 leading-tight">
-                    Bridging Strategy & <br><span class="text-blue-600 underline decoration-blue-200 underline-offset-8">Applied Insight</span>
+                <h2 class="text-4xl font-black text-slate-800 mb-4 leading-tight">
+                    Compounding Data & <br><span class="text-blue-600 underline underline-offset-8 decoration-blue-100">Business Insight</span>
                 </h2>
-                <p class="text-slate-600 text-lg leading-relaxed font-medium max-w-2xl">
-                    My roadmap isn’t just about future goals; it reflects the value I bring today. Each new skill, piece of knowledge, and technique I master enhances my ability to deliver high-impact solutions and measurable results in current roles, projects, and future opportunities.
+                <p class="text-slate-500 text-lg leading-relaxed max-w-xl">
+                    Leveraging existing data analytics experience alongside business analytics expertise to understand not only the <span class="text-slate-900 font-bold">what</span> but the <span class="text-slate-900 font-bold">why</span>—empowering data-driven decisions that transform organizations.
                 </p>
             </div>
-            <div class="flex-shrink-0">
-                <a href="https://meryemciftcialy.github.io/work_sample/#hero" target="_blank" class="inline-block bg-blue-600 text-white font-bold py-6 px-14 rounded-3xl shadow-xl hover:bg-blue-700 hover:-translate-y-1 transition-all text-center text-xl whitespace-nowrap">
-                    Explore My Portfolio
-                </a>
-            </div>
+            <a href="https://meryemciftcialy.github.io/work_sample/#hero" target="_blank" class="bg-blue-600 text-white font-bold py-6 px-12 rounded-3xl shadow-xl hover:bg-slate-900 transition-all text-xl">
+                View Portfolio
+            </a>
         </div>
-
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-2xl flex items-center gap-4">
-        <span>Scroll Horizontally to Explore Journey</span>
-        <svg class="w-4 h-4 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-2.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-4">
+        <span>Scroll to Explore</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
     </div>
 
     <script>
-        // Universal Dropdown Handler
-        function setupDropdown(btnId, menuId) {
-            const btn = document.getElementById(btnId);
-            const menu = document.getElementById(menuId);
+        const btn = document.getElementById('availability-btn');
+        const menu = document.getElementById('availability-menu');
 
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                menu.classList.toggle('show');
-            });
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('show');
+        });
 
-            document.addEventListener('click', (e) => {
-                if (!menu.contains(e.target)) {
-                    menu.classList.remove('show');
-                }
-            });
-        }
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target)) menu.classList.remove('show');
+        });
 
-        // Setup both dropdowns
-        setupDropdown('availability-btn', 'availability-menu');
-        setupDropdown('impact-dropdown-btn', 'impact-dropdown-menu');
+        document.body.addEventListener('wheel', (evt) => {
+            document.body.scrollLeft += evt.deltaY;
+        });
     </script>
-
-    <style>
-        @keyframes bounce-x {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
-        }
-        .animate-bounce-x { animation: bounce-x 1s infinite; }
-    </style>
-
 </body>
 </html>
