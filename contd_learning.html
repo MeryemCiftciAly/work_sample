@@ -3,87 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamara Rowe-Ciftci | Learning & Growth</title>
+    <title>K.Meryem Rowe-Ciftci | Growth Roadmap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --slate-900: #0f172a;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
-            overflow-x: auto;
-            overflow-y: hidden;
-            height: 100vh;
-            margin: 0;
+            color: #0f172a;
             scroll-behavior: smooth;
         }
 
-        .world-container {
-            display: flex;
-            align-items: center;
-            height: 100vh;
-            padding: 0 8vw;
-            width: fit-content;
-            min-width: 100vw;
+        /* Vertical Timeline Spine */
+        .timeline-container {
             position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .road-svg {
+        .timeline-line {
             position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.12;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #e2e8f0, #2563eb, #e2e8f0);
+            z-index: 0;
         }
 
-        .milestone-node {
+        .milestone-card {
             position: relative;
             z-index: 10;
-            width: 400px;
-            flex-shrink: 0;
-            margin: 0 60px;
-            transition: transform 0.3s ease;
+            width: 45%;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
         }
 
-        .hanging-card {
-            position: absolute;
-            top: calc(100% + 16px);
-            left: 5%;
-            width: 90%;
-            background: white;
-            padding: 1.25rem;
-            border-radius: 1.25rem;
-            border-top: 4px solid #10b981;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-            z-index: 5;
+        .milestone-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .hanging-card::before {
-            content: '';
+        /* Alternating sides */
+        .milestone-card:nth-child(odd) {
+            float: left;
+            clear: both;
+            text-align: right;
+        }
+
+        .milestone-card:nth-child(even) {
+            float: right;
+            clear: both;
+            text-align: left;
+        }
+
+        /* Timeline Dots */
+        .milestone-dot {
             position: absolute;
-            top: -16px;
-            left: 20px;
-            width: 2px;
+            top: 20px;
+            width: 16px;
             height: 16px;
-            background: #cbd5e1;
+            background: white;
+            border: 4px solid #2563eb;
+            border-radius: 50%;
+            z-index: 20;
         }
 
-        .shining-hat {
-            filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.3));
-            animation: float 4s ease-in-out infinite;
+        .milestone-card:nth-child(odd) .milestone-dot {
+            right: calc(-10% - 13px);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .milestone-card:nth-child(even) .milestone-dot {
+            left: calc(-10% - 13px);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 640px) {
+            .timeline-line { left: 20px; transform: none; }
+            .milestone-card { width: calc(100% - 50px) !important; float: right !important; text-align: left !important; margin-bottom: 40px; }
+            .milestone-dot { left: -38px !important; top: 24px !important; }
         }
 
         #availability-menu {
@@ -92,7 +95,7 @@
         }
         #availability-menu.show {
             display: block;
-            animation: dropdownScale 0.2s ease-out;
+            animation: dropdownScale 0.2s ease-out forwards;
         }
 
         @keyframes dropdownScale {
@@ -100,191 +103,227 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        ::-webkit-scrollbar { height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
-        
-        .compact-list-item {
-            padding-bottom: 0.75rem;
-            margin-bottom: 0.75rem;
-            border-bottom: 1px solid #f1f5f9;
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(8deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
-        .compact-list-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
+
+        .grad-cap-anim {
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+            font-size: 3.5rem;
+            filter: drop-shadow(0 10px 8px rgba(0,0,0,0.2));
+        }
+
+        .glass-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
         }
     </style>
 </head>
-<body class="antialiased text-slate-900">
+<body class="antialiased">
 
-    <header class="fixed top-0 left-0 w-full p-6 z-50 pointer-events-none">
-        <div class="bg-white/90 backdrop-blur-md flex items-center justify-between p-4 rounded-3xl shadow-xl border border-slate-100 pointer-events-auto max-w-6xl mx-auto">
-            <div class="flex-1 px-2">
-                <h1 class="text-2xl font-black text-slate-800">Kamara <span class="text-blue-600">Rowe-Ciftci</span></h1>
-                <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Learning & Growth Roadmap</p>
+    <header class="sticky top-0 w-full p-4 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-5xl mx-auto flex items-center justify-between">
+            <div>
+                <h1 class="text-xl font-black text-slate-800 tracking-tight">Kamara <span class="text-blue-600">Rowe-Ciftci</span></h1>
+                <p class="text-slate-500 text-[9px] font-bold uppercase tracking-[0.15em]">Academic & Professional Growth</p>
             </div>
-            <button id="availability-btn" class="bg-slate-900 text-white font-bold py-2.5 px-5 rounded-xl text-sm flex items-center gap-2 hover:bg-blue-600 transition-all shadow-lg">
-                Status
-                <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
-            <div id="availability-menu" class="absolute right-6 mt-[420px] w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 z-50">
-                <div class="space-y-4">
-                    <div class="flex gap-3">
-                        <div class="w-8 h-8 bg-green-50 text-green-600 rounded-lg flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
-                        <p class="text-[11px] font-black text-slate-800 leading-tight">Fully available for full-time roles</p>
-                    </div>
-                    <div class="space-y-2">
-                        <p class="text-[10px] text-slate-500 leading-relaxed italic">Asynchronous courses allow work and learning to occur simultaneously.</p>
-                        <p class="text-[10px] text-slate-600 font-medium leading-relaxed border-l-2 border-blue-100 pl-3">Online and flexible academic program designed for working professionals.</p>
-                    </div>
-                    <div class="pt-3 border-t border-slate-50">
-                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Institution</p>
-                        <p class="text-xs font-extrabold text-blue-600">Berkeley College, New York</p>
+            
+            <div class="relative">
+                <button id="availability-btn" class="bg-blue-600 text-white font-bold py-2.5 px-5 rounded-xl text-xs flex items-center gap-2 hover:bg-blue-700 transition-all shadow-md">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+                    </span>
+                    Availability
+                </button>
+                
+                <div id="availability-menu" class="absolute right-0 mt-3 w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 z-50">
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <div class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900 leading-tight">Full-Time Ready</p>
+                                <p class="text-xs text-slate-500 mt-1">Available for immediate hire.</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
+                            <p class="text-[12px] text-blue-900 font-semibold leading-relaxed italic">
+                                "My college courses are fully flexible and asynchronous. This allows me to dedicate 40+ hours a week to a full-time role without conflict."
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="world-container">
-        <svg class="road-svg" width="6000" height="600" viewBox="0 0 6000 600" fill="none">
-            <path d="M0 300C300 300 300 500 600 500C900 500 900 150 1200 150C1500 150 1500 450 1800 450C2100 450 2100 200 2400 200C2700 200 2700 500 3000 500" stroke="#2563eb" stroke-width="2" stroke-dasharray="10 10" />
-        </svg>
-
-        <!-- Phase 0: Foundation -->
-        <div class="milestone-node" style="margin-top: -100px;">
-            <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-xl border border-slate-700">
-                <h3 class="font-bold text-xl mb-3 flex items-center gap-3">
-                    <span class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-xs">01</span>
-                    Operational Foundation
-                </h3>
-                <p class="text-xs text-slate-400 leading-relaxed mb-2">Built expertise in managing data integrity and business workflows across multiple industries.</p>
-                <div class="hanging-card">
-                    <div class="flex gap-3">
-                        <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-                        <div>
-                            <p class="text-[9px] font-black text-emerald-600 uppercase tracking-widest">Completed</p>
-                            <h4 class="font-bold text-xs text-slate-800">Google Data Analytics</h4>
-                        </div>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <!-- Intro Section -->
+        <section class="text-center mb-16">
+            <h2 class="text-4xl font-black text-slate-900 mb-6 tracking-tight">Projecting My Path</h2>
+            
+            <!-- Context Box / Professional Summary -->
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-blue-900/5 mb-8 text-left">
+                <div class="flex flex-col md:flex-row gap-6 items-center">
+                    <div class="flex-1">
+                        <p class="text-slate-700 text-lg leading-relaxed">
+                            <span class="font-bold text-slate-900">Data-focused Business Professional</span> transitioning into analytics, with 
+                            <span class="font-bold text-blue-600">5+ years of experience</span> supporting operations through reporting, data organization, and process optimization. 
+                        </p>
+                        <p class="text-slate-700 text-lg leading-relaxed mt-3">
+                            Currently completing a <span class="font-bold text-slate-900">B.A. in Business Analytics</span> at 
+                            <span class="font-bold text-blue-600">Berkeley College (New York)</span>.
+                        </p>
                     </div>
                 </div>
+                <div class="mt-6 pt-6 border-t border-slate-50 flex flex-wrap justify-center sm:justify-start gap-3">
+                    <span class="bg-blue-50 text-blue-700 text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest border border-blue-100">5+ Years Experience</span>
+                    <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest border border-emerald-100">Berkeley College Student</span>
+                    <span class="bg-amber-50 text-amber-700 text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest border border-amber-100">Evolving Data Analyst</span>
+                </div>
             </div>
+
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm italic">
+                Scroll to explore my professional milestones and academic progression.
+            </p>
+        </section>
+
+        <!-- Timeline -->
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <!-- Milestone 1: Professional Experience -->
+            <div class="milestone-card">
+                <div class="milestone-dot"></div>
+                <div class="glass-card">
+                    <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest bg-emerald-50 px-2 py-1 rounded">Foundation</span>
+                    <h3 class="text-lg font-black mt-2">Operational Excellence</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-relaxed">Cross-functional experience optimizing business workflows and maintaining high-integrity data environments across operations.</p>
+                </div>
+            </div>
+
+            <!-- Milestone 2: Certification -->
+            <div class="milestone-card">
+                <div class="milestone-dot"></div>
+                <div class="glass-card">
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-1 rounded">Certification</span>
+                    <h3 class="text-lg font-black mt-2">Google Data Analytics</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-relaxed">Technical proficiency in SQL, R, and Tableau, with a focus on data cleaning and visualization strategy.</p>
+                </div>
+            </div>
+
+            <!-- Milestone 3: Winter 2026 Academic -->
+            <div class="milestone-card">
+                <div class="milestone-dot"></div>
+                <div class="glass-card border-blue-500 border-2 shadow-blue-50">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-2 py-1 rounded">Winter 2026 Semester</span>
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    </div>
+                    <h3 class="text-lg font-black">Current Academic Focus</h3>
+                    
+                    <!-- GPA Section -->
+                    <div class="mt-2 mb-3 py-1 px-3 bg-slate-900 rounded-lg inline-flex items-center">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Term GPA:</span>
+                        <span class="text-white font-black ml-2 tracking-widest font-mono">X.XX</span>
+                    </div>
+
+                    <ul class="text-sm text-slate-600 space-y-2 text-left">
+                        <li>• <strong>Business Intelligence:</strong> Driving strategy via data.</li>
+                        <li>• <strong>Quantitative Methods:</strong> Predictive modeling.</li>
+                        <li>• <strong>Advanced Spreadsheets:</strong> Dashboard automation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Milestone 4: Spring 2026 Academic -->
+            <div class="milestone-card">
+                <div class="milestone-dot"></div>
+                <div class="glass-card">
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest bg-slate-50 px-2 py-1 rounded">Spring 2026 Semester</span>
+                    <h3 class="text-lg font-black mt-2">Database & Projects</h3>
+                    
+                    <!-- GPA Section -->
+                    <div class="mt-2 mb-3 py-1 px-3 bg-slate-100 rounded-lg inline-flex items-center">
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Term GPA:</span>
+                        <span class="text-slate-900 font-black ml-2 tracking-widest font-mono">X.XX</span>
+                    </div>
+
+                    <ul class="text-sm text-slate-600 mt-1 space-y-1.5 text-left sm:text-right">
+                        <li>SQL Development & Relational Systems</li>
+                        <li>Business Communication</li>
+                        <li>Database Management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Milestone 5: Next Cert -->
+            <div class="milestone-card">
+                <div class="milestone-dot"></div>
+                <div class="glass-card bg-amber-50/30 border-amber-100">
+                    <span class="text-[10px] font-bold text-amber-600 uppercase tracking-widest bg-amber-50 px-2 py-1 rounded">Target Certification</span>
+                    <h3 class="text-lg font-black mt-2">Microsoft PL-300</h3>
+                    <p class="text-sm text-slate-500 mt-2 leading-relaxed">Advancing to Microsoft Certified Power BI Data Analyst to master enterprise-level data modeling.</p>
+                </div>
+            </div>
+
+            <!-- Milestone 6: Graduation -->
+            <div class="milestone-card">
+                <div class="milestone-dot"></div>
+                <div class="glass-card bg-slate-900 text-white overflow-hidden text-center py-10 relative">
+                    <div class="grad-cap-anim mb-4">🎓</div>
+                    <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1 block">Spring 2027</span>
+                    <h3 class="text-2xl font-black">B.A. Business Analytics</h3>
+                    <p class="text-sm text-slate-400 mt-2">Berkeley College, NY • Academic Completion</p>
+                </div>
+            </div>
+
+            <div style="clear: both;"></div>
         </div>
 
-        <!-- Phase 1: Winter 2026 (Active) -->
-        <div class="milestone-node" style="margin-top: 280px;">
-            <div class="bg-white p-7 rounded-[2.5rem] shadow-2xl border-2 border-blue-600 relative">
-                <div class="flex justify-between items-center mb-4">
-                    <div class="flex items-center gap-2">
-                        <span class="px-3 py-1 bg-blue-600 text-white text-[9px] font-black uppercase rounded tracking-widest">Winter 2026</span>
-                        <span class="px-2 py-1 bg-green-100 text-green-700 text-[8px] font-black uppercase rounded">Active</span>
-                    </div>
-                    <div class="bg-blue-50 text-blue-700 px-3 py-1 rounded text-[10px] font-bold">GPA: TBA</div>
-                </div>
-                
-                <h3 class="font-black text-xl text-slate-800 mb-5 flex items-center gap-2">
-                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
-                    Current Studies
-                </h3>
-                
-                <div class="space-y-4">
-                    <div class="compact-list-item">
-                        <p class="text-xs font-extrabold text-slate-800">Business Intelligence & Analytics</p>
-                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Turning raw data into strategic insights with a heavy emphasis on critical thinking and quantitative reasoning.</p>
-                    </div>
-                    <div class="compact-list-item">
-                        <p class="text-xs font-extrabold text-slate-800">Quantitative Methods</p>
-                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Optimizing resources and forecasting business outcomes through mathematical modeling and analysis.</p>
-                    </div>
-                    <div class="compact-list-item">
-                        <p class="text-xs font-extrabold text-slate-800">Advanced Spreadsheets</p>
-                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Automating complex reporting via macros and what-if modeling to drive analytical efficiency.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Phase 2: Spring 2026 (Scheduled) -->
-        <div class="milestone-node" style="margin-top: -120px;">
-            <div class="bg-white p-7 rounded-[2.5rem] shadow-xl border border-slate-100 relative">
-                <div class="flex justify-between items-center mb-4">
-                    <div class="flex items-center gap-2">
-                        <span class="px-3 py-1 bg-slate-800 text-white text-[9px] font-black uppercase rounded tracking-widest">Spring 2026</span>
-                        <span class="px-2 py-1 bg-amber-50 text-amber-600 text-[8px] font-black uppercase rounded border border-amber-100">Scheduled</span>
-                    </div>
-                </div>
-                
-                <h3 class="font-black text-xl text-slate-800 mb-5 flex items-center gap-2">
-                    <span class="w-1.5 h-6 bg-slate-800 rounded-full"></span>
-                    Curriculum
-                </h3>
-                
-                <div class="space-y-4">
-                    <div class="compact-list-item">
-                        <p class="text-xs font-extrabold text-slate-800">Business Communication</p>
-                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Practical strategies for success in a continuously evolving work environment.</p>
-                    </div>
-                    <div class="compact-list-item">
-                        <p class="text-xs font-extrabold text-slate-800">Intro to Database Mgmt</p>
-                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">Development of relational systems using MS Access and SQL modeling.</p>
-                    </div>
-                    <div class="compact-list-item">
-                        <p class="text-xs font-extrabold text-slate-800">IT Project Management</p>
-                        <p class="text-[10px] text-slate-500 mt-1 leading-tight">lifecycle management from inception to post-implementation review.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Node 4: Certification -->
-        <div class="milestone-node" style="margin-top: 250px;">
-             <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-lg">
-                <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"></path></svg>
-                </div>
-                <p class="text-[9px] font-black text-amber-600 uppercase tracking-widest mb-1">Target: Fall 2026</p>
-                <h4 class="font-bold text-lg text-slate-800">Microsoft PL-300</h4>
-                <p class="text-xs text-slate-500 mt-2">Power BI Data Analyst Associate Certification prep.</p>
-            </div>
-        </div>
-
-        <!-- Node 5: Graduation -->
-        <div class="milestone-node flex flex-col items-center" style="margin-top: -80px;">
-            <div class="shining-hat mb-6">
-                <svg width="120" height="120" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 4L3 9L12 14L21 9L12 4Z" fill="#1e293b"/>
-                    <path d="M12 14V20" stroke="#1e293b" stroke-width="1.2"/>
-                    <path d="M5 11.5V15.5C5 15.5 8 18.5 12 18.5C16 18.5 19 15.5 19 15.5V11.5" stroke="#1e293b" stroke-width="1.2"/>
-                </svg>
-            </div>
-            <div class="bg-slate-900 p-10 rounded-[3rem] shadow-2xl text-white text-center w-full border border-blue-500/30">
-                <h3 class="font-black text-3xl mb-2">Spring 2027</h3>
-                <p class="text-blue-400 font-black text-[10px] uppercase tracking-[0.3em] mb-4">Graduation</p>
-                <p class="text-slate-100 font-bold text-sm">BA in Business Analytics</p>
-            </div>
-        </div>
-
-        <!-- Final CTA -->
-        <div class="flex items-center gap-12 px-16 py-12 ml-20 bg-white shadow-2xl rounded-[4rem] border border-slate-50 min-w-[900px]">
-            <div class="flex-1">
-                <h2 class="text-4xl font-black text-slate-800 mb-4 leading-tight">
-                    Compounding Data & <br><span class="text-blue-600 underline underline-offset-8 decoration-blue-100">Business Insight</span>
-                </h2>
-                <p class="text-slate-500 text-lg leading-relaxed max-w-xl">
-                    Leveraging existing data analytics experience alongside business analytics expertise to understand not only the <span class="text-slate-900 font-bold">what</span> but the <span class="text-slate-900 font-bold">why</span>—empowering data-driven decisions that transform organizations.
+        <!-- Call to Action -->
+        <section class="mt-20 py-16 px-8 bg-white border border-slate-100 rounded-[3rem] text-center shadow-xl">
+            <h2 class="text-3xl font-black text-slate-900 mb-6 tracking-tight">Let's Connect</h2>
+            <div class="max-w-2xl mx-auto mb-10 text-slate-600 space-y-4 leading-relaxed text-lg">
+                <p>
+                    <strong>My Objective:</strong> To join a forward-thinking team where I can apply my dual expertise in 
+                    <span class="text-blue-600 font-bold">Data and Business Analytics</span>. 
+                </p>
+                <p class="text-base italic bg-slate-50 p-6 rounded-2xl border-l-4 border-blue-500">
+                    "I am driven to see the direct impact of my insights—transforming complex data into 
+                    confident, actionable decisions that help business owners lead with certainty and achieve positive results."
                 </p>
             </div>
-            <a href="https://meryemciftcialy.github.io/work_sample/#hero" target="_blank" class="bg-blue-600 text-white font-bold py-6 px-12 rounded-3xl shadow-xl hover:bg-slate-900 transition-all text-xl">
-                View Portfolio
-            </a>
-        </div>
-    </div>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_HERE" target="_blank" class="bg-[#0077b5] text-white font-bold py-4 px-12 rounded-2xl flex items-center gap-3 hover:scale-105 transition-all shadow-lg text-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn Profile
+                </a>
+                <a href="https://meryemciftcialy.github.io/work_sample/#hero" target="_blank" class="text-slate-600 font-bold hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600 pb-1">
+                    Return to Portfolio
+                </a>
+            </div>
+        </section>
+    </main>
 
-    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-2.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] shadow-2xl flex items-center gap-4">
-        <span>Scroll to Explore</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-    </div>
+    <footer class="py-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em]">
+        &copy; 2026 K. Meryem Rowe-Ciftci • New York, NY
+    </footer>
 
     <script>
         const btn = document.getElementById('availability-btn');
@@ -296,11 +335,21 @@
         });
 
         document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target)) menu.classList.remove('show');
+            if (!menu.contains(e.target) && e.target !== btn) {
+                menu.classList.remove('show');
+            }
         });
 
-        document.body.addEventListener('wheel', (evt) => {
-            document.body.scrollLeft += evt.deltaY;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.milestone-card').forEach(card => {
+            observer.observe(card);
         });
     </script>
 </body>
